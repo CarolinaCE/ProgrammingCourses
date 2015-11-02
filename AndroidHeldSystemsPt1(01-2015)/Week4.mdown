@@ -1,0 +1,247 @@
+## Week 4 ##
+
+### User Interface Classes ###
+
+### Pt. 1 ###
+
+Build good looking and effective user interfaces. The User Interface is the place and the means by which the user and the app exchange information. There are many things that compose the UI, hand held systems use to have many sensors.
+
+**View class**
+
+It's a key building block for UI components. THey occupy a rectangular space on the screeen and are responsible for drawing themselves and handling events directed to them.
+
+There are some predefined views:
+
+* **Button:** just a view that is clickable to perform some action. See *UIButton* Application. A listener has been attached to the button.
+
+* **ToggleButton:** another button, but when we press it, it stays pressed until it's pressed again. It's *checked* or *not checked*. There's an light indicator showing the state. *UIToggleButton* app has an example.
+
+* **CheckBox:** two state button. It's checked or not checked too. *UICheckBox* app.
+
+* **RatingBar:** a view comprising a row of stars. There are 5 stars and the user can highlight soem number of them by clicking or dragging. *UIRatingBar* app.
+
+* **AutoCompleteTextView:** text view that displays text. This text is editableand will show a list of text entries that is filtered as we type. *UIAutoCompleteTextView* app.
+
+**Common view Opeations**
+
+* Set visibility
+
+* Set checked state
+
+* Set Listeners
+
+* Set properties like opacity, background, rotation
+
+* Manage input focus like allowing views to take focus, request focus.
+
+**View Event Sources**
+
+User Interaction: touch, keyboard/trackball/d-pad.
+
+**Handle View Events**
+
+Listeners are attached to individual views. Numerous listener interfaces defined by the view class.
+
+**View Listener Interface**
+
+    OnClickListener.onClick()
+This is called whenever a view has been clicked
+
+    OnLongClickListener.onLongClick()
+View has been pressed and held
+
+    OnFocusChangeListener.onFocusChange()
+VIew has erceived or lost focus
+
+    OnKeyListener.onKey()
+View about to receive a hardware key press
+
+An application's views are typically organized as a tree. There are some outer most views and child views, each having their own children and so on.
+
+Displaying the views has multiple steps:
+
+1. Measures for the views (dimensions of each view)
+
+2. Layout (positions all the views)
+
+3. Draw the views
+
+But... If we have Custom View subclasses, they can override various view methods.
+
+    onMeasure() : determine the size of this view and its children
+    onLayout() : view must assign a size and position all its children
+    onDraw() : view renders its contents
+
+    onFocusChanged()
+    onKeyUp(), onKeyDown(): hw key events
+    onWindowsVisibilityChanged()
+
+
+### Pt. 2 ###
+
+In reality sometimes we want to have some kind of compound view. For example, a *radioGroup* is a group of related check buttons. Android has a class called **ViewGroup** that are invisible views that contains other views and can be used to group and organize a set of views.
+
+There are some predefined ViewGroups like *RadioGroup, TimePicker, DatePicker, WebView, MapView, Gallery, Spinner*
+
+**RadioGroup**
+
+This is a view group containing a set of mutually exclusive checkboxes or radio buttons. *UIRadioGroup* app.
+
+**TimePicker**
+
+Allows the user to pick a particular time. *UITimePicker* app, it's many different views to select hours, minutes and am/pm.
+
+**DatePicker**
+
+Allows the user to select a particular date. *UIDatePicker* app. It's composed of many different views to independently set the month, day and year.
+
+**WebView**
+
+This is a ViewGroup that displays webpages. *UIWebView* app
+
+**MapView**
+
+ViewGroup that displays maps and allows users to interact with them. We use MapFragment on *UIGoogleMaps* app.
+
+**Adapters & AdapterViews**
+
+Android provides a ViewGroup subclass called AdapterView that are ViewGroups whose child groups and underlying data are managed by an Adapter that is responsible for managing the data and providing the views for that data.
+
+The AdapterView displays the data views.
+
+**ListView**
+
+This is an AdapterView that displays a scrollable list of selectable items. Those are managed by a ListAdapter. See *UIListView*
+
+On the *onCreate* method we're
+
+**** TO DO: Put here what's missing!!
+
+**Linear Layout**
+
+The first child has *layout_width* as the parent and then the width will be the same, but the *layout_height* is set to zero. *Orientation* is *horizontal*. *layout_weight* is 1.
+
+The second child has a height of zero too. But the *layout_weight* is 3 and a vertical orientation.
+
+**RelativeLayout**
+
+Child views are positioned relative to each other and to parent view. *UIRelativeLayout* app. THe main.xml file has a RelativeLayout and inside there are the elements.
+
+The button has *layout_alignParentRight*, *layout_below*- The Cancel button is set with *layout_toLeftOf* and *layout_align?top*
+
+**TableLayout**
+
+Child views are set in rows and columns, see *UITableLayout*. We have TableLayout and inside this there are *<TableView>*, inside we can set *layout_column* to set the column number. *Gravity* indicates the place inside a view that the text will go to.
+
+**GridView**
+
+Children go to 2 dimension-scrollable screen. *UIGridView* app, see that there´s a *GridView* element with things like columnWidth, horizontalSpacing, numColumns (up to the view).
+
+On the activity there's an array with the value for the GridView. See how we set the Adapter is used and *ImageAdapter*, this is extending *BaseAdapter* and uses some methods. *getCount*. *getItemId* to get the item at a position.
+
+Finally *getView* is used to get the views that will go into the grid. We pass *convertView* and could be null but most times not. Bitmaps are *R.drawable.image1*
+
+**Menus and ActionBar**
+
+Menus give users a quick way to access important functions. Activities can add items to menu and handle clicks on the menu items
+
+**Menu TYpes**
+
+* **Options:** shown when user presses the menu button. Older android devices had a dedicated key for this.
+
+* **Context:** view-specific menu shown when user touches and holds the view.
+
+* **Submenu:** menu activated when user touches a visible menu item.
+
+In Android phones see *Options* menu in the bottom when opening the Contacts app, Contet menus on the browser in the top right side, go to book marks and select one of them, you'll see some options.
+
+For the sub menus, see your images, try to delete and we see we should confirm to delete.
+
+Menus should be in *res/menu/filename.xml*. Android has different methods per type of menu, for each one we inflate menu resource (Menu INflater).
+
+    onCreate...Menu();
+
+When an item is selected, Android will call:
+
+    on...ITemsSelected();
+
+See *HelloAndroidWithMenus* app. *onCreateOptionsMenu(Menu menu)* has
+
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.top_menu, menu);
+
+    // True to indicate we want to show now
+    return true;
+
+The xml has an outer *menu* tag and inside *item* tags. Nesting menus in item tags we create submenus.
+
+    onOptionsItemSelected(MenuItem item)
+    switch (item.getItemId())...
+
+    onCreateContextMenu(ContextMenu menu, VIew v, ContextMenuInfo menuInfo)
+
+**Context Menus are generally associated with individual Views, while Options Menus are generally associated with the entire application.**
+
+
+### Pt. 4 ###
+
+Menus support more advanced features like:
+
+* Putting menu items into a group
+
+* Bind shortcut keys to menu items
+
+* Bind intents to menu items
+
+**ActionBar**
+
+Added on Android 3.0 mimicking the window on normal apps (file, edit, options...). The idea is quick access to common operations.
+
+*FragmentDynamicLayoutWithActionBar* app. In here there are three main objects: QuoteViewerActivity, TitleFragment, QuoteFragment. The quoteFragment adds a subitem to the action bar dynamically.
+
+*QUoteViewerActivity* includes onCreateOptionsMenu and onOptionsItemSelected. THe menu layout is *activity_menu.xml* and we can see an item with:
+
+    android:showAsAction = "ifRoom|withText"
+
+That means that the item is only shown if there's room and as text rather than an icon for example.
+
+On *TitlesFragment* activity there's a *onCreateOptionsMenu* and since we are on a fragment we have to *setHasOptionsMenu* as true. The QUoteFragment has 2 items for the menu. The second item has
+
+    android:showAsAction="never"
+
+Meaning that will never show in the action bar but on the overflow area
+
+**Question**
+
+If your application contains a Fragment and that Fragment wants to place actions in the Action Bar, which of the following methods will that Fragment likely call or implement? onCreateOptionsMenu and setHasOptionsMenu.
+
+**ActionBar.Tab**
+
+The screen is divided into Tab area and content area. A fragment can be associated with a tab, exactly one tab is selected at any given time. See *UITabLayout* app to switch between 2 intances from a fragment that uses the gridlayout.
+
+*OnCreate* method sets the tabBar and sets it to operate as a tab
+
+    final ActionBar tabBar = getActionBar();
+    tabBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+Then we add, per tab we add a GridFragment and for the fragments we set the items that will display.
+
+    GridFragment flowerFrag = new GridFragment();
+    Bundle args = new Bundle();
+    args.putIntegerArrayList(THUMBNAIL_IDS, mThumbIdsFlowers);
+    flowerFrag.setArguments(args);
+    tabBar.addTab(tabBar.newTab().setText(FLOWERS_TABSTRING).setTabListener(new TabListener(flowerFrag)));
+
+We also created an instance to a *TabListener*. onTabSelected, onTabUnselected are the proper methods.
+
+**Dialogs**
+
+Independent subwindow used by Activities to communicate with user. AlertDialog, ProgressDialog, DataPickerDialog, TimePickerDialog. *UIAlertDialogProgressDialog* app.
+
+On *showDialogFagment* an instance of AlertDialogFragment is shown. We use .Builder that is useful because it allows us to create an object and then just keep tacking up method calls to configure the object. setMessage setCancelable setNegativeButton...
+
+For the yes, call *showDialogFragment(PROGRESSTAG)*
+
+    final ProgressDialog dialog = new ProgressDIalog(getActivity());
+
+Then it remains visible until it's dismissed.

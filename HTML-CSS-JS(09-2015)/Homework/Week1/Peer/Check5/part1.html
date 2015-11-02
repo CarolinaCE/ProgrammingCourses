@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Please Enter Your Details</title>
+  </head>
+  <body>
+  		<h2>Please Enter Your Details For Our Dating Website</h2>
+  		<form action="https://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php" method="get" enctype="multipart/form-data" >
+			 <fieldset>
+			 		   <legend>Your Face</legend>
+			 		   <label for="avatar">Your image:</label>
+					   <input type="file" id="avatar" name="avatar" required> <br />
+			 		   <label for="preview">Image perview:</label><img id="preview" name="preview"/>
+			 </fieldset><br />
+
+			 <fieldset>
+			 		   <legend>Your General Details</legend>
+			 		   <label for="name">Name:</label>
+					   <input type="text" id="name" name="name" placeholder="Your full name" required> <br />
+			 		   <label for="gender">Gender:</label>
+					   <input type="radio" name="gender" id="gender" value="male" required>Male
+					   <input type="radio" name="gender" id="gender" value="female" required>Female <br />
+			 		   <label for="age">Age:</label>
+					   <input type="number" min="18" max="99" step="1" name="age" required> <br/>
+			 		   <label for="birthday">Date of birth:</label>
+					   <input type="date" name="birthday" /> <br/>
+			 		   <label for="color">Favorite color:</label>
+					   <input type="color" name="color"/> <br/>
+			 		   <label for="country">Which country:</label>
+					   <select name="country">
+					   		   <option value="usa">US</option>
+					   		   <option value="india">India</option>
+							   <option value="china">China</option>
+							   <option value="germany">Germany</option>
+							   <option value="south africa">South Africa</option>
+							   <option value="none">No selection</option>			
+					   </select> <br/>
+			 </fieldset><br />
+			 
+			 <fieldset>
+			 		   <legend>Your Indicators</legend>
+			 		   <label for="height">Height:</label>Short<input type="range" min="0" max="100" step="1" value="50" name="height" />Tall<br/>
+			 		   <label for="salary">Salary:</label>Poor<input type="range" min="0" max="100" step="1" value="50" name="salary" />Rich<br/>
+			 </fieldset><br />
+
+			 <fieldset>
+			 			<legend>Your Contact Information</legend>
+			 			<label for="email">Email:</label><input type="email" name="email" required/> <br />
+			 			<label for="mobilephone">Mobile:</label><input type="number" name"mobilephone" /> <br />
+			 			<label for="address">Adress:</label><textarea name="address"> </textarea><br />
+			 			<label for="method">Method to contact you:</label>
+						<input type="checkbox" value="email">Email
+						<input type="checkbox" value="whatsapp">Whatsapp
+						<input type="checkbox" value="in-app chat">In-app chat <br />
+			 </fieldset><br />			 
+			 <input type="submit" value="Submit!" />
+		</form>
+  </body>
+</html>

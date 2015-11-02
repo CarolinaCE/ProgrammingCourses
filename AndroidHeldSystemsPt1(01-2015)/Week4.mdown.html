@@ -1,0 +1,131 @@
+<h2 id="week-4">Week 4</h2>
+<h3 id="user-interface-classes">User Interface Classes</h3>
+<h3 id="pt-1">Pt. 1</h3>
+<p>Build good looking and effective user interfaces. The User Interface is the place and the means by which the user and the app exchange information. There are many things that compose the UI, hand held systems use to have many sensors.</p>
+<p><strong>View class</strong></p>
+<p>It's a key building block for UI components. THey occupy a rectangular space on the screeen and are responsible for drawing themselves and handling events directed to them.</p>
+<p>There are some predefined views:</p>
+<ul>
+<li><p><strong>Button:</strong> just a view that is clickable to perform some action. See <em>UIButton</em> Application. A listener has been attached to the button.</p>
+</li>
+<li><p><strong>ToggleButton:</strong> another button, but when we press it, it stays pressed until it's pressed again. It's <em>checked</em> or <em>not checked</em>. There's an light indicator showing the state. <em>UIToggleButton</em> app has an example.</p>
+</li>
+<li><p><strong>CheckBox:</strong> two state button. It's checked or not checked too. <em>UICheckBox</em> app.</p>
+</li>
+<li><p><strong>RatingBar:</strong> a view comprising a row of stars. There are 5 stars and the user can highlight soem number of them by clicking or dragging. <em>UIRatingBar</em> app.</p>
+</li>
+<li><p><strong>AutoCompleteTextView:</strong> text view that displays text. This text is editableand will show a list of text entries that is filtered as we type. <em>UIAutoCompleteTextView</em> app.</p>
+</li>
+</ul>
+<p><strong>Common view Opeations</strong></p>
+<ul>
+<li><p>Set visibility</p>
+</li>
+<li><p>Set checked state</p>
+</li>
+<li><p>Set Listeners</p>
+</li>
+<li><p>Set properties like opacity, background, rotation</p>
+</li>
+<li><p>Manage input focus like allowing views to take focus, request focus.</p>
+</li>
+</ul>
+<p><strong>View Event Sources</strong></p>
+<p>User Interaction: touch, keyboard/trackball/d-pad.</p>
+<p><strong>Handle View Events</strong></p>
+<p>Listeners are attached to individual views. Numerous listener interfaces defined by the view class.</p>
+<p><strong>View Listener Interface</strong></p>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>OnClickListener.onClick()</span></span></span></div></pre><p>This is called whenever a view has been clicked</p>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>OnLongClickListener.onLongClick()</span></span></span></div></pre><p>View has been pressed and held</p>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>OnFocusChangeListener.onFocusChange()</span></span></span></div></pre><p>VIew has erceived or lost focus</p>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>OnKeyListener.onKey()</span></span></span></div></pre><p>View about to receive a hardware key press</p>
+<p>An application's views are typically organized as a tree. There are some outer most views and child views, each having their own children and so on.</p>
+<p>Displaying the views has multiple steps:</p>
+<ol>
+<li><p>Measures for the views (dimensions of each view)</p>
+</li>
+<li><p>Layout (positions all the views)</p>
+</li>
+<li><p>Draw the views</p>
+</li>
+</ol>
+<p>But... If we have Custom View subclasses, they can override various view methods.</p>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>onMeasure()&nbsp;:&nbsp;determine&nbsp;the&nbsp;size&nbsp;of&nbsp;this&nbsp;view&nbsp;and&nbsp;its&nbsp;children</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>onLayout()&nbsp;:&nbsp;view&nbsp;must&nbsp;assign&nbsp;a&nbsp;size&nbsp;and&nbsp;position&nbsp;all&nbsp;its&nbsp;children</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>onDraw()&nbsp;:&nbsp;view&nbsp;renders&nbsp;its&nbsp;contents</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>onFocusChanged()</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>onKeyUp(),&nbsp;onKeyDown():&nbsp;hw&nbsp;key&nbsp;events</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>onWindowsVisibilityChanged()</span></span></span></div></pre><h3 id="pt-2">Pt. 2</h3>
+<p>In reality sometimes we want to have some kind of compound view. For example, a <em>radioGroup</em> is a group of related check buttons. Android has a class called <strong>ViewGroup</strong> that are invisible views that contains other views and can be used to group and organize a set of views.</p>
+<p>There are some predefined ViewGroups like <em>RadioGroup, TimePicker, DatePicker, WebView, MapView, Gallery, Spinner</em></p>
+<p><strong>RadioGroup</strong></p>
+<p>This is a view group containing a set of mutually exclusive checkboxes or radio buttons. <em>UIRadioGroup</em> app.</p>
+<p><strong>TimePicker</strong></p>
+<p>Allows the user to pick a particular time. <em>UITimePicker</em> app, it's many different views to select hours, minutes and am/pm.</p>
+<p><strong>DatePicker</strong></p>
+<p>Allows the user to select a particular date. <em>UIDatePicker</em> app. It's composed of many different views to independently set the month, day and year.</p>
+<p><strong>WebView</strong></p>
+<p>This is a ViewGroup that displays webpages. <em>UIWebView</em> app</p>
+<p><strong>MapView</strong></p>
+<p>ViewGroup that displays maps and allows users to interact with them. We use MapFragment on <em>UIGoogleMaps</em> app.</p>
+<p><strong>Adapters &amp; AdapterViews</strong></p>
+<p>Android provides a ViewGroup subclass called AdapterView that are ViewGroups whose child groups and underlying data are managed by an Adapter that is responsible for managing the data and providing the views for that data.</p>
+<p>The AdapterView displays the data views.</p>
+<p><strong>ListView</strong></p>
+<p>This is an AdapterView that displays a scrollable list of selectable items. Those are managed by a ListAdapter. See <em>UIListView</em></p>
+<p>On the <em>onCreate</em> method we're</p>
+<p><em>**</em> TO DO: Put here what's missing!!</p>
+<p><strong>Linear Layout</strong></p>
+<p>The first child has <em>layout_width</em> as the parent and then the width will be the same, but the <em>layout_height</em> is set to zero. <em>Orientation</em> is <em>horizontal</em>. <em>layout_weight</em> is 1.</p>
+<p>The second child has a height of zero too. But the <em>layout_weight</em> is 3 and a vertical orientation.</p>
+<p><strong>RelativeLayout</strong></p>
+<p>Child views are positioned relative to each other and to parent view. <em>UIRelativeLayout</em> app. THe main.xml file has a RelativeLayout and inside there are the elements.</p>
+<p>The button has <em>layout_alignParentRight</em>, <em>layout_below</em>- The Cancel button is set with <em>layout_toLeftOf</em> and <em>layout_align?top</em></p>
+<p><strong>TableLayout</strong></p>
+<p>Child views are set in rows and columns, see <em>UITableLayout</em>. We have TableLayout and inside this there are <em><tableview></tableview></em>, inside we can set <em>layout_column</em> to set the column number. <em>Gravity</em> indicates the place inside a view that the text will go to.</p>
+<p><strong>GridView</strong></p>
+<p>Children go to 2 dimension-scrollable screen. <em>UIGridView</em> app, see that there´s a <em>GridView</em> element with things like columnWidth, horizontalSpacing, numColumns (up to the view).</p>
+<p>On the activity there's an array with the value for the GridView. See how we set the Adapter is used and <em>ImageAdapter</em>, this is extending <em>BaseAdapter</em> and uses some methods. <em>getCount</em>. <em>getItemId</em> to get the item at a position.</p>
+<p>Finally <em>getView</em> is used to get the views that will go into the grid. We pass <em>convertView</em> and could be null but most times not. Bitmaps are <em>R.drawable.image1</em></p>
+<p><strong>Menus and ActionBar</strong></p>
+<p>Menus give users a quick way to access important functions. Activities can add items to menu and handle clicks on the menu items</p>
+<p><strong>Menu TYpes</strong></p>
+<ul>
+<li><p><strong>Options:</strong> shown when user presses the menu button. Older android devices had a dedicated key for this.</p>
+</li>
+<li><p><strong>Context:</strong> view-specific menu shown when user touches and holds the view.</p>
+</li>
+<li><p><strong>Submenu:</strong> menu activated when user touches a visible menu item.</p>
+</li>
+</ul>
+<p>In Android phones see <em>Options</em> menu in the bottom when opening the Contacts app, Contet menus on the browser in the top right side, go to book marks and select one of them, you'll see some options.</p>
+<p>For the sub menus, see your images, try to delete and we see we should confirm to delete.</p>
+<p>Menus should be in <em>res/menu/filename.xml</em>. Android has different methods per type of menu, for each one we inflate menu resource (Menu INflater).</p>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>onCreate...Menu();</span></span></span></div></pre><p>When an item is selected, Android will call:</p>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>on...ITemsSelected();</span></span></span></div></pre><p>See <em>HelloAndroidWithMenus</em> app. <em>onCreateOptionsMenu(Menu menu)</em> has</p>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>MenuInflater&nbsp;inflater&nbsp;=&nbsp;getMenuInflater();</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>inflater.inflate(R.menu.top_menu,&nbsp;menu);</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>//&nbsp;True&nbsp;to&nbsp;indicate&nbsp;we&nbsp;want&nbsp;to&nbsp;show&nbsp;now</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>return&nbsp;true;</span></span></span></div></pre><p>The xml has an outer <em>menu</em> tag and inside <em>item</em> tags. Nesting menus in item tags we create submenus.</p>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>onOptionsItemSelected(MenuItem&nbsp;item)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>switch&nbsp;(item.getItemId())...</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>onCreateContextMenu(ContextMenu&nbsp;menu,&nbsp;VIew&nbsp;v,&nbsp;ContextMenuInfo&nbsp;menuInfo)</span></span></span></div></pre><p><strong>Context Menus are generally associated with individual Views, while Options Menus are generally associated with the entire application.</strong></p>
+<h3 id="pt-4">Pt. 4</h3>
+<p>Menus support more advanced features like:</p>
+<ul>
+<li><p>Putting menu items into a group</p>
+</li>
+<li><p>Bind shortcut keys to menu items</p>
+</li>
+<li><p>Bind intents to menu items</p>
+</li>
+</ul>
+<p><strong>ActionBar</strong></p>
+<p>Added on Android 3.0 mimicking the window on normal apps (file, edit, options...). The idea is quick access to common operations.</p>
+<p><em>FragmentDynamicLayoutWithActionBar</em> app. In here there are three main objects: QuoteViewerActivity, TitleFragment, QuoteFragment. The quoteFragment adds a subitem to the action bar dynamically.</p>
+<p><em>QUoteViewerActivity</em> includes onCreateOptionsMenu and onOptionsItemSelected. THe menu layout is <em>activity_menu.xml</em> and we can see an item with:</p>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>android:showAsAction&nbsp;=&nbsp;"ifRoom|withText"</span></span></span></div></pre><p>That means that the item is only shown if there's room and as text rather than an icon for example.</p>
+<p>On <em>TitlesFragment</em> activity there's a <em>onCreateOptionsMenu</em> and since we are on a fragment we have to <em>setHasOptionsMenu</em> as true. The QUoteFragment has 2 items for the menu. The second item has</p>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>android:showAsAction="never"</span></span></span></div></pre><p>Meaning that will never show in the action bar but on the overflow area</p>
+<p><strong>Question</strong></p>
+<p>If your application contains a Fragment and that Fragment wants to place actions in the Action Bar, which of the following methods will that Fragment likely call or implement? onCreateOptionsMenu and setHasOptionsMenu.</p>
+<p><strong>ActionBar.Tab</strong></p>
+<p>The screen is divided into Tab area and content area. A fragment can be associated with a tab, exactly one tab is selected at any given time. See <em>UITabLayout</em> app to switch between 2 intances from a fragment that uses the gridlayout.</p>
+<p><em>OnCreate</em> method sets the tabBar and sets it to operate as a tab</p>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>final&nbsp;ActionBar&nbsp;tabBar&nbsp;=&nbsp;getActionBar();</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>tabBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);</span></span></span></div></pre><p>Then we add, per tab we add a GridFragment and for the fragments we set the items that will display.</p>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>GridFragment&nbsp;flowerFrag&nbsp;=&nbsp;new&nbsp;GridFragment();</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>Bundle&nbsp;args&nbsp;=&nbsp;new&nbsp;Bundle();</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>args.putIntegerArrayList(THUMBNAIL_IDS,&nbsp;mThumbIdsFlowers);</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>flowerFrag.setArguments(args);</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>tabBar.addTab(tabBar.newTab().setText(FLOWERS_TABSTRING).setTabListener(new&nbsp;TabListener(flowerFrag)));</span></span></span></div></pre><p>We also created an instance to a <em>TabListener</em>. onTabSelected, onTabUnselected are the proper methods.</p>
+<p><strong>Dialogs</strong></p>
+<p>Independent subwindow used by Activities to communicate with user. AlertDialog, ProgressDialog, DataPickerDialog, TimePickerDialog. <em>UIAlertDialogProgressDialog</em> app.</p>
+<p>On <em>showDialogFagment</em> an instance of AlertDialogFragment is shown. We use .Builder that is useful because it allows us to create an object and then just keep tacking up method calls to configure the object. setMessage setCancelable setNegativeButton...</p>
+<p>For the yes, call <em>showDialogFragment(PROGRESSTAG)</em></p>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>final&nbsp;ProgressDialog&nbsp;dialog&nbsp;=&nbsp;new&nbsp;ProgressDIalog(getActivity());</span></span></span></div></pre><p>Then it remains visible until it's dismissed.</p>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <title>JavaScript Color Guessing Game</title>
+	<meta name="author" content="Alicia Rosero">
+<script>
+	var colors=["white", "blue", "cyan", "gray", "green", "orange", "red", "magenta", "yellow"];
+	var target;            
+	var guess_input=" ";      
+	var finished = false;   
+	var count = 0;
+	var index;
+	var detcolor=" ";
+	colors.sort();
+    
+	function do_game() {
+		var target_index = Math.random() * (colors.length);
+		var random_number_integer = Math.floor(target_index);
+		target = colors[random_number_integer];
+		alert(target);
+	    for (index = 0; index < colors.length-1; index++) {
+			detcolor += colors[index] + ", ";	
+		}
+        detcolor += colors[colors.length-1];
+		while (!finished) {
+			guess_input = prompt("I am thinking of a one of these colors: \n\n"+
+								 detcolor + 
+								 "\n\nWhat color am I thinking of?");				 
+								 
+			count += 1;   			
+		if (guess_input == target)
+		   finished=true;		
+		}
+	}
+	
+</script>
+</head>
+    <body onload="do_game()">
+    </body>
+</html>
+

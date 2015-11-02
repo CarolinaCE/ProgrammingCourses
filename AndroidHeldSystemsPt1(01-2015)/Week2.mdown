@@ -1,0 +1,255 @@
+## Week 2 ##
+
+### Application Fundamentals ###
+
+There are 4 fundamental building blocks implemented as Java classes
+
+* **Activity Class:** they are there to provide a graphical user interface to the user enabling them to get and receive information to and from an application.
+
+The other blocks do not have User Interface, they work behind the scenes.
+
+* **Services:** support long running or in the background operations.
+
+* **Broadcasterreceiver:** listen to and respond to events that happen in a device.
+
+* **Content Providers:** Allow users to create and share data.
+
+Each component has its own API
+
+** Activity **
+
+It should support a single thing a user can do (dial a number, PhoneDialer). On Android 2, it's part of the src activities and is named *DialtactsActivity.java*.
+
+** Service **
+
+They run in the background. They can perform long-running operations and provide a way for multiple processes to share data.
+
+The Music application has different screens. **MediaPlaybackService** class is a subclass from *Service* and allows music to keep playing even if the user swaps to a different activity or app.
+
+** BradcastReceiver **
+
+It's like a Subscriber in a publish/subscribe pattern. Events are represented by the Intent class.
+
+The messsaging application makes use of these. The sw waits for SMS messages to arrive. See class **SmsReceiver.java** that is a subclass of BroadcastReceiver.
+
+** Content Provider **
+
+They handle interprocess communication so that apps running in different process can interchange data safely and easily. One example is the Browser App, there are bookmarks that are saved in a content provider. See **BrowserProvider.java**.
+
+** Explanation **
+
+We'll have a **MapLocation** class that allows users entering an address, then by pressing a button will present a second activity with a map with the addresss the user just entered.
+
+For building Android application we do:
+
+1. Create the source code and the non-source code resources that make up the app.
+
+2. Tools prepare resources. APK is digitally signed and finally installed on the device and executing.
+
+so:
+
+1. Define Resources
+
+2. Implemment App classes
+
+3. Pckage app
+
+4. Install and run the application.
+
+** Application Resources **
+
+There are many types like layout, strings, images, menus, animations.
+
+* **Strings** this is a common resource file, there are string, string array, plurals (associated with certain quantities). Typically stored in res/values/\*.xml
+
+        <string name="hello">Hello World!</string>
+
+Other files can refer to the strings by
+
+    @string/string_name
+
+    IN JAVA:
+    R.string.string_name
+
+** Resources can be changed without recompiling soruce code**
+
+*values-it* is the string file for the italian words.
+
+The component are in the *Application framework layer*.
+
+** User Interface Layout **
+
+The UI for some part of the application. Typically in res/layout/\*.xml directory. In java accessed by *R.layout.layout_name*. In other parts or resources access is through *@layout/layout_name*.
+
+Android can choose from files at runtime based on the device configuration.
+
+    EditText
+    Button
+
+layout-land directory also has a main.xml file. This time for landscape mode. So the two directories would be res/layout and res/layout-land
+
+** R.java **
+
+Generated from the application and we can access the fields we defined at the xml files.
+
+** Implement classes **
+
+Involves writing at least one activity. *onCreate* method is where we typically initialize the application.
+
+* Restore saved state
+
+* Set content view
+
+* Initialize UI Elements
+
+* Link UI elements to code actions.
+
+MapLocation.java has all the code. This is a subclass of Activity. *saveInstanceState* has type Bundle an is a data structure having any info that android could have saved the last time the activity ran.
+
+*setContentView* passes a reference of the layout and we then get a reference for the UI elements.
+
+    final EditText = (EditText) findViewById(R.id.location)
+
+** Package Application **
+
+*androidManifest.xml* has packaging information like the name of the app and the list of the components that make up the app. Permission, hw features (cam), Minimum API level, etc are included there.
+
+    <uses-sdk
+    android:minSdkVersion="13"
+    android:targetSdkVersion="19" />
+
+*minSdkVersion*, *targetSdkVersion* specifies the latest api version against the app has been launched. There's the icon, the label for the title bar, there's activity containing the activities.
+
+** Install & Run **
+
+Also possible from the command line by issuing commands to the ADB tool.
+
+On eclipse to install an app from the command line, we need to go to File - Export - Export - Export Android App and sign the .apk file.
+
+
+### The Activity Class ###
+
+Primary class to interact with users. THey should be modular (single focused thing a user can do).
+
+** Task **
+
+Set of related activities. Most of them start on the Home Screen.
+
+** Task backstack **
+
+When an activity is launched, it goes on top of the backstack, if destroyed, it's popped off the backstack. One activity will be suspended on starting another one. On going back, the top is popped off and the activity under it is resumed.
+
+** The activity Lifecycle **
+
+Apps are not really in control of the lifecycle, dit depends on user behavior. Android can decide killing activities.
+
+** States **
+
+* **Resumed/running** visible, user interacting
+
+* **Paused** when a new activity is starting. It can be partially visible
+
+* **Stopped** it's  no longer visible and can be terminated
+
+Android annunces activity lifecycle state changes to activity by calling specific activity methods (template methods)
+
+    onStart, onResume, onPause, onRestart, onStop, onDestroy
+
+There is an order in which these methods can be called
+
+**Case 1**
+
+Application that runs and immediatly gets closed. This consists on calling the activity's onCreate, then onStart and then onResume and then the Activity runs. After that onPause method is called, then onStop and finally onDestroy where the activity is completely dead.
+
+The app became visible at some point. To allow visibility Android calls the *onStart* and sometimes the *onRestart* method and when they are going to become invisible the onStop method is called.
+
+Sometimes users can't interact with an app and happens when a devide goes to sleep. When apps are ready for human interactions, Android calls the onResume method and onPaused is called to detach from the interface. After
+**onResume** the app will be ready for USER Interaction and visible.
+
+On pressing **Show up the app**, we call onPause and then onStop. At some point we'd like to go back. MapLocation must be brought back into the foreground (onRestard, onStart).
+
+
+### Pt 2. The activity Class ###
+
+**OnCreate()**
+
+Used to initialize the activity and does:
+
+* Call *super.onCreate()*
+
+* Set the activity's content view or the User Interface. Passing on the id of the view
+
+* Retain references to UI views as necessary. They are configured as necessary (listeners for example)
+
+
+**onRestart()**
+
+This is called if the activity had been stopped and it's about to be started again
+
+
+**onStart()**
+
+When the activity is about to become visible.
+
+
+**onResume()**
+
+Activity is visible and will interact with the user. THings like animations or background soundtracks.
+
+
+**onPause()**
+
+The activity is about to lose focus. Shutdown foreground only behavior, save persistent state
+
+
+
+**onStop()**
+
+Activity not longer visible to user. This is not always called if the activity terminates.
+
+
+**OnDestroy()**
+
+Activity is about to be destroyed. It releases activity resources like threads, this may not be called.
+
+**Starting Activities**
+
+Programmatically we create an Intent object that specifies the activity we want to start and we pass it to *startActivity()* or *startActivityForResult()*
+
+The first one pushes the current activity out the foreground. The send one expects that the second activity will provide a result back to the first activity.
+
+    Intent geoIntent = new Intent(...)
+    startActivity(geoIntent)
+
+See **MapLocationFromContatcts**
+Showing contacts is part of the context application.
+
+Method *startActivityForResult* has a second parameter containing a code.
+
+**Activity.setResult()**
+
+ResultCode and optionally Result data are passed.
+
+RESULT_CANCEL
+RESULT_OK
+RESULT_FIRST_USER : custom result code
+
+Method *onActivityResult*
+
+    requestCode, resultCode, data
+
+**Configuration Changes**
+
+Related to app resources like device orientation, locale, keyboard. On configuration changes, Android usually kills the current activity and restarts it.
+
+The restart code should be fast. Important state information can be saved on an object.
+
+Ont way of doing this is by overriding the *onRetainNonConfigurationInstance()*
+
+When restarted, the data can be retrieved by calling *getLastNonConfigurationInstance* during onCreate
+
+**Manual Reconfiguration**
+
+By declaring the changes to be saved on the AndroidManifest file
+
+ON a change, the app will receive a call to *onConfigurationChanged* and receives a config object detailing the new configuration

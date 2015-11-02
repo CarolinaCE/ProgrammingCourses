@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Color Guessing Game! Pt. 1</title>
+</head>
+<body onload="do_game()">
+	<script>
+		// Global variables
+		var colors = [
+			"black",
+			"brown",
+			"khaki",
+			"lavender",
+			"lawngreen",
+			"orchid",
+			"peru",
+			"limegreen",
+			"wheat",
+			"fuchsia",
+			"yellow",
+			"firebrick",
+			"maroon",
+			"darkorange",
+			"golden",
+			"gray",
+			"pink",
+			"skyblue",
+			"turquoise",
+			"darkmagenta"
+		];
+		var randomColor = '';
+		var finished = false;
+
+		// Main function
+		function do_game() {
+
+			// Store number of guesses
+			var num_guesses = 0;
+			//Sort the color names
+			colors.sort();
+
+			// Generate a random color from the defined set
+			var randomNumber = (Math.random() * colors.length)
+			randomColor = colors[Math.floor(randomNumber)];
+
+			// Only for debugging
+			alert("Selected color is: " + randomColor);
+			console.log("Selected color is: " + randomColor);
+
+			// Start game, don't finish until player guesses the color
+			do {
+
+				var user_entry = prompt(
+					"I am thinking of of of these colors:\n\n" + 
+					colors.join(", ") + "\n\n" + "What color am I thinking of?"
+				);
+
+				if (user_entry == randomColor) {
+					finished = true;
+				}
+
+			} while (!finished);
+
+			// The game ended, set the random color as the background color
+			document.body.style.backgroundColor = randomColor;
+		}
+	</script>
+</body>
+</html>

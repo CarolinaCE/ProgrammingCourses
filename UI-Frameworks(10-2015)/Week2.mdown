@@ -1,0 +1,477 @@
+# WEEK 2 #
+
+## Contents Table ##
+
+* [User Input](#user-input)
+
+
+
+# User Input #
+
+Buttons or forms that the user can use to submit information. There are various ways a website can provide for users to interact: buttons, buttons, fields to search. There are 3 approaches:
+
+* `<a>` tags originally designed for hyperlinks and use *href* to specify what should be done when the user clicks on the hyperlink.
+
+* `<button>` typically used to tell the user to click the button, it was added to the HTML specification later to enable user interactions.
+
+* `<form>` used by users to provide information.
+
+
+**Buttons**
+
+The behavior can change depending on where on the app the button is placed. THis can open a model on the screen that allows seeing more information. The `<a>` tag has many times been styled using CSS to look like a button. 
+
+
+**Forms**
+
+They provide with a lot of different fields that allow users to specify different kinds of inputs.
+
+	<input>
+	Type: text, password, submit, radio, checkbox, button, color, date, datetime, email, month, number, range, search, tel, time, url, week
+
+	<textarea>
+	Larger boxes for more detailed information.
+
+	<button>
+
+	<select>
+	Allows to select from a pre-determined set of choices. There are checkboxes and radio buttons.
+
+
+## Bootstrap's buttons ##
+
+The default Bootstrap setup is configured with 5 different colors, they can be specified as qualifiers for previouos classes in the form. *primary, success, info, warning, danger*. These 5 colors can be used with many of the bs classes like *text-primary, btn-success, alert-danger, bg-info*. Anchor tags, button tags and input tags can be styled using the bootstrap classes but only buttons can be used in a *nav* or *navbar*.
+
+	 <div class="row">
+        <div class="col-md-5 col-md-offset-1">
+            <button type="button" class="btn btn-primary btn-lg">Large Primary</button>
+            <button type="button" class="btn btn-default">Default</button>
+            <button type="button" class="btn btn-success btn-sm">Small Success</button>
+            <button type="button" class="btn btn-info btn-xs">Extra Small Button</button>
+            <button type="button" class="btn btn-link">Link</button>
+        </div>
+        <div class="col-md-3">
+            <button type="button" class="btn btn-warning btn-block">Warning</button>
+            <button type="button" class="btn btn-danger btn-block" disabled="disabled">Danger</button>
+        </div>
+    </div>
+
+See the different classes to specify the sizes for the buttons. *btn-block* make the buttons span the entire parent block within which this button is contained. IN this case they span 3 columns. In general, these are the styles:
+
+	btn + color class (btn-default, btn-primary...) + size class (btn-lg, btn-sm...) + btn-block
+
+Bootstrap allows grouping buttons into button groups using `<div class="btn-group..." role="group">...`. Other classes that can be used are: *btn-toolbar, btn-group, btn-group-vertical, btn-group-lg, btn-group-justified*. When buttons are grouped, they are displayeed together as a single unit.
+
+As seen, we can specify the size (-sm, -lg, -xs...) and the orientation as *vertical* as the default one is horizontal.
+
+
+## Bootstrap Forms ##
+
+In bootstrap, forms are created using the *form* tag, so all the elements are enclosed inside these. If we specify the *form* class *form-horizontal*, we can have the labels to be displayed to the left side. If we specify a label and then the field, we'd add them in a group:
+
+	<form class="form-horizontal" role="form">
+		<div class="form-group">
+			<label for="firstname" class="col-sm-2 control-label">First Name</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter First Name">
+			</div>
+		</div>
+	</form>
+
+**By default, the form-group supports the row class** and then inside the form group we can use the column classes. 
+
+We can define **inline forms** that are shown completely in a single line.  
+
+	<form class="form-inline">
+		<div class="form-group">
+			<label class="sr-only" for="email">Email Address</label>
+			<input type="email" class="form-control" id="email" placeholder="Email">
+		</div>
+		<div class="checkbox">
+			<label> <input type="checkbox"> Remember me</label>
+		</div>
+
+Class *sr-only* means that the label is only valid for Screen Readers. We use a placeholder to specify what the user's supposed to type. There's also a class *input-group* allowing to group together a set of elements. We can have a *input-group-addon* so we can add elements to the left and right side of the group:
+
+	<div class="input-group">
+		<div class="input-group-addon">(</div>
+		<input type="tel" class="form-control" id="areacode" name="areacode" placeholder="Area Code">
+		<div class="input-group-addon">)</div>	
+	</div>
+
+
+## Exercise ##
+
+Adding buttons to the website, create a user feedback form. Work from *contactus.html*. The first step this time is updating the nav bars on the pages and adding Glyphicons for the Menu item and one for the Contact Us item. 
+
+Then add a button bar to the *contactus.html* page
+
+	<div class="btn-group" role="group" aria-label="...">
+	    <a type="button" class="btn btn-primary" href="tel:+85212345678"><i class="fa fa-phone"></i> Call</a>
+	    <a type="button" class="btn btn-info"><i class="fa fa-skype"></i> Skype</a>
+	    <a type="button" class="btn btn-success" href="mailto:confusion@food.net"><i class="fa fa-envelope-o"></i> Email</a>
+	</div>
+
+Next, add the form for the User Feedback
+
+	<form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="firstname" class="col-sm-2 control-label">First Name</label>                        <div class="col-sm-10">
+            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter First Name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastname" class="col-sm-2 control-label">Last Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter Last Name">
+            </div>
+        </div>
+    </form>
+
+Now, add a Input group with addons. In this code, please note that there's an *input-group* inside the *from-group*
+
+	<div class="form-group">
+        <label for="telnum" class="col-xs-12 col-sm-2 control-label">Contact Tel.</label>
+        <div class="col-xs-5 col-sm-4 col-md-3">
+            <div class="input-group">
+                <div class="input-group-addon">(</div>
+                    <input type="tel" class="form-control" id="areacode" name="areacode" placeholder="Area code">
+                <div class="input-group-addon">)</div>
+            </div>
+        </div>
+        <div class="col-xs-7 col-sm-6 col-md-7">
+                    <input type="tel" class="form-control" id="telnum" name="telnum" placeholder="Tel. number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="emailid" class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control" id="emailid" name="emailid" placeholder="Email">
+        </div>
+    </div>
+
+Next step is adding the checkbox with a select:
+
+	<div class="form-group">
+       <div class="checkbox col-sm-5 col-sm-offset-2">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="approve" value="">
+                <strong>May we contact you?</strong>
+            </label>
+        </div>
+        <div class="col-sm-3 col-sm-offset-1">
+            <select class="form-control">
+                <option>Tel.</option>
+                <option>Email</option>
+            </select>
+        </div>
+    </div>
+
+Then add a text area where the user can add the comments.
+
+	<div class="form-group">
+        <label for="feedback" class="col-sm-2 control-label">Your Feedback</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" id="feedback" name="feedback" rows="12"></textarea>
+        </div>
+    </div>
+
+Finally, add the button to submit the *form*.
+
+
+# Displaying content: tables, Panels, Wells #
+
+Tables were meant to display tabular data on webpages, they have been hijacked by website designers to design and position web content. 
+
+**Bootstrap Tables**
+
+BS supplies a class *table* that can be applied to the table tag, this is because BS wants to really make sure that the table is actually being used to format tabular data in their webpage. 
+
+	<table class="table"></table>
+
+There are many other table classes available. *table-striped, table-bordered, table-hover, table-condensed, table-responsive*. 
+
+The *table-striped* means zebra striped rows, namely, some darker colored rows than others to distinguish between the rows on the table. *table-hover*, when we use our mouse to touch on any of the rows of the table, then that row will be highlighted. *table-condensed* can be used to reduce the amount of cell padding that is standard in the tables. To make the table responsive (in extra small screens < 768px), use *table-responsive*.
+
+There are also 5 classes that can be used for coloring the table rows and cells. *active, success, info, warning, danger*.
+
+
+## Bootstrap Panels and Wells ##
+
+Sometimes, we might want to highlight a piece of content within a webpage. Panels and wells are 2 ways to highlight content in a webpage. **Panels** allow to display content inside a bounded box.
+
+	<div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Facts At a Glance</h3>
+        </div>
+        <div class="panel-body">
+            <dl class="dl-horizontal">
+                <dt>Started</dt>
+                <dd>3 Feb. 2013</dd>
+                <dt>Major Stake Holder</dt>
+                <dd>HK Fine Foods Inc.</dd>
+            </dl>
+        </div>
+    </div>
+
+There are some classes to be used like *panel-heading* or *panel-title* within it. The body of the panel can use *panel-body*. We used a **Description list** to show some data about a restaurant. *dl-horizontal* is used to display the text and description in the same horizontal line. A footer could be used as well. *panel-footer* can be used.
+
+**Well**
+
+It's a bounded box surrounded with a light gray background. Inside it, any content can be added. *blockquote* is used in the next example:
+
+	<div class="well">
+        <blockquote>
+            <p>This is a sentence written by me!</p>
+            <footer>Caro Alarcon, <cite title="Source Title"> my own mind</cite></footer>
+        </blockquote>
+    </div>
+
+Wells can also be specified to have a larg or small well by using *well-lg, well-lg*. 
+
+
+## Exercise with tables, panels and wells ##
+
+Use the *aboutus.html* page. Fill those spaces in the page with the new elements we are learning about. First show some information about the restaurant at the bottom of the page.
+
+	<div class="row row-content">
+        <div class="col-xs-12 col-sm-9">
+            <h2>Facts &amp; Figures</h2>
+            <div class="table-responsive">
+            <table class="table table-striped">
+                <tr>
+                    <td>&nbsp;</td>
+                    <th>2013</th>
+                    <th>2014</th>
+                    <th>2015</th>
+                </tr>
+                <tr>
+                    <th>Employees</th>
+                    <td>15</td>
+                    <td>30</td>
+                    <td>40</td>
+                </tr>
+                <tr>
+                    <th>Guests Served</th>
+                    <td>15000</td>
+                    <td>45000</td>
+                    <td>100,000</td>
+                </tr>
+                <tr>
+                    <th>Special Events</th>
+                    <td>3</td>
+                    <td>20</td>
+                    <td>45</td>
+                </tr>
+                <tr>
+                    <th>Annual Turnover</th>
+                    <td>$251,325</td>
+                    <td>$1,250,375</td>
+                    <td>~$3,000,000</td>
+                </tr>
+            </table>
+            </div>
+        </div>
+         <div class="col-xs-12 col-sm-3">
+            <p style="padding:20px;"></p>
+        </div>
+   </div>
+
+Note that we used a first div with class *table-responsive* and then added class *table-striped* as part of the table tag. The table is using standard tags (table rows, table headers and table data)
+
+The next component is a panel, to put it to the right side of *Our History* section just shrink the column for the History (8 columns) and put the panel in the other 4 columns:
+
+	<div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Facts At a Glance</h3>
+        </div>
+        <div class="panel-body">
+            <dl class="dl-horizontal">
+                <dt>Started</dt>
+                <dd>3 Feb. 2013</dd>
+                <dt>Major Stake Holder</dt>
+                <dd>HK Fine Foods Inc.</dd>
+                <dt>Last Year's Turnover</dt>
+                <dd>$1,250,375</dd>
+                <dt>Employees</dt>
+                <dd>40</dd>
+           </dl>
+        </div>
+    </div>
+
+For the content, the *description list (dl)* is used (part of HTML). Since we use *panel-primary* then we see the blue color. The class for the *dl* is *dl-horizontal* and then the term and description are in the same horizontal line.
+
+Last, let's add a **well** to display a quotation after the Restaurant's history:
+
+	<div class="well">
+        <blockquote>
+            <p>You better cut the pizza in four pieces because
+                I'm not hungry enough to eat six.</p>
+            <footer>Yogi Berra,
+              <cite>The Wit and Wisdom of Yogi Berra,
+                P. Pepe, Diversion Books, 2014</cite>
+            </footer>
+        </blockquote>
+    </div>
+
+*blockquote* typography is used as part of this well. The well's size could also be specified. A *footer* inside a *blockquote* allows to specify the author of the quotation and the *cite* tag can be used to display the source of the quotation.
+
+
+# Images and Media: Images, Thumbnails, Media objects #
+
+## Images and Media ##
+
+When websites were first designed, they were purely text. 
+
+**Bootstrap Image classes**
+
+THe *img* tag will be used with the *scr* as the attribute
+
+	<img src="..." class="...">
+
+We can make images responsive with class *img-responsive* and the images will automatically adapt as the website is viewed in different screens.
+
+To control the shape of the image, we can use *img-rounded, img-circle, img-thumbnail*. Moreover, images can be used in a *thumbnail* class. All the content would be enclosed in a *thumbnail* class, then we'd specify the image and a caption can be used for the image:
+
+	<div class="thumbnail">
+		<a href="#">
+			<img class="media-object img-thumbnail" src="img/alberto.png" alt="Alterto Somayya">
+		</a>
+		<div class="caption">
+			<h2>Alberto Somayya</h2>
+			<p>Award winning three-star Michelin chef with experience</p>
+			<p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
+		</div>
+	</div>
+
+The *media-object* class can also be used. If this is wanted, everything would e enclosed into a *media* class div and inside there will be 2 inner divs, one with the *media-left* or *media-right* and the second one with the *media-body*:
+
+	<div class="media">
+		<div class="media-left media-middle">
+			... Display image...
+		</div>
+		<div class="media-body">
+			<h2 class="media-heading">Alberto Somayya</h2>
+			...
+
+
+To position the image, we can use the *media-right, media-left* classes. The media objects can also be added inside lists by using a *ul media-list* class being applied to it.
+
+
+**Responsive Embed**
+
+This is another class to embed content like videos. Typically, one could use tags like *embed* or *iframe* or *video*. Any of those tags can be embellished with the bs class:
+
+	<div class="embed-responsive embed-responsive-16by9">
+		<iframe class="embed-responsive-item" src="https://www.youtube/something"></iframe>
+	</div>
+
+*-4by3* can also be a class. 
+
+
+## Exercise on Images and media ##
+
+Unzip the img.zip provided file. Some images and media content will be added to the *index.html* page. First add the Restaurant Logo in the right hand side of the Jumbotron
+
+	<div class="col-xs-12 col-sm-2">
+        <p style="padding:20px;"></p>
+        <img src="img/logo.png" class="img-responsive">
+    </div>
+
+Now, let's update the navbar to display the Restaurant's logo and update all the other pages we've created for this project.
+
+	<a class="navbar-brand" href="#"><img src="img/logo.png" height=30 width=41></a>
+
+As seen, height and width attrs are used to control the size of the logo that is displayed in the nav bar. After this, it's time to use the media-object class to update the descriptions in the *index.html* page.
+
+Replace the description for the dish (Uthapizza) with something else:
+
+	<div class="media">
+        <div class="media-left media-middle">
+            <a href="#">
+            <img class="media-object img-thumbnail"
+             src="img/uthappizza.png" alt="Uthappizza">
+            </a>
+        </div>
+        <div class="media-body">
+            <h2 class="media-heading">Uthappizza</h2>
+            <p>A unique combination of Indian Uthappam (pancake) and
+              Italian pizza, topped with Cerignola olives, ripe vine
+              cherry tomatoes, Vidalia onion, Guntur chillies and
+              Buffalo Paneer.</p>
+            <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
+        </div>
+    </div>
+
+Like this, what was in the description has been moved to the *media-body* class div. The **more** link was turned into a button. Also include the image of the chef and his description. Finally update the more link in the second row to turn it into a button.
+
+	<p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
+
+
+# Alerting Users: Labels, Badges, Alerts, Progress Bars #
+
+## Alert Users ##
+
+Sometimes one might want to deliver a message to users, and the various mechanisms available to deliver alerts to users become very very valuable.
+
+**Labels and badges** may be enough for small pieces of information within a website. **Alert/error/warning** messages should be clearly visible to the users. **Progress bars** are a way of indicating progress of any activity.
+
+To user a label, we'll use the *span* tag and depending on the color, use a class or another:
+
+	<h2 clas="media-heading">
+		Uthapizza
+		<span class="label label-danger">Hot</span>
+		<span class="badge">$4.99</span>
+	</h2>
+
+If there's no content within a badge, it will automatically collapse
+
+
+**Alerts**
+
+They will be surrounded by a bounding box with a background color determined by the specification.
+
+	<div class="alert alert-warning alert-dismissible" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+		</button>
+		<strong>Warning:</strong> please <a href="tel:+825888545" class="alert-link">call</a> us to reserve for more than 6 guests.
+	</div>
+
+A link was included within the alert using class *alert-link*. The js plugin should be installed within the page.
+
+
+**Progress bars**
+
+Used to indicate progress in actions like playing music, downloading files. 
+
+	<div class="progress">
+		<div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%">
+			<span class="sr-only">80% complete (danger)</span>
+			80%
+		</div>
+	</div>
+
+So we apply the *progress* class to an outer div and inside we have the di that's a progress bar. Within the outer progress div we can have multiple progress bars and they will be stacked.
+
+
+## Exercise: alerting users ##
+
+For the dish we display, add a label and a badge:
+
+	<h2 class="media-heading">Uthappizza <span class="label label-danger">Hot</span> <span class="badge">$4.99</span></h2>
+
+
+## Assignment 2 ##
+
+Modifications on *index.html*. Add fonts, buttons, a media object.
+
+1. Include a form within the nav bar that allows users to input their registration info for the website.
+
+2. Include a button in the Jumbotron (own div), clicking will take down to a form at the page. The form is another row in the content of the webpage
+
+3. The form
+
+4. Apply media-object class to the second row of the page. INclude the label with the word *new*.
+
+`Placeholder for code!!`

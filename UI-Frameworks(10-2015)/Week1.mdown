@@ -1,0 +1,575 @@
+# WEEK 1 #
+
+## Contents Table ##
+
+* [The Big Picture](#the-big-picture)
+
+* [Course Overview](#course-overview)
+
+* [How to Use the Learning Resources](#how-to-use-the-learning-resources)
+
+* [Introduction to Bootstrap](#introduction-to-bootstrap)
+
+	* [An Introduction](#an-introduction)
+
+	* [Introduction to Bootstrap](#introduction-to-bootstrap)
+	
+	* [Getting started with Bootstrap](#getting-started-with-bootstrap)
+		* Bootstrap Rows
+		* Jumbotron
+
+	* [Setting up the development environment](#setting-up-the-development-environment)
+
+* [Responsive Design and Bootstrap Grid System](#responsive-design-and-bootstrap-grid-system)
+
+	* [Responsive Design](#responsive-design)
+
+	* [Bootstrap Grid System](#bootstrap-grid-system)
+
+	* [Exercise about Bootstrap Grid System](#exercise-about-bootstrap-grid-system)
+
+* [Navigation and Navigation Bar](#navigation-and-navigation-bar)
+	* Information architecture
+
+	* [Bootstrap Navbar](#bootstrap-navbar)
+		* Positioning Navbar
+		* Dropdown
+
+	* [Icon Fonts](#icon-fonts)
+
+	* [Exercise using Navbar](#exercise-using-navbar)
+
+	* [Assignment 1](#assignment-1)
+
+
+## The Big Picture ##
+
+When we talk about *Front end* or *Client-side* we're talking about presenting the data to the users. We'd HTML, CSS, JS to target the end users. The *Back end* or *Server-side* is more concerned with the business logic and the data aspect of the web app. 
+
+3 tier architecture, the development is divided into 3 layers: **presentation layer** that is concerned with how to present the data to the end user, **Business logic layer** more concerned with data validation and processing the data in order to generate information ffro the users and then we have the **Data access layer** which deals with data persistence and storage of data behind the scenes. 
+
+* **Presentation**
+
+* **Business logic** implementedd in a server where languages such as Ruby, Python, C++, java are used. This talks with a DB management system to exchange data
+
+* **Data Access** includes the DB management system.
+
+It is a trend using only one programming language for all the layers (Angujar, Node, MongoDB). The server is serving data in the form of JSon which can then be rendered in either a standard web browser or on a mobile device. 
+
+
+## Course Overview ##
+
+Dealing with the front end and understanding the UI framework Bootstrap, also web tools and tools like node.js, NPM and Bower.
+
+
+## How to Use the Learning Resources ##
+
+The course is organized into multiple modules, the module has an overarching theme that guides the content within the module.
+
+There are video lectures, practice quizzes, hands-on exercises (exercise video and written instructions) and pointers to additional resources.
+
+
+# Introduction to Bootstrap #
+
+## An introduction ##
+
+Front-end ui frameworks are a collection of HTML, CSS and JS templates that enable users to quickly design and implement a website. THey provide collections of components. 
+
+We could be interested in using these frameworks, especially for **responsive web design** meaning... Users access websites through devides with different screen sizes, we target these different screen sizes by using a single website design. The website should adapt to that. Recently there's an approach **mobile first** and then adapt to larger screens.
+
+Different browsers have different querks and we should target all different browsers.This is not very straightforward but the frameworks have addressed these issues. Also, **increased productivity** because designing frameworks from scratch is cumbersome, this would have a consistent look & feel. There are many more resources by the community.
+
+Some popular UI frameworks include bootstrap, foundation by Zurb, Semantic UI, puter, UI Kit, Gumby, Susy... Frameworks have a lot in common and some have unique features. 
+
+
+## Introduction to Bootstrap ##
+
+It is a framework designed for enabling people to design websites faster and easier. It provides a lot of HTML and CSS based design templates. Bootstrap has built-in support for responsive design using the mobile first approach. This was first released in 2011. THe current version is 3.3.5 but version 4.0 is going to be released soon. This was one of the first comprehensive frameworks for using.
+
+
+## Getting started with Bootstrap ##
+
+1. BS website and download files (compiled and minified)
+
+2. BS files from less and sass preprocessor sources
+
+3. Precompiled BS available through Bootstrap CDN.
+
+First approach is followed. When we uncompress it we can notice it creates a folder and subfolders inside the folder.
+
+	bootstrap/
+		css/
+			...
+		js/
+			...
+		fonts/
+			...
+  
+There are some css files, some js part and fonts. These files should be included into the bootstrap project. How? on the `<head>` of the HTML5 we must add next 3 lines
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=devide-width, initial-scale=1">
+
+Then the bootstrap CSS files should be included:
+
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+
+*.min.css* is the minified format for the files and we should use it when we design our project. We can write CSS in normal way, but then we can strip off all unnecessary blank spaces and the comments from the CSS to create the minified file. This will make those files easier to download when the webpage is being viewed.
+
+Bootstrap also uses JS and in particular JQuery library for providing much of this functionality. It has js plugins, that's why this library should be included. Before the end of the body of the webpage add:
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+Including this by the end because the page can be rendered even before the JS is actually processed. Loading is faster. We can also use bootstrap from the CDN. With this, there's no need to download the BS files and put them in the web project folder, it's easier editing the lines of code in the webpge to upgrade BS version.
+
+We'll often use a *container* class inside which the contents will be displayed:
+
+	<div class="container"> ... </div>
+
+The size of this will depend on the size of the screen. The Bootstrap grid works correctly if we have this container. A class *container fluid* is added to use a full width container.
+
+**Bootstrap Rows**
+
+This is another important BS class used to divide the page contents into multiple rows. Each row acts as horizontal grouping for info that has to be displayes in a single group. The row may contain multiple columns. Rows have to be included within containers.
+
+**Jumbotron**
+
+Another class that's a lightweight used to showcase key content in the webpage. This will typically be at the top of the page. This can be used outside a container to span the entire screen width.
+
+
+## Setting up the development environment ##
+
+By clicking on the *thunderbolt* icon at the right side in Brackets editor, there's a live preview and we can see in a browser the output we have so far. ANy changes will see reflected in the browser. 
+
+1. We can set the page to be responsive. Add in the *head* section:
+
+Add
+
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head 
+         content must come *after* these tags -->
+
+
+2. After the title, add the lines to import the Bootstrap CSS files
+
+Add
+
+	<!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+3. At the bottom of the page, just before the end of the body tag, import jQuery library and Bootstrap's JavaScript plugins
+
+Add
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>	
+
+The default font for Bootstrap to use is *Helvetica Neue*, so the page will have some slight changes.
+
+4. Apply class *container* for the first *div* after the *header*.
+
+5. Apply the *row* class for the divs inside the container!, there are 3 of them
+
+6. In the *header* apply class of *jumbotron*. For the first div of the header, apply *container* class whereas you'll apply *row* for the second.
+
+7. In the *footer* apply *container* and *row* classes for the first 2 grids respectively.
+
+
+# Responsive Design and Bootstrap Grid System #
+
+
+## Responsive Design ##
+
+These days, people access websites from a variety of devices, all the way from desktops, laptops, tablets, down to mobile phones. Designing for the desktop may make it unreadable on smaller screen devices.
+
+If we can proactively  our website to automatically adapt to the size of the screen from which the viewer is visiting the website, it makes more easy for visitors the view clearer of the website. This is what responsive design aims to do.
+
+To do this we're going to use the **viewport** property of our device to adjust the website to the screen of the device. If we shrink the site, things can change. At a certain point, the navigation bar at the top of the window could disappear and be replaced by a button that could show the sidebar.
+
+**Mobile first**. Before there was the design for bigger screens and then smaller ones. But today it's backwards, meaning that we first design the website with the mobile screen size in mind first. Then start adapting the design for larger screen sizes.
+
+To achieve this, we have:
+
+* **Grid System** the UI framework should support this.
+
+* **Fluid images** these are responsive images, they automatically adapt to the size of the screen. BS has a good support for this.
+
+* **Media Queries** using the viewport, we can have a good idea of the size of the screen that is being used to view the website. We can put in *Media queries* in the CSS class design.
+
+Within the CSS, we'll define different variations for the CSS classes depending on the size of the window being used. 
+
+	@media screen and (min-width: 600px) {
+		/* CSS styles customized for desktop */
+	}
+
+Inside the braces, we would specify the styles for the screens with at least 600px of width. 
+
+	@media (min-width: 1200px) {
+		.container {
+			width: 1170px;
+		}
+	}
+
+BS classes are responsive already!
+
+
+## Bootstrap Grid System ##
+
+One of the first statements had the meta tag with the viewport, it allows the webpage to be able to identify the width of our device and then adapt to that width. With **viewport** we specify that the width should be equal to the device width. We need a grid system for this. The BS grid system is designed to be *responsive, mobile first, fluid*. 
+
+The *container* class is used to enclose the contents of the website. When the browser sees this, there will be an adaptation to the screen size for the container. Inside the container the content is divided into multiple rows. Each row will span the entire width of the container:
+
+	<div class="container">
+		<div class="row">
+
+
+INside each row, BS divides the row into 12 equal columns. 
+	
+	<div class="col-sm-5">
+	...
+	<div class="col-sm-7">
+
+Between the 2 columns there will be a small margin left called **gutter**. Bootstrp has 4 different classes to target 4 different groups of screen size:
+
+*xs forr extra small, sm for small, md for medium (laptop), lg for large screen sizes (> 1200 px)*. Bootstrap also provides classes *.col-s-* and with the other letters corresponding with the screen. We must specify how many columns each piece of content will occupy within a row, all adding up to 12 or a multiple thereof. 
+
+Different parameters are fixed depending on the screen sizes. *Extra Small* is a screen with a width up to 768px, *Small* greater than it but less than 992px, *medium* from 992px to less than 1200px and finally *large* that would be greater or equalthan 1200 px. The grid behavior changes, the container as well and the class prefixes are: *.col-xs-, .col-sm-, .-md-, .col-lg-*. The rule is always divided into 12 columns. The gutter width will always be 30px to create sufficient separation. 
+
+We can layout content to be displayed on the screen in different ways depending on the screen size:
+
+	<div class="col-xs-12 col-sm-5"> 
+	<div class="col-xs 12 coil-sm-7">
+
+For smaller devices, we'll see a vertical thing, for med and larger, they will be placed in the same visual row
+
+Bootstrap specifies additional set of classes called *push* and *pull*. Using these, we can override the standard behavior of the layout
+
+	<div class="col-xs-12 col-sm-5 col-sm-push-7"
+	<div class="col-xs-12 col-sm-7 col-sm-pull-5"
+
+**If we don't specify explicitly, then the default for the lower screen size will be applied**
+
+*col-sm-push-7* means that the content will be pulled down by seven columns, occupying the lat five columns in that row. *col-sm-pull-5* means that the piece of content will be pulled lesswards by 7 units.
+
+Another column class type is *offset* meaning that a piece of content should be offset to the right by a certain number:
+
+	<div class="col-sm-4" col-sm-offset="1">
+
+We can use nested columns. If I add another row inside a row space, BS will give me 12 columns inside that row.
+
+
+## Exercise about Bootstrap Grid System ##
+
+For the Jumbotron container, apply some classes for the 2 divs:
+ 
+	<div class="col-xs-12 col-sm-8">
+	<div class="col-xs-12 col-sm-4">
+
+For divs from the main content of the page, apply
+	
+	<div class="col-xs-12 col-sm-3">
+	<div class="col-xs-12 col-sm-9">
+
+In the footer, change the layout to be:
+
+	3 columns, 5 columns, 4 columns. And copyright the whole width of the screen
+
+Use push, pull, offset classes to have some changes. For the headline, apply:
+
+	<div class="col-xs-12 col-sm-3 col-sm-push-9">
+	<div class="col-xs-12 col-sm-3 col-sm-pull-3">
+
+For the footer, apply some *offset*, decrease the other classes accondingly:
+
+	<div class="col-xs-5 col-xs-offset-1 col-sm-2 col-sm-offset-1">
+
+If we don't want to see a bulleted list, apply `class="list-unstyled"` to the ul tag
+
+To create CSS content for the project, create a new file in the CSS folder, name it *mystyles.css*. There is some code for the content, header and footer. Then the CSS needs to be included into the HTML page 
+
+	<link href="css/mystyles.css" rel="stylesheet">
+
+
+
+# Navigation and Navigation Bar #
+
+
+**Navigation** is important because most of the websites are not single pages but multiple pages. We should have a way to indicate our visitors which other pages are there and how to go back to the homepage.
+
+**Information architecture**
+
+This has to deal with the organization, the labeling and the appropriate nav methods that are provided. THis is a whole field itself.
+
+Typically, websites are organized in a hierarchical fashion. There is a top level page and then sub levels.
+
+Home -> About, Menu, Contact ...
+
+In general most websites will nave a Navigation bar designed and available within the webpages of the website. Typically this bar is shown at the top or at the bottom of the website, it could be a fixed location. We may also indicate the user where he's currently navigating within the page.
+
+To design a good navigation bar, there are some suggestions. User-friendly terms, standardize navigation, meaning that no matter where the user is currently at, they should be able to navigate to any other location within the site. Where within the hierarchy the user currently is. There are some standard web conventions like a logo moving the user to the homepage.
+
+Avoid having too many items in the navigation bar and using generic labels is also not a good practice (Product, Service).
+
+A commonly used pattern is a breadcrumb
+
+	Home - Menu - Appetizers
+
+If we're on a webpage with a wizard with multiple steps like purchasing an airline ticket, the page should display the current sequence within the entire set of steps that the user is at the moment.  
+
+Another type of nav could be *attribute based* that is a set of choices like colors, sizes, manufacturer's information, etc.
+
+There are other *navigation aids* such as tabs, pills, pagination, dropdowns, accordion, tags/tag clouds, scrollspy, affix.
+
+
+## Bootstrap Navbar ##
+
+Navbar is a very easy way of providing navigational information within a website. This typically appears at the top or bottom and it supports responsive design.
+
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="#">About</a></li>
+				...
+			</ul>
+			...
+
+In the code above, we levereged the Nav HTML element to design the nav bar. The structure has the default structuring. There is the statement to say that it provides the role of navigation within the website. 
+
+One particular item has been identified as the *Active* one and then this Home item is highlighted with a darker color.
+
+We can extend the navbar, there is a brand to the navbar:
+
+	...
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">Ristorante Con Fusion</a>
+		</div>
+		...
+		<ul class="nav navbar-var navbar-right">
+			<li><a href="#">Sign in</a></li>
+		...
+
+The *navbar-header* I am declaring *navbar-brand* to a link and we can replace the text by an actual image like the logo of the website. Users are expecting to go back to the Homepage
+
+We use *class="nav navbar-var navbar-right"* to put items in the right edge, same thing for the left edge, using *navbar-left*. To make the NavBar responsive, we can collapse the navbar and instantly replacing it with a toggle button. Users can click on the toggle button to expand and collapse the items of the navbar.
+
+To have this type of navbar, we'll need a toggle button:
+
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar">...
+
+		</button>
+	</div>
+
+	<div id="navbar" class="navbar-collapse collapse">
+		<ul class="nav navbar-nav"">... </ul>
+		---
+
+I specify a *navbar-toggle collapsed* meaning that the items that this button is referring to will be in a collapsed mode when viewing the page on a extra small device. We gave an id for the *data-target*. The div navbar also starts collapsed.
+
+**Positioning Navbar**
+
+We could set the navbar to be always visible and will be fixed at the top of the page.
+
+	.navbar-fixed-top -navbar-fixed-bottom
+
+Another class is *.navbar-static-top* meaning that the bar will be at the top of the page but will scroll when the user scrolls the page, like this the navbar will disappear from the screen when the page is scrolled up.
+
+*.navbar-inverse* has a dark navbar with light text. (instead of navbar-default).
+
+
+**Dropdown**
+
+Any item within a navbar can be turned into a dropdown. The toggling of the dropdown list of items is done by clicking on the item inside the navbar.
+
+	<li class="dropdown">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+			Menu
+		<span class="caret"></span></a>
+
+		<ul class="dropdown-menu">
+			<li><a href="#">Appetizers</a></li>
+			...
+			<li role="separator" class="divider">
+			<li class="dropdown-header">Specials</li>
+			...
+	</li>
+
+The span class *caret* is used to show the inverted triangle next to the item within the bar to indicate that when the user clicks on the item, we show a dropdown list. THe dropdown items will be inside the li as ul... What is listed there will be the list items for the dropdown. We can separate items with a separator. A *dropdown-header* won't be treated as a link.
+
+
+## Icon Fonts ##
+
+They are a set of symbols and glyphs thath can be used just like regular font on the website like the standard alphabet. They can be easily styled using CSS. Icon fonts are a light weight replacement for graphics on the webpage.
+
+When a website includes Icon Fonts, they are downloaded without needing additional requests being sent to the websites. Many different icon fonts are available.
+
+Glyphicons are included as part of the BS framework, there's Font awesome as popular Icon Font. At any location of the page, we'd use the *span* tag, we'd give  class as glyphicon and then the specific class for the icon that we're using.
+
+	<span class="glyphicon glyphicon-home" aria-hidden="true"></hidden>
+
+There are about 250 included in BS. *Font awesome* includes a large set of icons and one must use the *i* class to display them
+
+	<i class="fa fa-phone"></i>
+
+We have to download the distribution files for Font Awesome, or just copy-paste into CSS folder, also on the Fonts dir.
+
+*Bootstrap-social* is a class available to use to style some buttons for social web sites. It makes use of Font Awesome's fonts representing the logos for the different social websites. Download the css file and include it in the project, and to use one of the icons, use *a* class:
+
+	<a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id=">
+	<i class="fa fa-facebook"></i></a>
+
+
+## Exercise using Navbar ##
+
+Before the header, place the code to create the Navbar:
+
+	<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Menu</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+This nav-bar will appear at the top of the page. The home link is highlighted with a darker color. If we resize the browser to be smaller, the bar turns vertical, that's bad, add some code to hide it and show when explicitely asking for it:
+
+	<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Ristorante Con Fusion</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Menu</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+When we shrink, there's the button to be toggled, and we can show and hide the options easily. 
+
+Then introduce the **Menu** link as a dropdown. Replace the *li* for Menu to add:
+
+	<li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+         role="button" aria-haspopup="true" aria-expanded="false">
+         Menu <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li><a href="#">Appetizers</a></li>
+            <li><a href="#">Main Courses</a></li>
+            <li><a href="#">Desserts</a></li>
+            <li><a href="#">Drinks</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">Specials</li>
+            <li><a href="#">Lunch Buffet</a></li>
+            <li><a href="#">Weekend Brunch</a></li>
+        </ul>
+     </li>
+
+Change the static bar to a *nav-bar-fixed-top*, add some css into the css file. Next changes will style the navbar a bit more detail.
+
+	body{
+    	padding:50px 0px 0px 0px;
+	    z-index:0;
+	}
+
+	.navbar-inverse {
+	     background: #303F9F;
+	}
+
+	.navbar-inverse .navbar-nav > .active > a,
+	.navbar-inverse .navbar-nav > .active > a:hover,
+	.navbar-inverse .navbar-nav > .active > a:focus {
+	    color: #fff;
+	    background: #1A237E;
+	}
+
+	.navbar-inverse .navbar-nav > .open > a,
+	 .navbar-inverse .navbar-nav > .open > a:hover,
+	 .navbar-inverse .navbar-nav > .open > a:focus {
+	    color: #fff;
+	    background: #1A237E;
+	}
+
+	.navbar-inverse .navbar-nav .open .dropdown-menu> li> a,
+	.navbar-inverse .navbar-nav .open .dropdown-menu {
+	    background-color: #303F9F;
+	    color:#eeeeee;
+	}
+
+	.navbar-inverse .navbar-nav .open .dropdown-menu> li> a:hover {
+	    color:#000000;
+	}
+
+*navbar-inverse* was customized to have a background color of a darker shade of indigo. More navbar classes were customized, for active classes and so on.
+
+Go to fontawesome page!, download the files, and move the .css files to your css folder, do the same with the files on fonts folder. Next, download bootstrapsocial.css that was provided. Add the new details in the html:
+
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap-social.css" rel="stylesheet">
+
+First, add a home icon, using the glyphicons. *glyphicon glyphicon-home*. Afterwards, use Font Awesome icons for telephone, fax and email links in the footer.
+
+	<i class="fa fa-phone"></i>: +852 1234 5678<br>
+	<i class="fa fa-fax"></i>: +852 8765 4321<br>
+    <i class="fa fa-envelope"></i>: 
+    <a href="mailto:confusion@food.net">confusion@food.net</a>
+
+We use the *i* tag for introducing the font awesome icons. Finally for the Social media links, replace links with buttons for those sites.
+
+	<div class="nav navbar-nav" style="padding: 40px 10px;">
+        <a class="btn btn-social-icon btn-google-plus" href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
+        <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
+        <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a>
+        <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
+        <a class="btn btn-social-icon btn-youtube" href="http://youtube.com/"><i class="fa fa-youtube"></i></a>
+        <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope-o"></i></a>
+    </div>
+
+The div is now a navbar class, we can use this in other locations if we wish so. Each link has a tag *a* and then classes to specify what is shown. 
+
+
+## Assignment 1 ##
+
+Work with *aboutus.html* that is preformatted with some information.
+
+1. Setup the links in the navbar appropriately.
+
+2. Add glyphicons!, use breadcrumbs that are supported by bootstrap. The *Home* link should also be activated
+
+3. Container class and rows appropriately.
+
+
+# END OF WEEK 1 #

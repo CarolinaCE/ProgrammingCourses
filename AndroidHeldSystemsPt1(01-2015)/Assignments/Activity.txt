@@ -1,0 +1,8 @@
+1. onCreate
+1. onStart
+1. onResume
+1. onPause
+2. onCreate
+2. onStart
+2. onResume
+....

@@ -1,0 +1,332 @@
+## Week 3 ##
+
+### Intents, Permissions and the Fragments class ###
+
+### The Intent Class ###
+
+It is a Data structure that serves at least two purposes:
+
+1. Operation that I want to perform
+
+2. AN event that has occurred.
+
+## Desired Operations ##
+
+Easy way to do things like selecting contacts, taking pics, dialing phone numbers.
+
+Android uses this to start another activity for the desired action.
+Action, data, category, type, component, extras, flags.
+
+
+**Action**
+
+ACTION_DIAL, ACTION_EDIT, ACTION_SYNC, ACTION_MAIN.
+
+A Intent Action can be initialized in multiple ways.
+
+    Intent newInt = new Intent(Intent.ACTION_DIAL);
+
+or
+
+    Intent newIntent = new Intent();
+    newInt.setAction(Intent.ACTION_DIAL);
+
+**Data**
+
+Formatted as a Uniform Resource Identifier (URI). Geo scheme URI is an example that indicates map data-
+
+    Uri.parse("geo:0,0?q=1600+Pennsylvania+Ave+Washington+DC");
+
+Tell schemed URI indicating a phone number to be dialed
+
+    Uri.parse("tel.+1555555555")
+
+Setting the Intent can be done directly on the initialization
+
+    Intent newInt = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:+1555555"));
+
+Or use the method *setData(Uri...)* on a created Intent.
+
+**Category**
+
+Additional info about the components that can handle the intent
+
+* **CATEGORY_BROWSABLE:** the intent can be invoked by a browser to display data refs by a URI
+
+* **CATEGORY_LAUNCHER:** the initial activity of a task and is listed in the top-level app launcher.
+
+**Type**
+
+Specifies the MIME type of the intent's data.
+
+    image/*, image/png, image/jpeg
+    text/html, text/plain
+
+If not specified, Android will infer one for us.
+
+    Intent.setType(String type)
+
+it also exists
+
+    Intent.setDataAndType(Uri data, String type);
+
+**Component**
+
+Identifies the intent's target activity. If there's always one activity that should always receive the intent.
+
+    Intent newInt = Intent(Context packageContext, Class<?> cls);
+
+or use *setComponent(), setClass(), stClassName()*
+
+**Extras**
+
+Additional information and are treated as a map of key-value pairs. The key and the type should be known.
+
+    Intent.EXTRA_EMAIL
+
+There are several ways for sending the extras depending on their type
+
+    putExtra(String name, String value);
+    putExtra(String name, float[] value);
+
+**Flags**
+
+How the intent should be handled
+
+* **FLAG_ACTIVITY_NO_HISTORY** when activity is started, do not put it in the History Stack.
+
+* **FLAG_DEBUG_LOG_RESOLUTION** print extra logging info when this intent is processed.
+
+
+### The Intent Class. Pt.2 ###
+
+**Start Activities**
+
+When using start activity, Android has to know which single activity is going to start up. If we say is explicitly, Andoid looks that up.
+
+The second way is that Android can implicitly determine what activity to start based on the Intent.
+
+See **HelloWorldWithLogin** will start Hello world only on successful Login. On this example, if the values entered were the expected ones, start the activity
+
+    Intent helloAndroidIntent = new Intent(LoginScreen.this, HelloAndroid.class);
+    startActivity(helloAndroidIntent);
+
+From the info above, *LoginScreen* is the Application context. A context is an Interface that's used to access global application information and activity is a sublass of Context.
+
+The second parameter *HelloAndroid.class*
+
+**Implicit Activation**
+
+There is a process called **Intent Resolution** where Andrioid tries to find activities that match the intent, relies on:
+
+* The intent describing a desired operation
+
+* IntentFilters that describe which operations an activity can handle. This is placed on the AndroidManifest.xml file.
+
+It'll look at the action, data (URI and type) and the category
+
+**Specifying IntentFilters**
+
+    <activity>
+    <intent-filter...>
+        ...
+        <action android:name="actionName" />
+    </intent-filter>
+    </activity>
+
+The action corresponds to  the intent action that it can support. For example
+
+    <action android:name="android.intent.action.DIAL" />
+
+For the type of data, a lot of things can be specified
+
+    <data
+        android:mimeType="string"
+        android:scheme="string"
+        android:host="string"
+        android:port="string"
+        android:path="string"
+        android:pathPattern="string"
+        andtroid:pathPrefix="string"
+    />
+
+If the activity wants to publish that it can show maps for example, then:
+
+    <data android:scheme="geo" />
+
+To specify categories:
+
+    <category android:name="string" />
+
+**To receive implicit intents an activity should specify an IntentFilter with the category *"android.intent.category.DEFAULT"*
+
+WHen more than one activity can receive a particular intent, the tie must be broken somehow. They can specify a priority between -1000 and less than 1000. Higher values are higher priority
+
+    % adb shell dumpsys package
+
+Launch this command on a terminal shows a lot of info from the package manager. Append
+
+    > data.txt
+
+
+### Permissions ###
+
+Used to control data, resources and operations. Apps can define and enforce their own permissions to limit access to their resources and things like user information (db), cost-sensitive API's (SMS/MMS), system resources (camera).
+
+They are represented as strings. Apps declare permissions in AndroidManifest.xml, those will be the permissions that they use themselves and that they require of other components that want to use them.
+
+Use *<uses-permission>* and users have to accept them.
+
+    <uses-permission android:name="android.permission.CAMERA">
+    <uses-permission android:name="android.permission.INTERNET">
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION">
+
+The lines above define permissions for accessing the device's camera, to open a network socket to access the internet and to use location info from gps provider for example.
+
+See *MapLocationFromContacts*. My contact list is private information and Android does not just allows everyone accessing it. The app must have declare this proper description. It has *"android.permission.READ_CONTACTS"*
+
+Apps can define and enforce their own permissions. This is because we might not want to allow just any app to invoke ours. Like this, other applications must be granted. See *PermissionExampleBoom*. On the AndroidManifest:
+
+    <permission
+        android:name="course.examples.permissionexample.BOOM_PERM"
+        android:description="@string/boom_perm_string"
+        android:label="@string/boom_permission_label_string">
+    </permission>
+
+THere's the label and description for the permission, it's also included as an attribute of the application tag
+
+    <application
+        ...
+        android:permission="course.examples.permissionexample.BOOM_PERM"
+
+This makes sure that the apps that start the app have already granted this permission. See this on *PermissionExampleBoomUser*, it doesn't have this permission (see the LogCat), when launched, it shows *"Unfortunately, Permission Example Boom User has stopped"*.
+
+On the Log Output, it threw a SecurityException: Permission Denial...
+
+To fix the problem, and this app wants to use the app, we'll use a *<uses-permission>* tag:
+
+    // After uses-sdk
+    <uses-permission android:name="course.examples.permissionexample.BOOM_PERM" />
+
+**Component Permissions**
+
+We can set permissions for individual components and they can take precedence over application-level permissions.
+
+* **Activity Permissions** restricts which components can start the associated activity. They are checked within execution of *startActivity* and *startActivityForResult*. A Security Exception would be thrown.
+
+* **Service Permissions** checked within execution of *Context.startService()*, *Context.stopService()* and *Context.bindService()*. It also throws Security Exception if not granted
+
+* **BroadcastReceiver Permissions** checked in many places
+
+* **ContentProvider Permissions** read and write data from content providers.
+
+
+### The Fragment Class ###
+
+These were added to Android in version to better support user interfaces for devices with large screens such as tablets. We can do so much more on a large display than on a small phone display. See *QuoteViewer*. Out of a list of Shakespeare plays, the user can select one and display one quote from that play.
+
+On a tablet the layout is very lame, there's a lot of unused white space. Slow back and forth navigation. *FragmentStaticLayout* app fixes and improved everything, the UI is divided into 2 parts. This app is made up of a single application that holds 2 FRAGMENTS.
+
+Fragments represent a behavior/portion of UI within an activity. The app has one for the titles and one for the quotes to the right. Fragments are hosted by activities, one activity can host zero or more fragments.
+
+The **lifecycle** of a fragment is tied to and cordinated with the lifecycle of the activity that¡s hosting it.
+
+**Fragment Lifecycle States** *Assuming that the fragment is statically bound to its hosting activity*
+
+A fragment can be in a running or resumed state, it's visible in the running activity. On Paused, it's visible but some other activity is on the foreground and focus. On stopped state, the fragment is not visible.
+
+**Lifecycle Callback methods**
+
+When it's created, the fragment may receive several lifecycle method calls.
+
+First it receives a call to **onAttach()**, then it receives a call to **onCreate()** method. Typically here the fragment is initialize, the UI is not set here. Then there's **|()** method that sets up and returns the view containing the fragment's UI. Then the fragment receives a call to its **onActivityCreated()** method.
+
+The fragment's lifecycle is dependent on its host's lifecycle. When the hosting activity is about to become visible and receives a call to **onStart()** method, the fragment does it as well. When the hosting activity is about to become visible and ready for user interaction, the fragment calls **onResume()** method. When the activity is visible but does not have focus, the fragment calls **onPause()** method. WHen hosting activity no longer visible, frag. receives call to **onStop()**.
+
+All fragments that an activity is hosting have to be shut down when about to be destroyed. First there's **onDestroyView()** and here we can do things like cleaning up resources associated with the view. When the fragment is no longer in use, it receives a call to its **onDestroy()** method and we can release fragment resources.
+
+When the fragment is no longer attached to its hosting activity it'll receive a call to **onDetach()** where we can null out references to hosting activity.
+
+
+### The fragment Class pt. 2 ###
+
+** Adding fragments to activities **
+
+There are 2 ways of doing this.
+
+1. Statically added to the activity. This could be by putting them into the activity's layout file which is then used in a call to *setContentView*.
+
+Fragments can be added programmatically by using the Fragment Manager. They are implemented/inflated in **onCreateView()** and can use their own layout, by the end the layout is added to the hosting activity's use interface. See *FragmentStaticLayout*.
+
+There's *TitleFragment* and *QuoteFragment*. The main.xml layout file has a *LinearLayout* and there are two fragments. On the class attributes there's the name of the class that implements the fragment:
+
+    <fragment
+        android:id="@+id/titles"
+        android:layout_width="0px"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        class="course.examples.Fragments.StaticLayout.TitlesFragment" />
+
+So there are classes *TitleFragment* and *QuotesFragment* for the classes. Let's see one of the Fragments class and *onCreateView** it calls the inflate method of the LayoutInflater class.
+
+    return inflater.inflate(R.layout.quote_fragment, container, false);
+
+There's the layout as parameter
+
+** Adding fragments Dynamically **
+
+1. Get a reference to the Fragment Manager
+
+2. Begin a fragment Transaction
+
+3. Add the fragment to the Activity
+
+4. Commit the FragmentTransaction
+
+See *FragmentProgrammaticLayout*. On main.xml it's a LinearLayout with two sub-views, this time it's not fragments but  *<FrameLayout* that basically reserves some space in the User Interface.
+
+Now, on *onCreate* from QuoteViewerActivity:
+
+    FragmentManager fragmentManager = getFragmentManager();
+    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+    fragmentTransaction.add(R.id.title_frame, new TitlesFragment());
+    fragmentTransaction.add(R.id.quote_frame, mQuoteFragment);
+    fragmentTransaction.commit();
+
+For adding, we add the id and the actual fragment.
+
+** Dynamic Layout **
+
+One of the cool things of being able to add fragments on the fly is that the UI can dynamically change when the program is running. See *FragmentDynamicLayout* where we'll see one fragment sometimes and other times two fragments. In the source code, we only add one of the fragments (titleFragment).
+
+If we click to open the other fragment, we call *onListSelection(int index)*, in there we check if it has already been added to the layout:
+
+    if (!mQuoteFragment.isAdded()) {
+        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+
+        fragmentTransaction.add....
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+        mFragmentManager.executePendingTransactions();
+    }
+
+We add the transaction to the *addToBackStack* to define that on clicking back we come back to the one fragment layout because by default fragment changes are not tracked by the BackStack.
+
+*executePendingTransactions* forces the tx to be executed immediatly.
+
+**Configuration Changes**
+
+If we're using a Fragment and the device's configuration changes, Android by default will destroy the hosting activity and recreate it. If we call *setRetainInstance* method on the fragment with true, Android will destroy the activity but not the fragment but will get the state and detach it from the activity. So Fragment won't receive calls to *onDestroy* nor to *onCreate*.
+See *FragmentStaticConfigLayout*. There are changes if the mode changes for portrait or landscape modes.
+
+On this app, there's a difference on the *onCreate* method we add
+
+    setRetainInstance(true);
+
+That means that when config changes occur, Android will not kill this fragment.
+On *onActivityCreated* method, we check:
+
+    if (-1 != mCurrIdx)
+        getListView().setItemChecked(mCurrIdx, true);
+
+This is done to make the last selection of title remain, if any.

@@ -1,0 +1,178 @@
+## Overview and Week 1 ##
+
+### Overview ###
+
+**Source Code Repository**:
+https://github.com/aporter/coursera-android
+
+### Introduction to the Android Platform ###
+
+The Android Platform is a Software stack. It has different layers from the low ones that manage the operating system itself to phone apps like phone dialer, web browser.
+
+The Android SDK is used to create Android Applications
+
+
+**The Android Architecture**
+
+* *Linux Kernel*. This is at the bottom and there are system libraries and the *Android Runtime System*. Then the *Application Framework* layer supports the development of new Android apps and at the very top Android provides some applications like the contacts database, the web browser
+
+
+**The Linux Kernel**
+
+Core Services that devices will rely on.
+
+* Security: only those with proper authorization can access
+
+* Memory & Process Management: multiple processes can run simultaneously
+
+* File & Network I/O
+
+* Device Drivers
+
+Additionally there are some Android Specific features:
+
+* Power Management
+
+* Android Shared Memory
+
+* Low memory killer
+
+* Interprocess communication
+
+
+**Libraries**
+
+Often written in C and C++, they are the "native" libraries. Things like quick rendering web pages or updating the display. Android has its own C libraries for thread and process creation, mathematical computation, memory alloc.
+
+There's a **Display Manager**, **Media Frameworks**, **OpenGL**, **SQLite**
+
+The same layer includes the **Android Runtime**.
+
+* There are core Java libraries. They include basic java classes, app lifecycle, internet/web services, unit testing (java.\*, javax.\*, android.\*, org.\*, junit.\*)
+
+* The **Dalvik virtual machines** actually execute Android apps.
+
+After writing the programs in Java code, it's compiled to Java bytecode files
+
+Then a **DX** tool converts Java bytecode files to a single dex bytecode file (classes.dex). Then this is packed with other app resources. Finally Dalvik executes dex bytecodes.
+
+**Dalvik** was designed for resource-constrained environments. Cell phones are less powered.
+
+Take a look at: http://wwww.youtube.com/watch?v=ptjedOZEXPM
+
+http://developer.android.com/reference/packages.html
+
+
+**The application framework**
+
+This contains reusable software that many mobile apps are likely to need. The view system for example has the buttons and interace parts.
+
+* Package Manager. This keeps track of all the apps currently installed on the device.
+
+* Window Manager. Manages the many windows that comprise applications.
+
+There's a **window notification bar** and a **main app window**. Subwindows can be used like menues and dialoges.
+
+* View System. Icons, text entry boxes, buttons and more. The phone application for example is organized as a set of tabs.
+
+* Resource Manager. Manages the non-compiled resources that make up an app like strings, graphics and layout files.
+
+* Activity Manager. There are different activities per application. Many activities start on the apps by doing some action.
+
+* Content provider. Databases that allow sharing and storing information. They are worked to work among applications.
+
+* Location Manager. Allows apps to receive location and movement information. It´s possible doing things like finding directions from my current location.
+
+* Notification Manager. Allows apps to place info into the notification bar. Sw is always waiting for messages and things.
+
+
+**Application layer**
+
+Home screen, contacts, email reader, browser. No app is hardcoded into the system, they can be replaced by any other app.
+
+
+## The Android Development Environment. Pt I ##
+
+This is an integrated set of tools that allows creating our own set of apps.
+
+Install the ADT bundle:
+http://developer.android.com/sdk
+
+The ADT bundle provides the latest Android Platform including documentation, there are also android specific plugins.
+
+https://dl-ssl.google.com/android/eclipse/
+
+File - New - Android Application Project
+
+    HelloAndroid
+    course.examples.helloandroid
+
+Open **activity_main.xml** has the app user interface layout. **MainActivity.java** has the source code.
+
+Run as... - Android Application.
+
+
+**The Android Emulator**
+
+Go to *Android Virtual Device Manager*
+
+New.
+
+AVD Name: GalaxyNexus
+Target: Android 4.2.2
+
+**Use the Emulator**
+
+Modifications are isolated to the device.
+
+THe emulator is really slow. Some features are not well supported like bluetooth and we can't connect devices to it. Some apps won't run there.
+
+Speed and latency of different device networks. Battery power can be modified, location coordinates.
+
+**Connect via telnet**
+
+    telnet localhost 5554
+    network speed edge
+    network speed full
+    power capacity 5
+    power status not-charging
+
+    geo fix 0.00 40.00
+
+We can also simulate network interactions.
+
+    sms send 3015555555 "This is a message"
+
+Two emulators can interact with each other. We can call the port number that we see at the top of the window
+
+
+## The Android Development Environment. Pt II ##
+
+**Debugger**
+
+Allows checking the internal state of an app. **onCreate()** is the starting point when the app is executed.
+
+Set breakpoints (toogle breakpoint) on the onCreate method.
+
+* Move with **Step over**
+
+Other times other tools might be useful.
+
+
+**Dalvik Debug Monitor Service**
+
+1. Open the DDMS perspective, you can see a list of connected devices and processes running on them
+
+2. See **File Explorer**. It shows the files on the file system. On *data* apps temporarily store data, there could be a memory card as a subdirectory on *mnt*.
+
+3. On the bottom there's the *Logcat* view with information of things that are happenning on the device.
+
+Developers can log their own information.
+
+3 *Trace View* traces the methods that the app calls. Make sure DDMS is there and click on *Start profiling* button. Run the app, then stop thehh profiling and Traceview will show the information graphically.
+
+There's a timeline view with Sequence and duration and there's the profile view with statistics and more info about called methods.
+
+We should set some permissions if we want to be traced by this tool.
+
+7. **Hierarchy View**. It's another perspective, when it starts we go to the Window panel and choose our app. It's a graphical representation of our User Interface. There's the app window with 2 children: a title bar and a large rectangular body of the application. We can inspect particular information of the elements that are displayed. 
