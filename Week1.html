@@ -1,0 +1,1423 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAYcAA0AAAAACjQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAABMAAAABwAAAAca8vGTk9TLzIAAAFMAAAARAAAAFZG1VHVY21hcAAAAZAAAAA+AAABQgAP9AdjdnQgAAAB0AAAAAQAAAAEACICiGdhc3AAAAHUAAAACAAAAAj//wADZ2x5ZgAAAdwAAADRAAABEKyikaNoZWFkAAACsAAAAC0AAAA2AtXoA2hoZWEAAALgAAAAHAAAACQHngNFaG10eAAAAvwAAAAQAAAAEAwAACJsb2NhAAADDAAAAAoAAAAKALIAVG1heHAAAAMYAAAAHwAAACABEAB2bmFtZQAAAzgAAALBAAAFu3I9x/Nwb3N0AAAF/AAAAB0AAAAvaoFvbwAAAAEAAAAAzBdyYwAAAADP2IQvAAAAAM/bz7t4nGNgZGFgnMDAysDB1Ml0hoGBoR9CM75mMGLkYGBgYmBlZsAKAtJcUxgcPsR8iGF2+O/AEMPsznAYKMwIkgMA5REMOXicY2BgYGaAYBkGRgYQsAHyGMF8FgYFIM0ChED+h5j//yEk/3KoSgZGNgYYk4GRCUgwMaACRoZhDwCs7QgGAAAAIgKIAAAAAf//AAJ4nHWMMQrCQBBF/0zWrCCIKUQsTDCL2EXMohYGSSmorScInsRGL2DOYJe0Ntp7BK+gJ1BxF1stZvjz/v8DRghQzEc4kIgKwiAppcA9LtzKLSkdNhKFY3HF4lK69ExKslx7Xa+vPRVS43G98vG1DnkDMIBUgFN0MDXflU8tbaZOUkXUH0+U27RoRpOIyCKjbMCVejwypzJJG4jIwb43rfl6wbwanocrJm9XFYfskuVC5K/TPyczNU7b84CXcbxks1Un6H6tLH9vf2LRnn8Ax7A5WQAAAHicY2BkYGAA4teL1+yI57f5ysDNwgAC529f0kOmWRiYVgEpDgYmEA8AUzEKsQAAAHicY2BkYGB2+O/AEMPCAAJAkpEBFbAAADgKAe0EAAAiAAAAAAQAAAAEAAAAAAAAKgAqACoAiAAAeJxjYGRgYGBhsGFgYgABEMkFhAwM/xn0QAIAD6YBhwB4nI1Ty07cMBS9QwKlQapQW3VXySvEqDCZGbGaHULiIQ1FKgjWMxknMfLEke2A+IJu+wntrt/QbVf9gG75jK577Lg8K1qQPCfnnnt8fX1NRC/pmjrk/zprC+8D7tBy9DHgBXoWfQ44Av8t4Bj4Z8CLtBL9CniJluPXASf0Lm4CXqFX8Q84dOLnMB17N4c7tBo1AS/Qi+hTwBH4rwHHwN8DXqQ30XXAS7QaLwSc0Gn8NuAVWou/gFmnjLrEaEh9GmDdDGgL3B4JsrRPDU2hTOiMSuJUIdKQQayiAth69r6akSSFqIJuA19TrzCIaY8sIoxyrNIrL//pw7A2iMygkX5vDj+G+kuoLdX4GlGK/8Lnlz6/h9MpmoO9rafrz7ILXEHHaAx95s9lsI7AHNMBWEZHULnfAXwG9/ZqdzLI08iuwRloXE8kfhXYAvE23+23DU3t626rbs8/8adv+9DWknsHp3E17oCf+Z48rvEQNZ78paYM38qfk3v/u3l3u3GXN2Dmvmvpf1Srwk3pB/VSsp512bA/GG5i2WJ7wu430yQ5K3nFGiOqgtmSB5pJVSizwaacmUZzZhXLlZTq8qGGFY2YcSkqbth6aW1tRmlaCFs2016m5qn36SbJrqosG4uMV4aP2PHBmB3tjtmgN2izkGQyLWprekbIntJFing32a5rKWCN/SdSoga45EJykyQ7asZvHQ8PTm6cslIpwyeyjbVltNikc2HTR7YKh9LBl9DADC0U/jLcBZDKrMhUBfQBvXRzLtFtjU9eNHKin0x5InTqb8lNpfKv1s1xHzTXRqgKzek/mb7nB8RZTCDhGEX3kK/8Q75AmUM/eLkfA+0Hi908Kx4eNsMgudg5GLdRD7a84npi+YxNr5i5KIbW5izXas7cHXIMAau1OueZhfj+cOcP3P8MNIWLyYOBuxL6DRylJ4cAAAB4nGNgYoAALjDJyIAOWMCiTIxMLDmZedkABtIBygAAAA==) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headeranchor-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .headeranchor-link:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .headeranchor,
+.markdown-body h2 .headeranchor,
+.markdown-body h3 .headeranchor,
+.markdown-body h4 .headeranchor,
+.markdown-body h5 .headeranchor,
+.markdown-body h6 .headeranchor {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .headeranchor-link,
+.markdown-body h2:hover .headeranchor-link,
+.markdown-body h3:hover .headeranchor-link,
+.markdown-body h4:hover .headeranchor-link,
+.markdown-body h5:hover .headeranchor-link,
+.markdown-body h6:hover .headeranchor-link {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .headeranchor-link .headeranchor,
+.markdown-body h2:hover .headeranchor-link .headeranchor,
+.markdown-body h3:hover .headeranchor-link .headeranchor,
+.markdown-body h4:hover .headeranchor-link .headeranchor,
+.markdown-body h5:hover .headeranchor-link .headeranchor,
+.markdown-body h6:hover .headeranchor-link .headeranchor {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* Multimarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><title>Week1</title></head><body><article class="markdown-body"><h1 id="week-1"><a name="user-content-week-1" href="#week-1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>WEEK 1</h1>
+<h2 id="contents-table"><a name="user-content-contents-table" href="#contents-table" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Contents Table</h2>
+<ul>
+<li>
+<p><a href="#the-basics-of-html">The basics of HTML</a></p>
+<ul>
+<li>Single Page Application</li>
+<li>The basics of HTML</li>
+<li>The HEAD Part</li>
+<li>Code Editor</li>
+</ul>
+</li>
+<li>
+<p><a href="#some-common-html-elements">Some Common HTML elements</a></p>
+<ul>
+<li>HTML Headings</li>
+<li>Section</li>
+<li>Simple list using bullets</li>
+<li>Using numbers</li>
+<li>Comments</li>
+</ul>
+</li>
+<li>
+<p><a href="#formatting-html-text">Formatting HTML text</a></p>
+</li>
+<li>
+<p><a href="#images">Images</a></p>
+</li>
+<li>
+<p><a href="#sound">Sound</a></p>
+</li>
+<li>
+<p><a href="#video">Video</a></p>
+</li>
+<li>
+<p><a href="#links">Links</a></p>
+</li>
+<li>
+<p><a href="#void-elements-text">Void Elements &amp; text</a></p>
+<ul>
+<li>Void Elements     </li>
+<li>Breaks</li>
+</ul>
+</li>
+<li>
+<p><a href="#styles">Styles</a></p>
+<ul>
+<li>Use a unique ID</li>
+<li>Use a Class</li>
+<li>Use multiple classes</li>
+</ul>
+</li>
+<li>
+<p><a href="#more-on-style">More on Style</a></p>
+<ul>
+<li>Inline Style</li>
+<li>Context Control</li>
+<li>Pseudo-classes</li>
+</ul>
+</li>
+<li>
+<p><a href="#tables">Tables</a></p>
+</li>
+<li>
+<p><a href="#div-and-span">Div and Span</a> </p>
+</li>
+<li>
+<p><a href="#practicing-css-quiz">Practicing CSS (Quiz)</a></p>
+</li>
+<li>
+<p><a href="#html-form-basics">HTML Form Basics</a></p>
+<ul>
+<li>Basic Form Structure</li>
+<li>Get or Post</li>
+<li>What can be put in a form?</li>
+</ul>
+</li>
+<li>
+<p><a href="#more-on-forms">More on Forms</a></p>
+<ul>
+<li>Text, checkbox &amp; radio</li>
+<li>Password</li>
+<li>Selecting from a list</li>
+<li>Useful attributes</li>
+</ul>
+</li>
+<li>
+<p><a href="#handling-file-upload">Handling File Upload</a></p>
+</li>
+<li>
+<p><a href="#some-new-html5-input-elements">Some new HTML5 Input Elements</a></p>
+</li>
+<li>
+<p><a href="#practical-questions-on-forms">Practical questions on Forms</a></p>
+</li>
+<li>
+<p><a href="#element-grouping">Element Grouping</a></p>
+</li>
+</ul>
+<h2 id="the-basics-of-html"><a name="user-content-the-basics-of-html" href="#the-basics-of-html" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>The basics of HTML</h2>
+<p><strong>Single Page Application</strong></p>
+<p>For this HTML usage, the Browser sends a request to the server, asking for a small piece of information. E.g. the price of a stock. <em>The server</em> send the small piece of data back to the browser and that data may or may not be in the form of HTML. <em>The browser</em> displays the data after conversion, if necessary.</p>
+<p>SVG is an alternative for HTML but is very focused on graphics.</p>
+<p><strong>The basics of HTML</strong></p>
+<p>HTML is defined by a particular group of people called the World Wide Web consortium. HTML commands are called elements</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>The information on the head is not visible in the webpage. <strong>h1</strong> is a heading and <strong>p</strong> is the paragraph. </p>
+<p><strong>The HEAD Part</strong></p>
+<p>Information about the WebPage</p>
+<pre><code>&lt;title&gt;A Simple Web Page&lt;/title&gt;
+&lt;meta name=&rdquo;author&rdquo; content=&rdquo;David Rossiter&rdquo;&gt;</code></pre>
+<p>Other things in the head part might include the <em>style</em> structure or a link to the css file containing the styles information</p>
+<pre><code>&lt;style&gt;
+body {background-color:yellow}
+&lt;/style&gt;
+
+&lt;link rel=&rdquo;stylesheet&rdquo; href=&rdquo;stylerules.css&rdquo;&gt;</code></pre>
+<p>There can be more <em>meta</em> information like <em>description, keywords, characterset</em>. There could also be Javascript code:</p>
+<pre><code>&lt;script&gt;
+function surprise() {
+    alert(&ldquo;Hello&rdquo;);
+}
+&lt;/script&gt;
+
+&lt;script src=&rdquo;mycode.js&rdquo;&gt;&lt;/script&gt;</code></pre>
+<p>Some elements have attributes (or parameters). Single speech marks can also be used for them. HTML editors are good for complementing learning, for example <em>TinyMCE</em></p>
+<p><strong>Code Editor</strong></p>
+<p><em>Atom</em> on this case, we can turn on a <strong>Preview</strong> function. We can have <em>autocomplete</em> as well</p>
+<h2 id="some-common-html-elements"><a name="user-content-some-common-html-elements" href="#some-common-html-elements" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Some Common HTML elements</h2>
+<p><strong>HTML Headings</strong></p>
+<pre><code>&lt;h1&gt;&lt;h2&gt;&lt;h3&gt; &hellip; &lt;h6&gt;</code></pre>
+<p>They get smaller, but we&rsquo;re not supposed to use these to have different sizes for text.</p>
+<pre><code>*&lt;section&gt;* was added
+</code></pre>
+<p><strong>Section</strong> was added recently and we can put anything into a section, but could be a title and a paragraph. This is more for structuring the HTML</p>
+<p><strong>Simple list using bullets</strong></p>
+<pre><code>&lt;ul&gt;
+    &lt;li&gt;&lt;/li&gt;
+&lt;/ul
+</code></pre>
+<p><strong>Using numbers</strong></p>
+<pre><code>&lt;ol&gt;
+    &lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre>
+<p>We could change the start number with <em>start=&rdquo;1999&rdquo;</em> attribute for ordered lists. <em>start=&rdquo;2002&rdquo; reversed</em></p>
+<p>We can also add letters:</p>
+<pre><code>&lt;ol type=&rdquo;A&rdquo;&gt;&hellip;</code></pre>
+<p>We can enter capital letters or not.</p>
+<p><strong>Comments</strong></p>
+<pre><code>&lt;!&ndash; This is a comment &ndash;&gt;</code></pre>
+<h2 id="formatting-html-text"><a name="user-content-formatting-html-text" href="#formatting-html-text" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Formatting HTML text</h2>
+<p>For Italic text, we use <code>&lt;i&gt;</code> or <code>&lt;em&gt;</code> as in <em>emphasis</em>. These are the same but the difference is that <em>em</em> can be used when something is more important.</p>
+<p>For Bold text, we use <code>&lt;b&gt;</code> and <code>&lt;strong&gt;</code>.</p>
+<p>For underlins, use <code>&lt;u&gt;</code> but don&rsquo;t use it because it can be confusing</p>
+<p>For big and small text we can use <code>&lt;big&gt; &lt;small&gt;</code> what is going to be text bigger and smaller than the text around it. <em>Big</em> is not part of HTML5. <em>Span</em> might be an alternative.</p>
+<p><code>&lt;mark&gt;</code> highlights text. <code>&lt;sub&gt;</code> and <code>&lt;sup&gt;</code> are for subscript and superscript. This works but it&rsquo;s better using the proper math language. Footnotes could be a good context to use it!</p>
+<p><code>&lt;ins&gt; &lt;del&gt;</code> for inserted and deleted (uses a line right through it).</p>
+<h2 id="images"><a name="user-content-images" href="#images" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Images</h2>
+<pre><code>&lt;img src=&rdquo;stella.jpg&rdquo;&gt;</code></pre>
+<p>Or we might add some control <code>width=100</code> <code>height=300</code>. It&rsquo;s suggested using only one of these &lsquo;cause then the browser keeps the same ratio of width to height.</p>
+<p>We can use percentages relative to the thing that contains the picture:</p>
+<pre><code>&lt;img.... width=&rdquo;50%&rdquo;&gt;</code></pre>
+<p>This means the parent (body for the example)</p>
+<h2 id="sound"><a name="user-content-sound" href="#sound" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Sound</h2>
+<p>We can use the tag <em>audio</em> to get audio inside a webpage:</p>
+<pre><code>&lt;audio src=&rdquo;beets_turnips.mp3&rdquo;&gt;&lt;/audio&gt;
+
+&lt;audio src=&rdquo;beets_turnips.mp3&rdquo; autoplay&gt;&lt;/audio&gt;
+This will play automatically when loading</code></pre>
+<p>We can add controls for the file:</p>
+<pre><code>&lt;audio src=&rdquo;beets_turnips.mp3&rdquo; controls&gt;&lt;/audio&gt;</code></pre>
+<p>We can loop things, for games for example:</p>
+<pre><code>&lt;audio src=&rdquo;beets_turnips.mp3&rdquo; autoplay loop&gt;&lt;/audio&gt;</code></pre>
+<p>In older browesrs, MP3 format might be used.</p>
+<pre><code>&lt;this_new_html_tag&gt;
+    &lt;p&gt;Sorry, your browser can&rsquo;t handle &lt;i&gt;this new tag tab&lt;/i&gt;&lt;/p&gt;
+&lt;/&hellip;&gt;</code></pre>
+<p>New browsers will ignore the text, old ones will display the message instead. We can add a description. Use the <em>alt</em> attribute for deaf people and search engines.</p>
+<h2 id="video"><a name="user-content-video" href="#video" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Video</h2>
+<p>To grab a vid and bring it into a webpage, just use <code>&lt;video&gt;</code>.</p>
+<pre><code>&lt;video src=&rdquo;walking_video.mp4&rdquo;&gt;&lt;/video&gt;</code></pre>
+<p>Again, use <em>autoplay</em> to play automatically. Use <em>controls</em> too to see the controls (panel to manage the video). <em>loop</em> and <em>alt</em> as well, and handle the message in older browsers</p>
+<h2 id="links"><a name="user-content-links" href="#links" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Links</h2>
+<p><code>&lt;a&gt;</code> element is quite important. </p>
+<pre><code>Check your &lt;a href=&rdquo;http://www.gmail.com/&rdquo;&gt;gmail&lt;/a&gt; every 10 mins!</code></pre>
+<p>The anchored thing doesn&rsquo;t have to be text, we can use an image:</p>
+<pre><code>&lt;a href=&rdquo;http://twitter.com&rdquo;&gt;&lt;img src=&rdquo;twtter.jpg&rdquo;&gt;&lt;/a&gt;</code></pre>
+<p>To do a <strong>positioning</strong> into a webpage to jump directly to section <em>n</em> having an <strong>id</strong> for an element, like a paragraph.</p>
+<pre><code>&hellip; id=&rdquo;here&rdquo; &hellip;
+&lt;a href=&rdquo;#here&rdquo;&gt;Go here&lt;/a&gt;</code></pre>
+<p>Or from another webpage, do:</p>
+<pre><code>&lt;a href=&rdquo;web_page.html#here&rdquo;&gt;Go here&lt;/a&gt;</code></pre>
+<p>To use temporary text, use the <em>lorem ipsum text</em> from *<a href="http://www.lipsum.com*">http://www.lipsum.com*</a> and we can generate a lot of random latin text.</p>
+<h2 id="void-elements-text"><a name="user-content-void-elements-text" href="#void-elements-text" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Void Elements &amp; text</h2>
+<p><strong>Void elements</strong></p>
+<p>Usually, the structure for HTML elements include the <code>&lt;start_tag&gt;</code>, some content and end by <code>&lt;/end_tag&gt;</code>. Some elements don&rsquo;t have content and then don&rsquo;t need an end part; thus, the first tag wouldn&rsquo;t be a <em>start tag</em> but just a <em>tag</em>, some examples here:</p>
+<pre><code>&lt;meta name=&rdquo;author&rdquo; content=&rdquo;David Rossiter&rdquo;&gt;</code></pre>
+<p>As seen, void elements can have attributes or not.</p>
+<ul>
+<li><code>&lt;img&gt;</code></li>
+<li><code>&lt;input&gt;</code></li>
+<li><code>&lt;br&gt; &lt;wbr&gt; &lt;hr&gt;</code></li>
+</ul>
+<p><strong>Breaks</strong></p>
+<p><code>&lt;br&gt;</code> is a break that indicates going to the next line and then carrying on. <code>&lt;wbr&gt;</code> is an &ldquo;optional&rdquo; break that can be put in the middle of a word, if the browser sees this and has no space in a current line, can separate the part of the word for the next line. Finally, <code>&lt;hr&gt;</code> means <em>horizontal rule</em> that puts a kind of line right accross the page. HTML5 uses something else for the semantic meaning that&rsquo;s really the same!</p>
+<h2 id="styles"><a name="user-content-styles" href="#styles" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Styles</h2>
+<p>We need style for our webpages, otherwise it&rsquo;s extremely boring. These are the visual components and it&rsquo;s handled with CSS. There is the <em>information</em> and the <em>style</em> is a separate set of information or rules, both put together are the <em>Visual Output</em>.</p>
+<p>We can create a CSS file that could be used for all the html files, like that all HTML will have the same look &amp; feel. We should include the CSS in the head part of the HTML like:</p>
+<pre><code>&lt;head&gt;
+    &lt;title&hellip;
+    &lt;link href=&rdquo;html_example_css_file.css&rdquo; rel=&rdquo;stylesheet&rdquo; type=&rdquo;text/css&rdquo;&gt;
+&hellip;</code></pre>
+<p>And the css looks like:</p>
+<pre><code>h1 { color:purple }
+p { color:blue }
+</code></pre>
+<p>Some properties are <em>color</em>, <em>background</em>, <em>font-family</em>, <em>font-size</em>, <em>text-align</em>. </p>
+<p>We can write rules in the webpage at the top of the HEAD part:</p>
+<pre><code>&lt;head&gt;
+    &lt;style&gt;
+        h1 {color:purple}
+        p {color:blue}
+    &lt;/style&gt;
+&hellip;</code></pre>
+<p><strong>Use a unique ID</strong></p>
+<p>We can use identifiers for every element of HTML:</p>
+<pre><code>&lt;body&gt;
+    &lt;ul id=&rdquo;rainbowColors&rdquo;&gt;
+        &lt;li id=&rdquo;red&rdquo;&gt;Red&lt;/li&gt;
+        &lt;li id=&rdquo;orange&rdquo;&gt;Orange&lt;/li&gt;
+        &hellip;
+
+// On CSS
+#theElementID {color: red}
+#rainbowColors {background: gray}
+&hellip;</code></pre>
+<p><strong>Use Class</strong></p>
+<p>We make our own rule and apply it to anything and is used putting a full stop at the beginning of the style lines:</p>
+<pre><code>&lt;body&gt;
+    &lt;h1 class=&rdquo;zappy&rdquo;&gt;My title&lt;/h1&gt;
+    &lt;p class=&rdquo;wow&rdquo;&gt;My first paragraph&lt;/p&gt; 
+&hellip;
+
+&lt;style&gt;
+    .zappy {color:purple; background:yellow}
+    .wow {color:blue; background:lightgray}
+&lt;/style&gt;</code></pre>
+<p><strong>Use multiple classes</strong></p>
+<pre><code>&lt;p class=&rdquo;zappy wow&rdquo;&gt;My first paragraph&lt;/p&gt;
+
+&lt;style&gt;
+    .zappy {color:blue}
+    .spicy {color:red}
+    .wow {background:lime}
+    .lol {background:lightgray}
+&lt;/style&gt;</code></pre>
+<p>Elements can use different classes at the same time.</p>
+<h2 id="more-on-style"><a name="user-content-more-on-style" href="#more-on-style" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>More on Style</h2>
+<p><strong>Inline Style</strong></p>
+<p>It&rsquo;s when the style for a particular element is written just there</p>
+<pre><code>&lt;p style=&rdquo;text-align:right&rdquo;&gt;Welcome.&lt;/p&gt;</code></pre>
+<p>This way is harder to manage and troublesome. This will have a higher priority and we can overwrite those styles on top.</p>
+<p><strong>Context Control</strong></p>
+<p>We can have this:</p>
+<pre><code>ul li {color: red}
+</code></pre>
+<p>This is really pointing to those List items in an unordered list!, no other list items will be red.</p>
+<p><strong>Pseudo-classes</strong></p>
+<p>These are classes with some kind of &lsquo;intelligence&rsquo; or extra capability.</p>
+<ol>
+<li><strong>Hover</strong>. This is the action of putting the mouse over an element.</li>
+<li><strong>Link</strong></li>
+<li><strong>Visited</strong> is a link that has been visited</li>
+<li><strong>Active</strong> means currently following a link, that could be super quick.</li>
+<li><strong>Empty</strong> is any empty element (nothing inside it, like an empty paragraphs)</li>
+</ol>
+<p>In general:</p>
+<pre><code>element:pseudo-class {rules}
+
+//e.g.
+h1:hover {color: red}
+</code></pre>
+<h2 id="tables"><a name="user-content-tables" href="#tables" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Tables</h2>
+<p>Tables are the traditional way to get a structured layout in a webpage. The basic table structure goes like:</p>
+<pre><code>&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt; &lt;th&gt; &hellip; &lt;/th&gt; &lt;/tr&gt;
+    &lt;/thead&gt;
+
+    &lt;tbody&gt;
+        &lt;tr&gt; &lt;td&gt; &hellip; &lt;/td&gt; &lt;td&gt; &hellip; &lt;/td&gt; &hellip; &lt;/tr&gt;
+        &lt;tr&gt; &lt;td&gt; &hellip; &lt;/td&gt; &lt;td&gt; &hellip; &lt;/td&gt; &hellip; &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+<p>There&rsquo;s a table head and table body areas for the table. <em>tr</em> stands for Table row. The first row has the &ldquo;meanings&rdquo; with all the columns (cells). In the body we can have many rows, each with the same number of columns (usually). <em>td</em> really means box from the table or Table data, so every row should have the same number of rows. For the headers there was <em>th</em> for headers. See this <a href="///F://Courses/HTML-CSS-JS%2809-2015%29/SamplePage.html#table-example">example</a>.</p>
+<p>Some styles might be needed at the beginning, moving to <em>Styles!</em>. We can use <em>color, text-align, border, width, height, vertical-align, padding</em></p>
+<pre><code>&lt;style&gt;
+    table, td, th {border:1px solid black; padding:15px}
+    td {color:purple}
+&lt;/style&gt;
+</code></pre>
+<p>The padding is a little space, and the border is around the Elements. The border is set to be solid instead of dotted, the 3 values (1px solid black) are applied to the border. See <a href="///F://Courses/HTML-CSS-JS%2809-2015%29/SamplePage.html#styled-table-example">styled example</a></p>
+<p>We can also use <strong>Class rules</strong> for tables and for particular boxes for instance, we use <em>text-align</em> for these:</p>
+<pre><code>&lt;style&gt;
+    &hellip;
+    .profit {text-align:left}
+    .zero {text-align:center}
+    .loss {text-align:right}
+&hellip;
+
+&lt;td class=&rdquo;zero&rdquo;&gt;&hellip;</code></pre>
+<p>There&rsquo;s another alignment named <em>vertical-align</em> and it can hold different values:</p>
+<pre><code>.t {vertical-align:top} .m {vertical-align:middle} .b {vertical-alignment:bottom}
+</code></pre>
+<p>Remember we can combine classes together! (&ldquo;t l&rdquo;, &ldquo;m r&rdquo;).</p>
+<h2 id="div-and-span"><a name="user-content-div-and-span" href="#div-and-span" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Div and Span</h2>
+<p><em>Div</em> has no particular style or meaning, it can be used for almost anything. Unless we apply a style, it won&rsquo;t be different. <em>Divs</em> and many other elements can be positioned:</p>
+<pre><code>position:absolute; top:xxx; left:yyy;
+</code></pre>
+<p><em>Relative position</em> fixes the position relative to the position it would&rsquo;ve been shown if we hadn&rsquo;t changed things</p>
+<pre><code>position:relative; top:-20px; left:-20px
+</code></pre>
+<p><em>Span</em> is similar with no particular style or meaning. This would be used for a few words to apply a style</p>
+<pre><code>&lt;p&gt;this is not span text &lt;span&gt;but this is&lt;/span&gt; and this isn&rsquo;t&lt;/p&gt;</code></pre>
+<h2 id="practicing-css-quiz"><a name="user-content-practicing-css-quiz" href="#practicing-css-quiz" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Practicing CSS (Quiz)</h2>
+<p>Go to the <a href="///F://Courses/HTML-CSS-JS%2809-2015%29/SamplePage.html#exercises-css">sample section</a>.</p>
+<p>When more than one style rule is applied to the same element, the later the rule is listed, the higher precedence it has.</p>
+<p>Also, the inline style rule always has the highest precedence.</p>
+<h2 id="html-form-basics"><a name="user-content-html-form-basics" href="#html-form-basics" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>HTML Form Basics</h2>
+<p>Let&rsquo;s say that in our webpage there&rsquo;s an <strong>HTML form</strong>, the user fills out the form and presses <em>Submit</em>. The form&rsquo;s data goes to the server, it processed it on a program, it does something (saving, mails, etc) and the browser renders a confirmation message.</p>
+<p><strong>Basic Form Structure</strong></p>
+<p>Inside the form we&rsquo;ll have the different elements that we want, there should be a submit element.</p>
+<pre><code>&lt;form action=&rdquo;destination&rdquo; method=&rdquo;get or post&rdquo;&gt;
+    &lt;input type=&rdquo;submit&rdquo;
+&lt;/form&gt;</code></pre>
+<p>The form has an <strong>action</strong> that indicates where the data is going to be sent to (dir, server). The <strong>action</strong> says <em>how</em> the data will be sent.</p>
+<pre><code>&lt;form action=&rdquo;http://www.server.com/subdirectory/program.php&rdquo;&gt;
+
+or&hellip; If the html and the program are in the same server and dir:
+    action=&rdquo;subdirectory/program.php&rdquo;
+    action=&rdquo;program.php&rdquo;</code></pre>
+<p><strong>Get or Post</strong></p>
+<p><em>Get</em> is the default method. If used, we can see the program where the data is sent (search) and data can be seen too (q=cats). <em><a href="http://www.bing.com/search?q=cats*"><a href="http://www.bing.com/search?q=cats*">http://www.bing.com/search?q=cats*</a></a>. Then with </em>get* we can see everything in the URL but we can&rsquo;t keep any secrets. This method is for only a few hundred letters/characters.</p>
+<p>With <em>Post</em> method we can send huge files, videos, images. This is better for keeping secrets.</p>
+<p><strong>What can be put in a form?</strong></p>
+<p><em>Text Area</em> is one of the elements</p>
+<pre><code>&lt;textarea rows=&rdquo;3&rdquo; cols=&rdquo;60&rdquo; name=&rdquo;feedback&rdquo;&gt;
+    Please enter your text here
+&lt;/textarea&gt;</code></pre>
+<p>We need the <em>name</em> attribute that is passed to the server program that will understand what was entered.</p>
+<pre><code>&lt;input type=&rdquo;submit&rdquo; value=&rdquo;Send&rdquo;&gt;</code></pre>
+<p>REQUEST_URI has the typed information and there&rsquo;s the QUERY_STRING</p>
+<h2 id="more-on-forms"><a name="user-content-more-on-forms" href="#more-on-forms" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>More on Forms</h2>
+<p><strong>Text, checkbox &amp; radio</strong></p>
+<p>There are other input types as <em>radio, checkbox, text</em> seen on this <a href="///F://Courses/HTML-CSS-JS%2809-2015%29/SamplePage.html#form-types">Form example</a>. Radio and check buttons have options and each one of them needs the same name to make the whole work (iq, items). A text type is for small amounts of text.</p>
+<p><strong>Password</strong></p>
+<p>This input will hide the text. There could be a little problem if one is not careful and uses the <em>get</em> method and then the secret will be public.</p>
+<pre><code>&lt;form&gt;
+    &lt;input type=&rdquo;password&rdquo; name=&rdquo;userpassword&rdquo;&gt; &lt;br&gt;
+&hellip;</code></pre>
+<p><strong>Selecting from a list</strong></p>
+<pre><code>&lt;form&gt;
+    &lt;select name=&rdquo;cities&rdquo;&gt;
+        &lt;option value=&rdquo;hk&rdquo;&gt;Hong Kong&lt;/option&gt;
+        &lt;option value=&rdquo;vc&rdquo;&gt;Vancouver&lt;/option&gt;
+        &lt;option value=&rdquo;sf&rdquo;&gt;San Francisco&lt;/option&gt;
+    &hellip;</code></pre>
+<p>This will be a dropdown menu.</p>
+<p><strong>Useful attributes</strong></p>
+<p><code>value="something"</code> can be added beforehand to enter a value when just rendering the form. <code>placeholder="something"</code>would make the text disappear when the user starts typing. <code>autofocus</code> means that the browser jumps to a field and highlights it to encourage the user to fill that field first. <code>required</code> means that the user must do these fields.</p>
+<h2 id="handling-file-upload"><a name="user-content-handling-file-upload" href="#handling-file-upload" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Handling File Upload</h2>
+<p>From the form context, there&rsquo;s another input type:</p>
+<pre><code>&lt;input type=&rdquo;file&rdquo;&gt;</code></pre>
+<p>Usually both browser and server should manage stuff. <em>enctype</em> tells the browser when we send the file to attach the file(s) that will be uploaded to go to the server</p>
+<pre><code>&lt;form action=&rdquo;destination&rdquo; method=&rdquo;post&rdquo; enctype=&rdquo;multipart/form-data&rdquo;&gt;
+    &lt;input type=&rdquo;file&rdquo; name=&rdquo;fileToUpload&rdquo;&gt;
+    &lt;input type=&rdquo;submit&rdquo;&gt;
+&lt;/form&gt;</code></pre>
+<p>Only <strong>post</strong> will work for this. <em>File</em> gives a file selector to choose. The Server program has access to the file but may have to move it to another directory, change the permissions for the file, save the file on the DB&hellip; It depends on the system that is being built.</p>
+<h2 id="some-new-html5-input-elements"><a name="user-content-some-new-html5-input-elements" href="#some-new-html5-input-elements" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Some new HTML5 Input Elements</h2>
+<p>A lot of new input types were added: <em>number, date, color, range, time</em> for number input, date input, time input, color picker and a slider for numbers input. See the <a href="///F://Courses/HTML-CSS-JS%2809-2015%29/SamplePage.html#html5-types">HTML 5 Example for forms</a>.</p>
+<p>The labels explain what the user has to enter. For number I can&rsquo;t type text unless numbers, same for the date part. For <em>color</em> there&rsquo;s a color selector. For the range type, it&rsquo;s not text but range up to 100. On the server side, colors are written in hexadecimal.</p>
+<h2 id="practical-questions-on-forms"><a name="user-content-practical-questions-on-forms" href="#practical-questions-on-forms" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Practical questions on Forms</h2>
+<p>Remember, we need an <em>enctype</em> and the <em>post</em> method to have File Upload working.</p>
+<h2 id="element-grouping"><a name="user-content-element-grouping" href="#element-grouping" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Element Grouping</h2>
+<p>The idea is putting elements that work together in a similar structure. In the code, via <em>fieldset</em> we can group things together with <em>legend</em></p>
+<pre><code>&lt;form&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Personal Information&lt;/legend&gt;
+        First name? &lt;input type=&rdquo;text&rdquo; name=&rdquo;Firstname&rdquo;&gt;
+        &hellip;
+    &lt;/fieldset&gt; &lt;br&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Favourite Things&lt;/legend&gt;
+        Favourite cartoon? &lt;input type=&rdquo;text&rdquo; name=&rdquo;favCartoon&rdquo;&gt;
+        &hellip;
+    &hellip;</code></pre>
+<p>There&rsquo;s also a visual change for the groups because the browser adds a box per group. This is a nice visual identity. These elements can be used for other elements that are not forms, just to group elements together.</p>
+<h1 id="end-of-week-1"><a name="user-content-end-of-week-1" href="#end-of-week-1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>END OF WEEK 1</h1></article></body></html>

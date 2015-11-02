@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Dating Website</title>
+	
+	<style>
+	
+		fieldset {
+			background: lightyellow;
+			border: 10px solid yellow;
+			margin-bottom: 10px;
+			width:720px;
+		}
+		
+		label {
+			width: 180px;
+			display: inline-block;
+			text-align: right;
+			vertical-align: top;
+		}
+		
+		div label {
+			width: auto;
+		}
+		
+		div {
+			display: inline-block;
+		}
+		
+		.slider-label{
+			background: darkorange;
+			text-align: center;
+			display: inline-block;
+			width: auto;
+		}
+		
+
+		textarea {
+			width: 360px;
+			height: 50px;
+			
+		}
+		
+	</style>
+	
+</head>
+
+<body>
+<h1>Please Enter Your Details For Our Dating Website!</h1>
+
+<form action="https://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php" method="post" enctype="multipart/form-data">
+	
+	<fieldset>
+		<legend>Your face</legend>
+		<input type="file" required>
+		<img id="preview"/>
+	</fieldset>
+	
+	<fieldset>
+		<legend>Your general details</legend>
+		<label for="firstName">Name:</label>
+		<input id="firstName" type="text" required> <br>
+		<label for="gender">Gender:</label>
+		
+		<div id="gender">
+			<label for="sex_male">Male:</label>
+			<input type="radio" name="sex" id="sex_male" value="male" required>
+			
+			<label for="sex_female">Female:</label>
+			<input type="radio" name="sex" id="sex_female" value="female" required>
+		</div>
+		<br>
+		<label for="age">Age:</label>
+		<input type="number" id="age" required> <br>
+		
+		<label for="dateOfBirth">Date of birth:</label>
+		<input type="date" id="dateOfBirth"> <br>
+		
+		<label for="favouriteColour">Favourite colour: </label>
+		<input type="color" id="favouriteColour"> <br>
+		
+		<label for="country">Which country:</label>
+		<select name="country">
+			<option value=""></option>
+			<option value="england">England</option>
+			<option value="france">France</option>
+			<option value="germany">Germany</option>
+			<option value="holland">Holland</option>
+			<option value="iceland">Iceland</option>
+		</select>
+	</fieldset>
+	
+	<fieldset>
+		<legend>Your indicators</legend>
+		
+		
+		<label for="height">Height:</label> 
+		<div id="height">
+			<label for="heightRange" class="slider-label">Short</label>
+			<input type="range" min="0" max="100" id="heightRange">
+			<label for="heightRange" class="slider-label">Tall</label>
+		</div>
+		<br>
+		<label for="wealth" class>Salary:</label>
+		<div id="wealth">
+			<label for="wealthRange" class="slider-label">Poor</label> 
+				<input type="range" min="0" max="100" id="wealthRange">
+			<label for="wealthRange" class="slider-label">Rich</label>	
+		</div>
+		<br>
+		
+		
+	</fieldset>
+	
+	<fieldset>
+		<legend>Your Contact Information</legend>
+		<label for="email">Email:</label>
+		<input id="email" type="email" required> <br>
+		
+		<label for="mobile">Mobile:</label>
+		<input id="mobile" type="tel"> <br>
+		
+		<label for="address">Address:</label>
+		<textarea id="address"></textarea> <br>
+		
+		<label for="contactMethod">Contact method:</label>
+		<div id="contactMethod">
+				
+				<input type="checkbox" name="email" value="Email">
+				<label for="email">Email<label>
+				
+				<input type="checkbox" name="whatsapp" value="Whatsapp">
+				<label for="whatsapp">Whatsapp</label>
+				
+				<input type="checkbox" name="chat" value="Chat">
+				<label for="chat">In-App Chat<label>
+		</div>
+		
+	</fieldset>
+	
+	<input type="submit" value="Submit">
+</form>
+	
+</body>
+</html>
+	

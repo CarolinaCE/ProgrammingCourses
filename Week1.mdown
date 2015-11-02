@@ -1,0 +1,553 @@
+# WEEK 1 #
+
+## Contents Table ##
+
+* [The basics of HTML](#the-basics-of-html)
+	* Single Page Application
+	* The basics of HTML
+	* The HEAD Part
+	* Code Editor
+ 
+* [Some Common HTML elements](#some-common-html-elements)
+	* HTML Headings
+	* Section
+	* Simple list using bullets
+	* Using numbers
+	* Comments
+
+* [Formatting HTML text](#formatting-html-text)
+
+* [Images](#images)
+
+* [Sound](#sound)
+
+* [Video](#video)
+
+* [Links](#links)
+
+* [Void Elements & text](#void-elements-text)
+	* Void Elements 	
+	* Breaks
+
+* [Styles](#styles)
+	* Use a unique ID
+	* Use a Class
+	* Use multiple classes
+
+* [More on Style](#more-on-style)
+ 	* Inline Style
+ 	* Context Control
+ 	* Pseudo-classes
+
+* [Tables](#tables)
+
+* [Div and Span](#div-and-span) 
+
+* [Practicing CSS (Quiz)](#practicing-css-quiz)
+
+* [HTML Form Basics](#html-form-basics)
+	* Basic Form Structure
+	* Get or Post
+	* What can be put in a form?
+
+* [More on Forms](#more-on-forms)
+	* Text, checkbox & radio
+	* Password
+	* Selecting from a list
+	* Useful attributes
+
+* [Handling File Upload](#handling-file-upload)
+
+* [Some new HTML5 Input Elements](#some-new-html5-input-elements)
+
+* [Practical questions on Forms](#practical-questions-on-forms)
+
+* [Element Grouping](#element-grouping)
+## The basics of HTML ##
+
+**Single Page Application**
+
+For this HTML usage, the Browser sends a request to the server, asking for a small piece of information. E.g. the price of a stock. *The server* send the small piece of data back to the browser and that data may or may not be in the form of HTML. *The browser* displays the data after conversion, if necessary.
+
+SVG is an alternative for HTML but is very focused on graphics.
+
+**The basics of HTML**
+
+HTML is defined by a particular group of people called the World Wide Web consortium. HTML commands are called elements
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+    </head>
+    <body>
+    </body>
+    </html>
+
+The information on the head is not visible in the webpage. **h1** is a heading and **p** is the paragraph. 
+
+
+**The HEAD Part**
+
+Information about the WebPage
+
+    <title>A Simple Web Page</title>
+    <meta name="author" content="David Rossiter">
+
+Other things in the head part might include the *style* structure or a link to the css file containing the styles information
+
+    <style>
+    body {background-color:yellow}
+    </style>
+
+    <link rel="stylesheet" href="stylerules.css">
+
+There can be more *meta* information like *description, keywords, characterset*. There could also be Javascript code:
+
+    <script>
+    function surprise() {
+        alert("Hello");
+    }
+    </script>
+
+    <script src="mycode.js"></script>
+
+Some elements have attributes (or parameters). Single speech marks can also be used for them. HTML editors are good for complementing learning, for example *TinyMCE*
+
+**Code Editor**
+
+*Atom* on this case, we can turn on a **Preview** function. We can have *autocomplete* as well
+
+
+## Some Common HTML elements ##
+
+**HTML Headings**
+
+	<h1><h2><h3> ... <h6>
+
+They get smaller, but we're not supposed to use these to have different sizes for text.
+	
+	*<section>* was added
+
+**Section** was added recently and we can put anything into a section, but could be a title and a paragraph. This is more for structuring the HTML
+
+**Simple list using bullets**
+
+	<ul>
+		<li></li>
+	</ul
+
+**Using numbers**
+
+	<ol>
+		<li></li>
+	</ol>
+
+We could change the start number with *start="1999"* attribute for ordered lists. *start="2002" reversed*
+
+We can also add letters:
+
+	<ol type="A">...
+
+We can enter capital letters or not.
+
+**Comments**
+
+	<!-- This is a comment -->
+
+
+## Formatting HTML text ##
+
+For Italic text, we use `<i>` or `<em>` as in *emphasis*. These are the same but the difference is that *em* can be used when something is more important.
+
+For Bold text, we use `<b>` and `<strong>`.
+
+For underlins, use `<u>` but don't use it because it can be confusing
+
+For big and small text we can use `<big> <small>` what is going to be text bigger and smaller than the text around it. *Big* is not part of HTML5. *Span* might be an alternative.
+
+`<mark>` highlights text. `<sub>` and `<sup>` are for subscript and superscript. This works but it's better using the proper math language. Footnotes could be a good context to use it!
+
+`<ins> <del>` for inserted and deleted (uses a line right through it).
+
+
+## Images ##
+
+	<img src="stella.jpg">
+
+Or we might add some control `width=100` `height=300`. It's suggested using only one of these 'cause then the browser keeps the same ratio of width to height.
+
+We can use percentages relative to the thing that contains the picture:
+
+	<img.... width="50%">
+
+This means the parent (body for the example)
+
+
+## Sound ##
+
+We can use the tag *audio* to get audio inside a webpage:
+
+	<audio src="beets_turnips.mp3"></audio>
+
+	<audio src="beets_turnips.mp3" autoplay></audio>
+	This will play automatically when loading
+
+We can add controls for the file:
+
+	<audio src="beets_turnips.mp3" controls></audio>
+
+We can loop things, for games for example:
+
+	<audio src="beets_turnips.mp3" autoplay loop></audio>
+
+In older browesrs, MP3 format might be used.
+
+	<this_new_html_tag>
+		<p>Sorry, your browser can't handle <i>this new tag tab</i></p>
+	</...>
+
+New browsers will ignore the text, old ones will display the message instead. We can add a description. Use the *alt* attribute for deaf people and search engines.
+
+
+## Video ##
+
+To grab a vid and bring it into a webpage, just use `<video>`.
+
+	<video src="walking_video.mp4"></video>
+
+Again, use *autoplay* to play automatically. Use *controls* too to see the controls (panel to manage the video). *loop* and *alt* as well, and handle the message in older browsers
+
+
+## Links ##
+
+`<a>` element is quite important. 
+
+	Check your <a href="http://www.gmail.com/">gmail</a> every 10 mins!
+
+The anchored thing doesn't have to be text, we can use an image:
+
+	<a href="http://twitter.com"><img src="twtter.jpg"></a>
+
+To do a **positioning** into a webpage to jump directly to section *n* having an **id** for an element, like a paragraph.
+
+	... id="here" ...
+	<a href="#here">Go here</a>
+
+Or from another webpage, do:
+
+	<a href="web_page.html#here">Go here</a>
+
+To use temporary text, use the *lorem ipsum text* from *http://www.lipsum.com* and we can generate a lot of random latin text.
+
+
+## Void Elements & text ##
+
+**Void elements**
+
+Usually, the structure for HTML elements include the `<start_tag>`, some content and end by `</end_tag>`. Some elements don't have content and then don't need an end part; thus, the first tag wouldn't be a *start tag* but just a *tag*, some examples here:
+
+	<meta name="author" content="David Rossiter">
+
+As seen, void elements can have attributes or not.
+
+* `<img>`
+* `<input>`
+* `<br> <wbr> <hr>`
+
+**Breaks**
+
+`<br>` is a break that indicates going to the next line and then carrying on. `<wbr>` is an "optional" break that can be put in the middle of a word, if the browser sees this and has no space in a current line, can separate the part of the word for the next line. Finally, `<hr>` means *horizontal rule* that puts a kind of line right accross the page. HTML5 uses something else for the semantic meaning that's really the same!
+
+
+## Styles ##
+
+We need style for our webpages, otherwise it's extremely boring. These are the visual components and it's handled with CSS. There is the *information* and the *style* is a separate set of information or rules, both put together are the *Visual Output*.
+
+We can create a CSS file that could be used for all the html files, like that all HTML will have the same look & feel. We should include the CSS in the head part of the HTML like:
+
+	<head>
+		<title...
+		<link href="html_example_css_file.css" rel="stylesheet" type="text/css">
+	...
+
+And the css looks like:
+
+	h1 { color:purple }
+	p { color:blue }
+
+Some properties are *color*, *background*, *font-family*, *font-size*, *text-align*. 
+
+We can write rules in the webpage at the top of the HEAD part:
+
+	<head>
+		<style>
+			h1 {color:purple}
+			p {color:blue}
+		</style>
+	...
+
+**Use a unique ID**
+
+We can use identifiers for every element of HTML:
+
+	<body>
+		<ul id="rainbowColors">
+			<li id="red">Red</li>
+			<li id="orange">Orange</li>
+			...
+
+	// On CSS
+	#theElementID {color: red}
+	#rainbowColors {background: gray}
+	...
+
+**Use Class**
+
+We make our own rule and apply it to anything and is used putting a full stop at the beginning of the style lines:
+
+	<body>
+		<h1 class="zappy">My title</h1>
+		<p class="wow">My first paragraph</p> 
+	...
+
+	<style>
+		.zappy {color:purple; background:yellow}
+		.wow {color:blue; background:lightgray}
+	</style>
+
+**Use multiple classes**
+
+	<p class="zappy wow">My first paragraph</p>
+
+	<style>
+		.zappy {color:blue}
+		.spicy {color:red}
+		.wow {background:lime}
+		.lol {background:lightgray}
+	</style>
+
+Elements can use different classes at the same time.
+
+
+## More on Style ##
+
+**Inline Style**
+
+It's when the style for a particular element is written just there
+
+	<p style="text-align:right">Welcome.</p>
+
+This way is harder to manage and troublesome. This will have a higher priority and we can overwrite those styles on top.
+
+**Context Control**
+
+We can have this:
+
+	ul li {color: red}
+
+This is really pointing to those List items in an unordered list!, no other list items will be red.
+
+**Pseudo-classes**
+
+These are classes with some kind of 'intelligence' or extra capability.
+
+1. **Hover**. This is the action of putting the mouse over an element.
+2. **Link**
+3. **Visited** is a link that has been visited
+4. **Active** means currently following a link, that could be super quick.
+5. **Empty** is any empty element (nothing inside it, like an empty paragraphs)
+
+In general:
+
+	element:pseudo-class {rules}
+
+	//e.g.
+	h1:hover {color: red}
+
+
+## Tables ##
+
+Tables are the traditional way to get a structured layout in a webpage. The basic table structure goes like:
+
+	<table>
+		<thead>
+			<tr> <th> ... </th> </tr>
+		</thead>
+
+		<tbody>
+			<tr> <td> ... </td> <td> ... </td> ... </tr>
+			<tr> <td> ... </td> <td> ... </td> ... </tr>
+		</tbody>
+	</table>
+
+There's a table head and table body areas for the table. *tr* stands for Table row. The first row has the "meanings" with all the columns (cells). In the body we can have many rows, each with the same number of columns (usually). *td* really means box from the table or Table data, so every row should have the same number of rows. For the headers there was *th* for headers. See this [example](SamplePage.html#table-example).
+
+Some styles might be needed at the beginning, moving to *Styles!*. We can use *color, text-align, border, width, height, vertical-align, padding*
+
+	<style>
+		table, td, th {border:1px solid black; padding:15px}
+		td {color:purple}
+	</style>
+
+The padding is a little space, and the border is around the Elements. The border is set to be solid instead of dotted, the 3 values (1px solid black) are applied to the border. See [styled example](SamplePage.html#styled-table-example)
+
+We can also use **Class rules** for tables and for particular boxes for instance, we use *text-align* for these:
+	
+	<style>
+		...
+		.profit {text-align:left}
+		.zero {text-align:center}
+		.loss {text-align:right}
+	...
+
+	<td class="zero">...
+
+There's another alignment named *vertical-align* and it can hold different values:
+
+	.t {vertical-align:top} .m {vertical-align:middle} .b {vertical-alignment:bottom}
+
+Remember we can combine classes together! ("t l", "m r").
+
+
+## Div and Span ##
+
+*Div* has no particular style or meaning, it can be used for almost anything. Unless we apply a style, it won't be different. *Divs* and many other elements can be positioned:
+
+	position:absolute; top:xxx; left:yyy;
+
+*Relative position* fixes the position relative to the position it would've been shown if we hadn't changed things
+
+	position:relative; top:-20px; left:-20px
+
+*Span* is similar with no particular style or meaning. This would be used for a few words to apply a style
+
+	<p>this is not span text <span>but this is</span> and this isn't</p>
+
+## Practicing CSS (Quiz) ##
+
+Go to the [sample section](SamplePage.html#exercises-css).
+
+When more than one style rule is applied to the same element, the later the rule is listed, the higher precedence it has.
+
+Also, the inline style rule always has the highest precedence.
+
+
+## HTML Form Basics ##
+
+Let's say that in our webpage there's an **HTML form**, the user fills out the form and presses *Submit*. The form's data goes to the server, it processed it on a program, it does something (saving, mails, etc) and the browser renders a confirmation message.
+
+**Basic Form Structure**
+
+Inside the form we'll have the different elements that we want, there should be a submit element.
+
+	<form action="destination" method="get or post">
+		<input type="submit"
+	</form>
+
+The form has an **action** that indicates where the data is going to be sent to (dir, server). The **action** says *how* the data will be sent.
+
+	<form action="http://www.server.com/subdirectory/program.php">
+
+	or... If the html and the program are in the same server and dir:
+		action="subdirectory/program.php"
+		action="program.php"
+
+**Get or Post**
+
+*Get* is the default method. If used, we can see the program where the data is sent (search) and data can be seen too (q=cats). *http://www.bing.com/search?q=cats*. Then with *get* we can see everything in the URL but we can't keep any secrets. This method is for only a few hundred letters/characters.
+
+With *Post* method we can send huge files, videos, images. This is better for keeping secrets.
+
+**What can be put in a form?**
+
+*Text Area* is one of the elements
+
+	<textarea rows="3" cols="60" name="feedback">
+		Please enter your text here
+	</textarea>
+
+We need the *name* attribute that is passed to the server program that will understand what was entered.
+
+	<input type="submit" value="Send">
+
+REQUEST\_URI has the typed information and there's the QUERY\_STRING
+
+
+## More on Forms ##
+
+**Text, checkbox & radio**
+
+There are other input types as *radio, checkbox, text* seen on this [Form example](SamplePage.html#form-types). Radio and check buttons have options and each one of them needs the same name to make the whole work (iq, items). A text type is for small amounts of text.
+
+**Password**
+
+This input will hide the text. There could be a little problem if one is not careful and uses the *get* method and then the secret will be public.
+
+	<form>
+		<input type="password" name="userpassword"> <br>
+	...
+
+**Selecting from a list**
+
+	<form>
+		<select name="cities">
+			<option value="hk">Hong Kong</option>
+			<option value="vc">Vancouver</option>
+			<option value="sf">San Francisco</option>
+		...
+
+This will be a dropdown menu.
+
+**Useful attributes**
+
+`value="something"` can be added beforehand to enter a value when just rendering the form. `placeholder="something"`would make the text disappear when the user starts typing. `autofocus` means that the browser jumps to a field and highlights it to encourage the user to fill that field first. `required` means that the user must do these fields.
+
+
+## Handling File Upload ##
+
+From the form context, there's another input type:
+
+	<input type="file"> 
+
+Usually both browser and server should manage stuff. *enctype* tells the browser when we send the file to attach the file(s) that will be uploaded to go to the server
+
+	<form action="destination" method="post" enctype="multipart/form-data">
+		<input type="file" name="fileToUpload">
+		<input type="submit">
+	</form>
+
+Only **post** will work for this. *File* gives a file selector to choose. The Server program has access to the file but may have to move it to another directory, change the permissions for the file, save the file on the DB... It depends on the system that is being built.
+
+
+## Some new HTML5 Input Elements ##
+
+A lot of new input types were added: *number, date, color, range, time* for number input, date input, time input, color picker and a slider for numbers input. See the [HTML 5 Example for forms](SamplePage.html#html5-types).
+
+The labels explain what the user has to enter. For number I can't type text unless numbers, same for the date part. For *color* there's a color selector. For the range type, it's not text but range up to 100. On the server side, colors are written in hexadecimal.
+
+
+## Practical questions on Forms ##
+
+Remember, we need an *enctype* and the *post* method to have File Upload working.
+
+
+## Element Grouping ##
+
+The idea is putting elements that work together in a similar structure. In the code, via *fieldset* we can group things together with *legend*
+
+	<form>
+		<fieldset>
+			<legend>Personal Information</legend>
+			First name? <input type="text" name="Firstname">
+			...
+		</fieldset> <br>
+		<fieldset>
+			<legend>Favourite Things</legend>
+			Favourite cartoon? <input type="text" name="favCartoon">
+			...
+		...
+
+There's also a visual change for the groups because the browser adds a box per group. This is a nice visual identity. These elements can be used for other elements that are not forms, just to group elements together.
+
+
+# END OF WEEK 1 #

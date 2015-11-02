@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- 
+	Project: Color Guessing Game (Javascript)
+	Author: Jean-Paul Deshaies
+	Created: 09-25-2015
+-->
+<html>
+	<head>
+		<title>Color Guessing Game</title>
+	</head>
+	<body onload="do_game()">
+	
+	<script>
+	
+		var finished = false;
+		var colors = ["blue", "cyan", "gold", "gray", "green", "magenta", "orange", "red", "white", "yellow"];
+		var user_guess = "";
+		var user_guess_count = 0;
+			
+		var random_number;
+		var random_color;	
+	
+		function do_game()
+		{
+			alert("Welcome to the color guessing game . . .");		
+			random_number = Math.floor(Math.random() * colors.length);
+			random_color = colors[random_number];
+			
+			alert("The target color is " + random_color);
+			
+			while (!finished)
+			{
+				user_guess = prompt("Guess the color I am thinking of: " + colors.join());
+				++user_guess_count;
+				finished = check_guess();	
+			}
+		}
+		function check_guess()
+		{
+			var doesContain = false;
+			for (var x=0; x<colors.length; ++x)
+			{
+				if (colors[x] == user_guess)
+					doesContain = true;
+			}
+					
+			if (!doesContain)
+			{
+				alert("Sorry, I don't recognize your color.\n\nPlease try again . . .");
+				return false;
+			}
+			else if (user_guess < random_color)
+			{
+				alert("Sorry, your guess is not correct.\n\nHint: Your color is alphabetically too low.\n\nPlease try again . . .");
+				return false;
+			}
+			else if (user_guess > random_color)
+			{
+				alert("Sorry, your guess is not correct.\n\nHint: Your color is alphabetically too high.\n\nPlease try again . . .");
+				return false;
+			}
+			else if (user_guess == random_color)
+			{
+				myBody=document.getElementsByTagName("body")[0];
+				myBody.style.background=random_color;
+
+				alert("Congratulations! You have guessed the color!\n\nIt took you " + user_guess_count + 
+					  " guesses to guess the color.\n\nYou can see the color in the background.");
+				return true;
+			}
+		}
+	</script>
+	</body>
+</html>

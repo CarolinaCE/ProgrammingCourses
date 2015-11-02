@@ -1,0 +1,1515 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headeranchor-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .headeranchor-link:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .headeranchor,
+.markdown-body h2 .headeranchor,
+.markdown-body h3 .headeranchor,
+.markdown-body h4 .headeranchor,
+.markdown-body h5 .headeranchor,
+.markdown-body h6 .headeranchor {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .headeranchor-link,
+.markdown-body h2:hover .headeranchor-link,
+.markdown-body h3:hover .headeranchor-link,
+.markdown-body h4:hover .headeranchor-link,
+.markdown-body h5:hover .headeranchor-link,
+.markdown-body h6:hover .headeranchor-link {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .headeranchor-link .headeranchor,
+.markdown-body h2:hover .headeranchor-link .headeranchor,
+.markdown-body h3:hover .headeranchor-link .headeranchor,
+.markdown-body h4:hover .headeranchor-link .headeranchor,
+.markdown-body h5:hover .headeranchor-link .headeranchor,
+.markdown-body h6:hover .headeranchor-link .headeranchor {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* Multimarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><title>Week3</title></head><body><article class="markdown-body"><h1 id="week-3"><a name="user-content-week-3" href="#week-3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>WEEK 3</h1>
+<h2 id="contents-table"><a name="user-content-contents-table" href="#contents-table" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Contents Table</h2>
+<ul>
+<li>
+<p><a href="#for-loops">For Loops</a></p>
+<ul>
+<li>For &hellip; in loops</li>
+<li>For &hellip; Of loops </li>
+<li>Omitting parts</li>
+</ul>
+</li>
+<li>
+<p><a href="#more-on-logos">More on Loops</a></p>
+</li>
+<li>
+<p><a href="#more-on-arrays">More on Arrays</a></p>
+<ul>
+<li>Find backwards</li>
+<li>Slice</li>
+<li>Splice</li>
+</ul>
+</li>
+<li>
+<p><a href="#array-functions">Array functions</a></p>
+<ul>
+<li>Map</li>
+</ul>
+</li>
+<li>
+<p><a href="#the-dom-basic-concepts">The DOM - Basic Concepts</a></p>
+</li>
+<li>
+<p><a href="#locating-nodes">Locating Nodes</a></p>
+<ul>
+<li>setAttribute()</li>
+</ul>
+</li>
+<li>
+<p><a href="#creating-nodes">Creating Nodes</a></p>
+</li>
+<li>
+<p><a href="#deleting-nodes">Deleting Nodes</a></p>
+<ul>
+<li>Deleting all nodes</li>
+</ul>
+</li>
+<li>
+<p><a href="#cloning-nodes">Cloning Nodes</a></p>
+</li>
+<li>
+<p><a href="#practice-questions-on-dom">Practice questions on DOM</a></p>
+</li>
+<li>
+<p><a href="#mouse-events">Mouse Events</a></p>
+</li>
+<li>
+<p><a href="#timer-events">Timer Events</a></p>
+<ul>
+<li>setInterval</li>
+</ul>
+</li>
+<li>
+<p><a href="#adding-events-using-javascript">Adding Events Using JavaScript</a></p>
+<ul>
+<li>Removing an event Handler</li>
+</ul>
+</li>
+<li>
+<p><a href="#more-on-functions">More on Functions</a></p>
+<ul>
+<li>Passing a function to a function</li>
+<li>Returning a function from a Function</li>
+</ul>
+</li>
+<li>
+<p><a href="#an-example-dom-project">An example DOM project</a></p>
+</li>
+</ul>
+<h2 id="for-loops"><a name="user-content-for-loops" href="#for-loops" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>For Loops</h2>
+<p>There are some different types. They clearly show the start and end values in one line. This is good for handling a series of data (like arrays)</p>
+<pre><code>data_structure.length
+
+for (var index = 0; index &lt; continents.length; index++) {
+    ...
+}
+</code></pre>
+<p><strong>For &hellip; in loops</strong></p>
+<pre><code>for (var index in continents) {
+
+}
+</code></pre>
+<p>No semicolons, it&rsquo;s easier to manage. This has automatically saved the indexes. This type of loop can also work with Objects</p>
+<pre><code>var onePerson = {initials: "DR", age:"40", job: "professor"};
+for (var property in onePerson) {
+    alert(property + "=" + onePerson[property]);
+}
+</code></pre>
+<p><strong>For &hellip; Of loops</strong></p>
+<p>This gives every individual item:</p>
+<pre><code>for (var continent of continents) {
+    response = confirm("something " + continent + "?");
+}
+</code></pre>
+<p>Like this the actual values are going into the variable.</p>
+<p><strong>Omitting parts</strong></p>
+<p>For some structures we can omit components:</p>
+<pre><code>// Infinite loop
+for (;;;) {
+
+}
+
+//Initialize outside the loop
+for (; number &lt;= 12; number++) {    }
+</code></pre>
+<p>We can have more variables in the loop:</p>
+<pre><code>for (var rabbits = 2, generation = 2; generation &lt;= 12; generation++, rabbits *= 2)
+</code></pre>
+<h2 id="more-on-loops"><a name="user-content-more-on-loops" href="#more-on-loops" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>More on loops</h2>
+<p><em>Break</em> totally stops the loops. <em>Continue</em> stops the current iteration. </p>
+<pre><code>var this_amount = prompt("How much?");
+this_amount = parseFloat(this_amount);
+while (true) {
+    ... something
+    if (this_amount &lt; 0) {
+        break;
+    }
+}
+</code></pre>
+<p><em>Continue</em> skips the current iteration, doesn&rsquo;t stosp the loop permanently</p>
+<h2 id="more-on-arrays"><a name="user-content-more-on-arrays" href="#more-on-arrays" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>More on arrays</h2>
+<p>We can use some advanced functions in loops:</p>
+<ul>
+<li>
+<p><strong>Sort</strong> will order in alphabetical order and will work with characters and numbers. <code>array.sort()</code></p>
+</li>
+<li>
+<p><strong>Reverse</strong> will reverse the values of the array.</p>
+</li>
+<li>
+<p>We can combine the functions together: <code>pets.sort().reverse()</code></p>
+</li>
+</ul>
+<p>We can also search for something in an array: <code>pets.indexOf("Rabbit")</code>. If the element is not found on array, it returns -1. We can look for all the occurrences of a word or letter in a sring by defining an initial first character to start from:</p>
+<pre><code>var startSearchAt = 0, rabbitPositions = [ ];
+
+do {
+    foundAt = pets.indexOf("Rabbit, startSearchAt");
+
+    if (foundAt != -1) {
+        rabbitPositions.push(pushAt);
+        startSearchAt = foundAt + 1;
+    }
+} while (foundAt != -1);
+</code></pre>
+<p><strong>Find backwards</strong></p>
+<p>To find an element backwards we might use <em>lastIndexOf</em></p>
+<pre><code>pets.lastIndexOf("Rabbit");
+</code></pre>
+<p><strong>Slice</strong></p>
+<p>It is extracting part of an array. Using an argument as 1, means go to position 1 onwards:</p>
+<pre><code>var pets = ["Dog", "Cat", "Rabbit"];
+var result = pets.slice(1);
+
+// Result is Cat, Rabbit
+</code></pre>
+<p>We can set a stop position in the second param: <code>pets.slice(1, 3)</code>. The result is a new array. THe last position does NOT get included.</p>
+<p><strong>Splice</strong></p>
+<p>This is used when elements are to be removed from an array. We affect the original array then. We go to position <em>x</em> and extract <em>y</em> items:</p>
+<pre><code>pets.splice(1, 1);
+// Result is ["Cat"]
+</code></pre>
+<p>We can also add something to an array, like adding to position 2</p>
+<pre><code>pets.splice(2, 0, "rabbit");
+</code></pre>
+<p>Since it didn&rsquo;t grab anything out of the array, doesn&rsquo;t return anything. </p>
+<pre><code>pets.splice(1, 1, "Rabbit", "Fish");
+</code></pre>
+<p>The last statement will replace position 1 with those 2 new words (Rabbit, Fish).</p>
+<h2 id="array-functions"><a name="user-content-array-functions" href="#array-functions" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Array functions</h2>
+<p>There are some commands for manipulating arrays.</p>
+<pre><code>for (var i = 0; i &lt; pets.length; i++)
+// Same as:
+pets.forEach(alert);
+</code></pre>
+<p><em>ForEach</em> has a lot of power because it has a function that&rsquo;s applied to each item of the array, one by one:ç</p>
+<pre><code>function forEach(theArray, fn) {
+    for (var i = 0; i &lt; theArray.length; i++) {
+        fn(theArray[i], i, theArray);
+    }
+}
+</code></pre>
+<p>There are other args passed to the function that gets executed, even though the alert will only use one.</p>
+<p><em>i</em> is the index for the iteration and the third one is the entire array.<br />
+If it&rsquo;s our function, we can do:</p>
+<pre><code>function yourFunction(element, index, array) {}
+numbers.foreach( function(elem, idx, arr) {
+    arr[idx] = elem * elem;
+});
+</code></pre>
+<p><strong>Map</strong></p>
+<p>This won&rsquo;t change the original array as <em>forEach</em>. Let&rsquo;s see how it works:</p>
+<pre><code>function map(theArray, fn) {
+    var result = [];
+    for (var i = 0; i &lt; theArray.length; i++) {
+        results.push(fn(theArray[i], i, theArray));
+    }
+
+    return results;
+}
+</code></pre>
+<p>It runs the function to each thing on the array. When it&rsquo;s got the answer, it adds the answer on the end of a results array. For instance:</p>
+<pre><code>var results = numbers.map(square);
+
+var square = function(el) {
+    return el * el;
+}
+</code></pre>
+<h2 id="the-dom-basic-concepts"><a name="user-content-the-dom-basic-concepts" href="#the-dom-basic-concepts" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>The DOM - Basic Concepts</h2>
+<p>DOM means <em>Document Object Model</em>. When we load something into a browser, it&rsquo;s converted into a DOM structure. HTML, XML, SVG are converted into it.</p>
+<p>HTML gets stored in a certain way, in a tree structure. <code>html</code> is the top node called <strong>root</strong>. There were a <code>head</code> and <code>body</code> sections being nodes and having child nodes as well. The children of <code>head</code> are siblings between them (they&rsquo;re on the same line). FInally we have branches or areas where there&rsquo;s something at the top and it&rsquo;s split into other things. </p>
+<p>Sometimes we can have <em>Text</em> nodes too. If we have attributes for our nodes, this is saved (ids, &hellip;). Void elements are by themselves (br).</p>
+<p>Important terms: <em>nextSibling, previousSibling, firstChild, lastChild, childNodes[1], parentNode,&hellip;</em></p>
+<p>There are <em>Whitespace</em> nodes, those are anything we can&rsquo;t see (instructions to go to next line).  </p>
+<p>If we want to find a particular <em>node</em> in our DOM structure, we want to click on a node and see the path for that node:</p>
+<pre><code>function handleClick(event) {
+    event.stopPropagation();
+
+    var node = event.target;
+    var thisPath = node.nodeName;
+
+    while (node.parentNode) {
+        node = node.parentNode;
+        thisPath = node.nodeName + " &gt; " + thisPath;
+    }
+
+    alert(thisPath);
+}
+</code></pre>
+<p>We go up the tree until the root node (where it doesn&rsquo;t have any parent). <br />
+<em>event.stopPropagation</em> is used to make sure it&rsquo;s only executed once.</p>
+<p>To <em>trigger</em> that code we add it to almost every element. </p>
+<pre><code>// Register the click event for every node
+function attachHandler(node) {
+    if (node == null) return;
+    node.onclick = handleClick;
+
+    for (var i = 0; i &lt; node.childNodes.length; i++) {
+        attachHandler(node.childNodes[i]); 
+    }   
+}
+</code></pre>
+<p>For SVG the code above would work as well. </p>
+<h2 id="locating-nodes"><a name="user-content-locating-nodes" href="#locating-nodes" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Locating Nodes</h2>
+<p>Everything gets stored in the DOM structure, we can add/delete/copy/change anything there. There are 3 methods:</p>
+<ol>
+<li>
+<p><strong>Use the exact DOM path</strong>. We go down from the root. Sometimes mistakes are made and it&rsquo;s possible that the DOM structure changes between browsers.</p>
+</li>
+<li>
+<p><strong>Use the type</strong>. This is the TagName, and function <em>getElementsByTagName()</em> is used, this could be <em>h2</em>&hellip; But we&rsquo;d have to know which particular tag node we want to add because there could be multiple nodes with the same tag.</p>
+</li>
+<li>
+<p><strong>Use the name (id)</strong>. Let&rsquo;s use function <em>getElementById()</em>. We can assign ids by&hellip;</p>
+</li>
+</ol>
+<p>They have to be unique</p>
+<pre><code>&lt;element_name id="thing"&gt; ... &lt;/element_name&gt;
+</code></pre>
+<p><strong>setAttribute()</strong></p>
+<p>After finding something, we can set attributes for it.</p>
+<pre><code>the_node = getElementById("thisNode");
+the_node.setAttribute("style", "color:red");
+</code></pre>
+<p>This way may even be more common</p>
+<h2 id="creating-nodes"><a name="user-content-creating-nodes" href="#creating-nodes" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Creating Nodes</h2>
+<p>To add nodes to a webpage, we create one node, but it&rsquo;s not yet in the DOM. Afterwards, it&rsquo;ll be added at the desired place.</p>
+<pre><code>result = document.createElement("div");
+
+// For text nodes:
+result = document.createTextNode("Hello");
+</code></pre>
+<p>Then to add at the appropriate place, using <strong>insertBefore()</strong>:</p>
+<pre><code>// Create an horizontal ruler
+newItem = document.createElement("hr");
+
+destParent = document.getElementsByTagName("body")[0];
+destParent.insertBefore(newItem, destParent.firstChild);
+</code></pre>
+<p>Take into account that there will be only one body. Another way to add something to the DOM structure is using <strong>appendChild()</strong></p>
+<pre><code>result = document.createTextNode("this is dynamically added text!");
+
+document.getElementById("my_text").appendChild(result);
+</code></pre>
+<p>All this code is working by clicking at anything in the page, like:</p>
+<pre><code>&lt;body onclick="insert_new_text()"&gt;
+&lt;/body&gt;
+</code></pre>
+<h2 id="deleting-nodes"><a name="user-content-deleting-nodes" href="#deleting-nodes" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Deleting Nodes</h2>
+<p>To delete a node we can use <em>removeChild(node)</em></p>
+<pre><code>this_node = getElementById("myPara");
+this_node.parentNode.removeChild(this_node);
+</code></pre>
+<p>We had to tell the parent of a node to delete it, and this is a bit troublesome! we have many ways to find a node:</p>
+<pre><code>var the_node = document.getElementById("firstP");
+OR
+= document.getElementsByTagName("p")[0];
+OR
+var the_parent = document.getElementById("theBody");
+the_parent.removeChild(the_parent.firstChild);
+</code></pre>
+<p>Some code to trigger events:</p>
+<pre><code>&lt;button type="button" onclick="delete1()"&gt;Example 1&lt;/button&gt;
+
+&lt;head&gt; &lt;script&gt;
+    function ...
+&lt;/script&gt; &lt;/head&gt;
+</code></pre>
+<p><strong>Deleting all children</strong></p>
+<p>To delete all the children of the body:</p>
+<pre><code>var theNode = document.getElementById("theBody");
+
+while (theNode.firstChild)
+    theNode.removeChild(theNode.firstChild);
+</code></pre>
+<h2 id="cloning-nodes"><a name="user-content-cloning-nodes" href="#cloning-nodes" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Cloning nodes</h2>
+<p>The idea is copy/paste for nodes. Remember a branch is an area of nodes altogether. To clone use <em>node.cloneNode()</em> or </p>
+<p>For instance, to copy a list item node can be copied to the end of a list, oh no!, the first attempt is only copying the bullet, but not the text for the <strong>li</strong>. This means that the text elements were not copied.</p>
+<pre><code>var the_node = document.getElementById("myList").lastChild;
+var the_clone = the_node.cloneNode();
+document.getElementById("myList").appendChild(the_clone);
+</code></pre>
+<p>This is because we didn&rsquo;t add the <em>true</em> argument, we wanted to copy the entire branch because there&rsquo;s a separated node for <em>text</em>.</p>
+<pre><code>...
+var the_clone = the_node.cloneNode(true);
+document.getElementById("myList").appendChild(the_clone);
+</code></pre>
+<p>So now everything underneath the li node is copied.</p>
+<h2 id="practice-questions-on-dom"><a name="user-content-practice-questions-on-dom" href="#practice-questions-on-dom" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Practice questions on DOM</h2>
+<p>Check source code on Quizes directory</p>
+<h2 id="mouse-events"><a name="user-content-mouse-events" href="#mouse-events" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Mouse Events</h2>
+<p>Handling the mouse events, there could be some event types:</p>
+<ul>
+<li>
+<p><em>onclick</em> when the user clicks on an object</p>
+</li>
+<li>
+<p><em>onmousedown</em> is triggered when the user presses the click, but hasn&rsquo;t let go of the button</p>
+</li>
+<li>
+<p><em>onmouseup</em> is the other side, when we let go of the mouse.</p>
+</li>
+</ul>
+<p>On click is onmousedown followed by onmouseup.</p>
+<ul>
+<li>
+<p><em>onmouseover</em> happens when one puts the mouse over an object</p>
+</li>
+<li>
+<p><em>onmouseout</em> when the mouse is moved away from an object.</p>
+</li>
+</ul>
+<p>Let&rsquo;s see:</p>
+<pre><code>onmouseover="change_color('red')"
+
+function change_color(new_color) {
+    document.getElementById("myDiv").style.background = new_color; 
+}
+</code></pre>
+<h2 id="timer-events"><a name="user-content-timer-events" href="#timer-events" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Timer Events</h2>
+<p>The idea is doing something later, possibly many times. We use a <em>timer</em></p>
+<pre><code>var the_timer;
+the_timer = setTimeout(do_something, 1000);
+</code></pre>
+<p>Function <em>do_something</em> will be executed 1000 miliseconds later (then 1 second). It doesn&rsquo;t wait</p>
+<pre><code>var wait_duration;
+function set_things_up() {
+    wait_duration = prompt("how long?");
+    setTimeout(show_wake_up_message, wait_duration);
+}
+
+function show_wake_up_message() {
+    alert("WAKE UP!");
+}
+</code></pre>
+<p>To move an image, we can do something with timers:</p>
+<pre><code>&lt;img src="stones.png" id="stones_image" style="position:absolute;left:0;" &gt;
+
+function set_timer() {
+    the_image = document.getElementById("image");
+    x_position = x_position + 1;
+    the_image.style.left = x_position;
+    the_timer = setTimeout(set_timer, 50);
+}
+</code></pre>
+<p>If we want to stop that movement, or stop the timer. We can give a name for the timer:</p>
+<pre><code>the_timer = setTimeout...
+clearTimeout(the_timer);
+</code></pre>
+<p><strong>setInterval</strong></p>
+<p>To use this, do</p>
+<pre><code>var the_timer;
+the_timer = setInterval(do_something, 2000);
+</code></pre>
+<p>This means that every 2 seconds, code on <em>on_something</em> will run. To stop this, user clear:</p>
+<pre><code>clearInterval(the_timer);
+</code></pre>
+<p>For allowing this change, we did:</p>
+<pre><code>&lt;body onload="the_timer=setInterval(do_timer, 50)"&gt;
+...
+</code></pre>
+<h2 id="adding-events-using-javascript"><a name="user-content-adding-events-using-javascript" href="#adding-events-using-javascript" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Adding events using JavaScript</h2>
+<p>Typically we&rsquo;d do something on loading. Other times, we want to use the event handling by JavaScript. For the body, it&rsquo;s <em>window.onload</em></p>
+<pre><code>function do_something() { alert("I was clicked"); }
+window.onload = do_something;
+
+window.addEventListener("load")
+</code></pre>
+<p>In the last <em>addEventListener</em>, the first param will specify which event and what function will handle it. It is possible to have more than one event handler for one event, they get stored in an <strong>array</strong>.</p>
+<p>Like this, if we repeat that line of code, it would set 3 event handlers, they would get executed one by one in the order they were added.</p>
+<p><strong>Removing an event Handler</strong></p>
+<p>To remove an event handler :</p>
+<pre><code>var theBody = document.getElementById("theBody");
+theBody.removeEventListener("load", do_something);
+</code></pre>
+<p>But we can only remove those event listeners that were added by js, not the ones we add on the HTML tags.</p>
+<h2 id="more-on-functions"><a name="user-content-more-on-functions" href="#more-on-functions" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>More on Functions</h2>
+<p>A typical way to make a function:</p>
+<pre><code>function functionOne() {
+}
+</code></pre>
+<p>But we could assign a function to a variable name. In this case the name of the function is not even necessary:</p>
+<pre><code>var functionTwo = function() {}
+OR, ALTERNATIVELY
+var functionTwo = function thisFunc() {}
+</code></pre>
+<p>Normal functions get created when the webpage is loaded, but with these new functions being assigned to variables, it&rsquo;s not until reaching those lines that they get loaded.</p>
+<p><strong>Passing a function to a function</strong></p>
+<p>Functions are objects:</p>
+<pre><code>function check(a, b) {
+    if (b != 0) return true;
+    else return false;
+}
+
+function myDivide(fn, num, div) {
+    if (fn(num, div)) {
+        alert("it's ok");
+        return num/div;
+    } else {
+        alert ("not ok");
+    }
+}
+
+result = myDivide(check, 44, 1);
+</code></pre>
+<p>This checks that we&rsquo;re not dividing a number by zero.</p>
+<p><strong>Returning a function from a Function</strong></p>
+<p>Let&rsquo;s see an example:</p>
+<pre><code>function counter() {
+    var count = 0;
+
+    return function() {
+        count++;
+        alert(count);
+    }
+}
+
+var count = counter();
+
+// Now we can use this as function, wow!
+count();
+count();
+</code></pre>
+<h2 id="an-example-dom-project"><a name="user-content-an-example-dom-project" href="#an-example-dom-project" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>An example DOM project</h2>
+<p>This is for reviewing. IN the project, there&rsquo;s a series of squares generated by JS, each one was created using a <em>div</em>, they have a different position by using <em>top, left, width, height</em> attributes.</p>
+<p>We start with the bigger box and then go to add those that are smaller.</p>
+<pre><code>&lt;body...
+    &lt;script src="js_path.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+<p>There&rsquo;s a new meta element</p>
+<pre><code>&lt;meta http-equiv="refresh" content="1"&gt;
+</code></pre>
+<p>This <strong>refreshes the page</strong> after 1 second. We use <code>div {position: absolute}</code> because we&rsquo;ll be in charge of generating the code. Adding an id for the body is probably useful.</p>
+<pre><code>&lt;body onload="my_function()"...&gt;
+</code></pre>
+<p>In the <strong>JavaScript</strong> file, there is:</p>
+<ol>
+<li>
+<p>Set up the variables</p>
+</li>
+<li>
+<p>Within a loop: we generate a div node, set the div node attributes, we add the div to the body and finally adjust variables ready for next iteration.</p>
+</li>
+</ol>
+<p>The position of the div is controlled by top and left. The first squre is 25px for top and left. It&rsquo;s very large (300!!). Then we go top + 10 (35px for top and left), the height and width decrease their dimensions in 20 px each iteration. </p>
+<pre><code>var top_position = 25, left_position = 25;
+...
+</code></pre>
+<h1 id="end-of-week-3"><a name="user-content-end-of-week-3" href="#end-of-week-3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>END OF WEEK 3</h1></article></body></html>

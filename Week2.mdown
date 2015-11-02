@@ -1,0 +1,351 @@
+# WEEK 2 #
+
+## Contents Table ##
+
+* [Introduction to Javascript](#introduction-to-javascript)
+
+* [Getting to know Javascript](#getting-to-know-javascript)
+	* Simple Interaction
+	* Variables
+
+* [Variables](#variables)
+	* Numbers
+	* String
+	* Boolean
+	* Typeof
+	* From one type to another
+
+* [Introduction to Events and Functions](#introduction-to-events-and-functions)
+	* Events
+	* Functions 
+	* Recursive Functions
+
+* [Handling Bugs](#handling-bugs)
+
+* [Making Decisions](#making-decisions)
+
+* [While Loops](#while-loops)
+
+* [More on Variables](#more-on-variables)
+	* Local Variables
+	* Global Variables 
+
+* [Logical Operators](#logical-operators)
+	* AND
+	* OR
+	* NOT
+		 
+* [Arrays](#arrays)
+
+
+## Introduction to Javascript ##
+
+The client side, we find JS in the browser, the clinet side libraries. Nowadays it's also used in the server side and even for the data layer.
+
+We might have a server in node.js. Our main display is given by HTML that is powered by CSS. THen JS comes alone and can change HTML and even CSS rules. Jquery is a library, Bootstrap is a framework.
+
+
+## Getting to know Javascript ##
+
+There is a common pattern on where JS can go on a WebPage. We could put our js where the body of the HTML ends, so the markup can load before js executes. 
+
+	<script>
+	function surprise() {
+		alert("Hello!");
+	}
+	</script>
+
+We could put the js in another file as well:
+
+	<script src="mycode.js"></script>  
+
+**Simple Interaction**
+
+`alert()` brings up a little window in front of the webpage with a message that was added. `confirm()` displays a popup box to make some decision (ok and cancel). 
+
+	<script>
+	if (confirm("Want to go to Disneyland?"))
+		document.location.href = "http://somepage.com";
+	</script>
+
+**Variables**
+
+`var totalCost = 7000;`. We can change what's stored in the variables as well. `prompt()` gives the user the ability to type something	
+
+	user_name = prompt("what's your name?");
+
+	... document.write("Welcome " + user_name + "!");
+
+  
+## Variables ##
+
+JS has different types of data: *number, String, Boolean, Object*.
+
+**Numbers**
+
+JS has only one type of number, so whether it has decimals or not and the type won't change.
+
+Using scientific notation: 
+
+	var big_number = 123e5;
+	var small_number = 123e-5;
+
+**String**
+
+String means text. Double speech mark or single speech mark can be used.
+
+**Boolean**
+
+true or false. THey don't use speech marks because they'd be strings.
+
+A variable type can change, we can vary the values given to variables. 
+
+**Typeof**
+
+This is used to check the type of a variable:
+
+	typeof "John"
+	typeof 3.14
+	typeof true
+
+There are quicker types to perform some operations:
+
+	count++
+	count--
+	count += 10
+	hello += "!"
+	marks -= 20
+	pigs *= 5
+	cakes /= students
+
+**From one type to another**
+
+* **parseInt():** converts to an integer.
+
+* **parseFloat()**
+
+* **String()**
+
+
+## Introduction to Events and Functions ##
+
+**Events**
+
+En event is when something happens, like moving the mouse, pressing keys. 
+Some code handles the events:
+
+	<body onload="alert('Hello')">...
+
+This `onload` means that the webpage has loaded.
+We could add a sequence of operations, separated with semi-colons.
+
+
+**Functions**
+
+A function is a group of code. We can put together some code into something named function.
+
+	function do_something() {
+
+	}
+
+We can run it by `do_something();`. We could pass something to a function, these are parameters:
+
+	function purchase(cats) { }
+
+We can get a response from the function:
+
+	function do_something() {
+		...
+		return answer;
+	}                                             
+
+	result = do_something();
+
+Let's see an example:
+
+	<script>
+		function check_user_age() {
+			if (age_of_user() < 18) {
+				alert("Go to another page");
+			}
+		}
+
+		function age_of_user() {
+			var age_text, age;
+
+			age_text = prompt("what's your age?");
+			age = parseInt(age_text);
+			return age;
+		}
+	</script>
+
+
+**Recursive functions**
+
+A function can call itself. 
+
+	function do_something(control_value) {
+
+	}
+	result = do_something(10);
+
+
+## Handling bugs ##
+
+Some mistakes will be made sooner or later and they're called "bugs". Check the Dev tools. In the console we can try out some JS as well. An undefined after an alert says that nothing came back from it!
+
+In the *confirm*, clicking on Ok will result in *true* as returned value. Cancel will return a *false*. We can use *console.log* for the logs
+
+
+## Making decisions ##
+
+*if* is used for decisions and the idea is comparing things. `<, <=, >... !=`. 
+
+	if (user_name == "dave") {
+		alert("Great name");
+	}
+
+No need to use braces for only one line of code, more lines, use them.
+
+	if .. else
+	if .. else if
+	if .. else if .. else
+
+*switch* checks for something (var name):
+
+	switch (variable_name) {
+		case "option_1": do_something_1();
+			break;
+
+		case "option_n": do_something_n();
+			break;
+
+		// Default doesn't need break
+		default: do_something_else();
+	}
+
+*break* stops any more tests being made. To handle the same code for more than one value:
+
+	case "Canada":
+	case "France": 
+		alert("take me also!");
+
+
+## While Loops ##
+
+A while repeats some code again and again.
+
+	while (condition) {
+
+	}
+
+Each time the loop content is executed we call it an iteration. A function is *indexOf* that gives us the location of something
+
+	var text = "The cat's had was wet";
+	result = text.indexOf("at");
+
+There is another structure:
+
+	do {
+
+	} while (condition);
+
+It will first do the part of the *do* and then will check the while condition. The do block is done at least once.
+
+
+## More on Variables ##
+
+**Local variables**
+
+If a variable is declared within a function, then that var can only be accessed within the function. Variables are *local* to the function.
+
+**Global variables**
+
+They work everywhere
+
+	var money = 99;
+
+This has to be declared outside all functions. If one has a local and global variable with the same name, JS gives priority to the local variable.
+
+If we assign a value to a variable that has not been declared, it will automatically become a global variable.
+
+
+## Logical Operators ##
+
+A boolean means true or false. There are some checks or operators:
+
+	Logical And 
+	Logical Or
+	Logical Not
+
+**AND**
+
+2 inputs that are tested. True if both inputs are TRUE. 
+
+**OR**
+
+With symbol ||. At least one of the operators are true.
+
+	first_function() || second_function();
+
+If the first one is true, the second is not executed at all.
+
+**NOT (!)**
+
+It does the opposite.
+
+## Arrays ##
+
+Linear continuous storage that goes from zero (0).
+
+	var pets = ["dog", "cat", "rabbit"];
+	var pets = new Array(10);
+
+*array.join(separator)* shows the content of an array and joining them, use something, a separator.
+
+	pets.join(" and ");
+
+The default to separate is a COMMA. We can extract some item as well (*pets[4]*). We can ask for how many things an array has, with *pets.length*.
+
+To add to the end, use *pets.push("Hamster")* or to the front with *pets.unshift("hamster");*. To remove from the back or end we can do *pets.pop()*, this will return the removed element. We can remove from the front with *pets.shift();* and it returns the removed element as well.
+
+To **combine** two arrays, we can do *array1.concat(array2)* and the array2 items will be added at the end.
+
+
+## Getting Random Numbers ##
+
+To generate a random number, use *Math.random();*. THe default one won't include 1 in the possible numbers:
+
+	var random_number = Math.random();
+
+To **set up the range** we can multiply with the max_value:
+
+	random_number = Math.random() * max_number;
+	... Math.random() * 8;
+
+For this case it will produce a max of 7.99999... To throw away the decimal place we can use *floor*. 
+
+	Math.floor() throws away the decimal place digits.
+
+	random = Math.random() * 50;
+	random = Math.floor(random_number);
+
+To include all numbers we could do +1.
+
+	var random_number = Math.floor(Math.random()*80) + 3;
+	// This will generate at least 3 but a max of 82.999
+
+
+## An example Javascript Project ##
+
+Guessing game for numbers in the range 1 - 100. We generate a random number, we store it in a variable *target*
+
+## Assessment task ##
+
+* Alphabetical order is helpful for the player (array.sort())
+* How many guesses, add the background color!
+
+# END OF WEEK 2 #
+
+
+`Placeholder for code!!`

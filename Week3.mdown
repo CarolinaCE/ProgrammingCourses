@@ -1,0 +1,567 @@
+# WEEK 3 #
+
+
+## Contents Table ##
+
+* [For Loops](#for-loops)
+	* For ... in loops
+	* For ... Of loops 
+    * Omitting parts
+
+* [More on Loops](#more-on-logos)
+
+* [More on Arrays](#more-on-arrays)
+    * Find backwards
+	* Slice
+	* Splice
+
+* [Array functions](#array-functions)
+	* Map
+
+* [The DOM - Basic Concepts](#the-dom-basic-concepts)
+
+* [Locating Nodes](#locating-nodes)
+	* setAttribute()
+
+* [Creating Nodes](#creating-nodes)
+
+* [Deleting Nodes](#deleting-nodes)
+	* Deleting all nodes
+
+* [Cloning Nodes](#cloning-nodes)
+
+* [Practice questions on DOM](#practice-questions-on-dom)
+
+* [Mouse Events](#mouse-events)
+
+* [Timer Events](#timer-events)
+	* setInterval
+
+* [Adding Events Using JavaScript](#adding-events-using-javascript)
+	* Removing an event Handler
+
+* [More on Functions](#more-on-functions)
+	* Passing a function to a function
+	* Returning a function from a Function
+
+* [An example DOM project](#an-example-dom-project)
+
+## For Loops ##
+
+There are some different types. They clearly show the start and end values in one line. This is good for handling a series of data (like arrays)
+
+	data_structure.length
+
+	for (var index = 0; index < continents.length; index++) {
+		...
+	}
+
+**For ... in loops**
+
+	for (var index in continents) {
+
+	}
+
+No semicolons, it's easier to manage. This has automatically saved the indexes. This type of loop can also work with Objects
+
+	var onePerson = {initials: "DR", age:"40", job: "professor"};
+	for (var property in onePerson) {
+		alert(property + "=" + onePerson[property]);
+	}
+
+**For ... Of loops**
+
+This gives every individual item:
+
+	for (var continent of continents) {
+		response = confirm("something " + continent + "?");
+	}
+
+Like this the actual values are going into the variable.
+ 
+**Omitting parts**
+
+For some structures we can omit components:
+
+	// Infinite loop
+	for (;;;) {
+
+	}
+
+	//Initialize outside the loop
+	for (; number <= 12; number++) {	}
+
+We can have more variables in the loop:
+
+	for (var rabbits = 2, generation = 2; generation <= 12; generation++, rabbits *= 2)
+
+
+## More on loops ##
+
+*Break* totally stops the loops. *Continue* stops the current iteration. 
+	
+	var this_amount = prompt("How much?");
+	this_amount = parseFloat(this_amount);
+	while (true) {
+		... something
+		if (this_amount < 0) {
+			break;
+		}
+	}
+
+*Continue* skips the current iteration, doesn't stosp the loop permanently
+
+
+## More on arrays ##
+
+We can use some advanced functions in loops:
+
+* **Sort** will order in alphabetical order and will work with characters and numbers. `array.sort()`
+
+* **Reverse** will reverse the values of the array.
+
+* We can combine the functions together: `pets.sort().reverse()`
+
+We can also search for something in an array: `pets.indexOf("Rabbit")`. If the element is not found on array, it returns -1. We can look for all the occurrences of a word or letter in a sring by defining an initial first character to start from:
+
+	var startSearchAt = 0, rabbitPositions = [ ];
+
+	do {
+		foundAt = pets.indexOf("Rabbit, startSearchAt");
+
+		if (foundAt != -1) {
+			rabbitPositions.push(pushAt);
+			startSearchAt = foundAt + 1;
+		}
+	} while (foundAt != -1);
+
+**Find backwards**
+
+To find an element backwards we might use *lastIndexOf*
+
+	pets.lastIndexOf("Rabbit");
+
+**Slice**
+
+It is extracting part of an array. Using an argument as 1, means go to position 1 onwards:
+
+	var pets = ["Dog", "Cat", "Rabbit"];
+	var result = pets.slice(1);
+
+	// Result is Cat, Rabbit
+
+We can set a stop position in the second param: `pets.slice(1, 3)`. The result is a new array. THe last position does NOT get included.
+
+**Splice**
+
+This is used when elements are to be removed from an array. We affect the original array then. We go to position *x* and extract *y* items:
+
+	pets.splice(1, 1);
+	// Result is ["Cat"]
+
+We can also add something to an array, like adding to position 2
+
+	pets.splice(2, 0, "rabbit");
+
+Since it didn't grab anything out of the array, doesn't return anything. 
+
+	pets.splice(1, 1, "Rabbit", "Fish");
+
+The last statement will replace position 1 with those 2 new words (Rabbit, Fish).
+
+
+## Array functions ##
+
+There are some commands for manipulating arrays.
+
+	for (var i = 0; i < pets.length; i++)
+	// Same as:
+	pets.forEach(alert);
+
+*ForEach* has a lot of power because it has a function that's applied to each item of the array, one by one:ç
+
+	function forEach(theArray, fn) {
+		for (var i = 0; i < theArray.length; i++) {
+			fn(theArray[i], i, theArray);
+		}
+	}
+
+There are other args passed to the function that gets executed, even though the alert will only use one.
+
+*i* is the index for the iteration and the third one is the entire array.
+If it's our function, we can do:
+
+	function yourFunction(element, index, array) {}
+	numbers.foreach( function(elem, idx, arr) {
+		arr[idx] = elem * elem;
+	});
+
+**Map**
+
+This won't change the original array as *forEach*. Let's see how it works:
+
+	function map(theArray, fn) {
+		var result = [];
+		for (var i = 0; i < theArray.length; i++) {
+			results.push(fn(theArray[i], i, theArray));
+		}
+
+		return results;
+	}
+
+It runs the function to each thing on the array. When it's got the answer, it adds the answer on the end of a results array. For instance:
+
+	var results = numbers.map(square);
+
+	var square = function(el) {
+		return el * el;
+	}
+
+
+## The DOM - Basic Concepts ##
+
+DOM means *Document Object Model*. When we load something into a browser, it's converted into a DOM structure. HTML, XML, SVG are converted into it.
+
+HTML gets stored in a certain way, in a tree structure. `html` is the top node called **root**. There were a `head` and `body` sections being nodes and having child nodes as well. The children of `head` are siblings between them (they're on the same line). FInally we have branches or areas where there's something at the top and it's split into other things. 
+
+Sometimes we can have *Text* nodes too. If we have attributes for our nodes, this is saved (ids, ...). Void elements are by themselves (br).
+
+Important terms: *nextSibling, previousSibling, firstChild, lastChild, childNodes[1], parentNode,...*
+
+There are *Whitespace* nodes, those are anything we can't see (instructions to go to next line).  
+
+If we want to find a particular *node* in our DOM structure, we want to click on a node and see the path for that node:
+
+	function handleClick(event) {
+		event.stopPropagation();
+
+		var node = event.target;
+		var thisPath = node.nodeName;
+
+		while (node.parentNode) {
+			node = node.parentNode;
+			thisPath = node.nodeName + " > " + thisPath;
+		}
+ 
+		alert(thisPath);
+	}
+
+We go up the tree until the root node (where it doesn't have any parent). 
+*event.stopPropagation* is used to make sure it's only executed once.
+
+To *trigger* that code we add it to almost every element. 
+	
+	// Register the click event for every node
+	function attachHandler(node) {
+		if (node == null) return;
+		node.onclick = handleClick;
+
+		for (var i = 0; i < node.childNodes.length; i++) {
+			attachHandler(node.childNodes[i]); 
+		}	
+	}
+
+For SVG the code above would work as well. 
+
+
+## Locating Nodes ##
+
+Everything gets stored in the DOM structure, we can add/delete/copy/change anything there. There are 3 methods:
+
+1. **Use the exact DOM path**. We go down from the root. Sometimes mistakes are made and it's possible that the DOM structure changes between browsers.
+
+2. **Use the type**. This is the TagName, and function *getElementsByTagName()* is used, this could be *h2*... But we'd have to know which particular tag node we want to add because there could be multiple nodes with the same tag.
+
+3. **Use the name (id)**. Let's use function *getElementById()*. We can assign ids by...
+
+They have to be unique
+
+	<element_name id="thing"> ... </element_name>
+
+**setAttribute()**
+
+After finding something, we can set attributes for it.
+
+	the_node = getElementById("thisNode");
+	the_node.setAttribute("style", "color:red");
+
+This way may even be more common
+
+
+## Creating Nodes ##
+	
+To add nodes to a webpage, we create one node, but it's not yet in the DOM. Afterwards, it'll be added at the desired place.
+
+	result = document.createElement("div");
+
+	// For text nodes:
+	result = document.createTextNode("Hello");
+
+Then to add at the appropriate place, using **insertBefore()**:
+
+	// Create an horizontal ruler
+	newItem = document.createElement("hr");
+
+	destParent = document.getElementsByTagName("body")[0];
+	destParent.insertBefore(newItem, destParent.firstChild);
+
+Take into account that there will be only one body. Another way to add something to the DOM structure is using **appendChild()**
+
+	result = document.createTextNode("this is dynamically added text!");
+
+	document.getElementById("my_text").appendChild(result);
+
+All this code is working by clicking at anything in the page, like:
+
+	<body onclick="insert_new_text()">
+	</body>
+
+
+## Deleting Nodes ##
+
+To delete a node we can use *removeChild(node)*
+
+	this_node = getElementById("myPara");
+	this_node.parentNode.removeChild(this_node);
+
+We had to tell the parent of a node to delete it, and this is a bit troublesome! we have many ways to find a node:
+
+	var the_node = document.getElementById("firstP");
+	OR
+	= document.getElementsByTagName("p")[0];
+	OR
+	var the_parent = document.getElementById("theBody");
+	the_parent.removeChild(the_parent.firstChild);
+
+Some code to trigger events:
+
+	<button type="button" onclick="delete1()">Example 1</button>
+
+	<head> <script>
+		function ...
+	</script> </head>
+
+
+**Deleting all children**
+
+To delete all the children of the body:
+
+	var theNode = document.getElementById("theBody");
+
+	while (theNode.firstChild)
+		theNode.removeChild(theNode.firstChild);
+
+
+## Cloning nodes ##
+
+The idea is copy/paste for nodes. Remember a branch is an area of nodes altogether. To clone use *node.cloneNode()* or 
+
+For instance, to copy a list item node can be copied to the end of a list, oh no!, the first attempt is only copying the bullet, but not the text for the **li**. This means that the text elements were not copied.
+
+	var the_node = document.getElementById("myList").lastChild;
+	var the_clone = the_node.cloneNode();
+	document.getElementById("myList").appendChild(the_clone);
+
+This is because we didn't add the *true* argument, we wanted to copy the entire branch because there's a separated node for *text*.
+	
+	...
+	var the_clone = the_node.cloneNode(true);
+	document.getElementById("myList").appendChild(the_clone);
+
+So now everything underneath the li node is copied.
+
+
+## Practice questions on DOM ##
+
+Check source code on Quizes directory
+
+## Mouse Events ##
+
+Handling the mouse events, there could be some event types:
+
+* *onclick* when the user clicks on an object
+
+* *onmousedown* is triggered when the user presses the click, but hasn't let go of the button
+
+* *onmouseup* is the other side, when we let go of the mouse.
+
+On click is onmousedown followed by onmouseup.
+
+* *onmouseover* happens when one puts the mouse over an object
+
+* *onmouseout* when the mouse is moved away from an object.
+
+Let's see:
+
+	onmouseover="change_color('red')"
+
+	function change_color(new_color) {
+		document.getElementById("myDiv").style.background = new_color; 
+	}
+
+
+## Timer Events ##
+
+The idea is doing something later, possibly many times. We use a *timer*
+
+	var the_timer;
+	the_timer = setTimeout(do_something, 1000);
+
+Function *do_something* will be executed 1000 miliseconds later (then 1 second). It doesn't wait
+
+	var wait_duration;
+	function set_things_up() {
+		wait_duration = prompt("how long?");
+		setTimeout(show_wake_up_message, wait_duration);
+	}
+
+	function show_wake_up_message() {
+		alert("WAKE UP!");
+	}
+
+To move an image, we can do something with timers:
+
+	<img src="stones.png" id="stones_image" style="position:absolute;left:0;" >
+
+	function set_timer() {
+		the_image = document.getElementById("image");
+		x_position = x_position + 1;
+		the_image.style.left = x_position;
+		the_timer = setTimeout(set_timer, 50);
+	}
+
+If we want to stop that movement, or stop the timer. We can give a name for the timer:
+
+	the_timer = setTimeout...
+	clearTimeout(the_timer);
+
+
+**setInterval**
+
+To use this, do
+	
+	var the_timer;
+	the_timer = setInterval(do_something, 2000);
+
+This means that every 2 seconds, code on *on_something* will run. To stop this, user clear:
+
+	clearInterval(the_timer);
+
+For allowing this change, we did:
+
+	<body onload="the_timer=setInterval(do_timer, 50)">
+	...
+
+
+## Adding events using JavaScript ##
+
+Typically we'd do something on loading. Other times, we want to use the event handling by JavaScript. For the body, it's *window.onload*
+
+	function do_something() { alert("I was clicked"); }
+	window.onload = do_something;
+
+	window.addEventListener("load")
+
+In the last *addEventListener*, the first param will specify which event and what function will handle it. It is possible to have more than one event handler for one event, they get stored in an **array**.
+
+Like this, if we repeat that line of code, it would set 3 event handlers, they would get executed one by one in the order they were added.
+
+**Removing an event Handler**
+
+To remove an event handler :
+
+	var theBody = document.getElementById("theBody");
+	theBody.removeEventListener("load", do_something);
+
+But we can only remove those event listeners that were added by js, not the ones we add on the HTML tags.
+
+
+## More on Functions ##
+
+A typical way to make a function:
+
+	function functionOne() {
+	}
+
+But we could assign a function to a variable name. In this case the name of the function is not even necessary:
+
+	var functionTwo = function() {}
+	OR, ALTERNATIVELY
+	var functionTwo = function thisFunc() {}
+
+Normal functions get created when the webpage is loaded, but with these new functions being assigned to variables, it's not until reaching those lines that they get loaded.
+
+**Passing a function to a function**
+
+Functions are objects:
+
+	function check(a, b) {
+		if (b != 0) return true;
+		else return false;
+	}
+
+	function myDivide(fn, num, div) {
+		if (fn(num, div)) {
+			alert("it's ok");
+			return num/div;
+		} else {
+			alert ("not ok");
+		}
+	}
+
+	result = myDivide(check, 44, 1);
+
+This checks that we're not dividing a number by zero.
+ 
+
+**Returning a function from a Function**
+
+Let's see an example:
+
+	function counter() {
+		var count = 0;
+
+		return function() {
+			count++;
+			alert(count);
+		}
+	}
+
+	var count = counter();
+
+	// Now we can use this as function, wow!
+	count();
+	count();
+
+
+## An example DOM project ##
+
+This is for reviewing. IN the project, there's a series of squares generated by JS, each one was created using a *div*, they have a different position by using *top, left, width, height* attributes.
+
+We start with the bigger box and then go to add those that are smaller.
+
+	<body...
+		<script src="js_path.js"></script>
+	</body>
+
+There's a new meta element
+
+	<meta http-equiv="refresh" content="1">
+
+This **refreshes the page** after 1 second. We use `div {position: absolute}` because we'll be in charge of generating the code. Adding an id for the body is probably useful.
+
+	<body onload="my_function()"...>
+
+In the **JavaScript** file, there is:
+
+1. Set up the variables
+
+2. Within a loop: we generate a div node, set the div node attributes, we add the div to the body and finally adjust variables ready for next iteration.
+
+The position of the div is controlled by top and left. The first squre is 25px for top and left. It's very large (300!!). Then we go top + 10 (35px for top and left), the height and width decrease their dimensions in 20 px each iteration. 
+
+	var top_position = 25, left_position = 25;
+	...
+
+
+# END OF WEEK 3 #
