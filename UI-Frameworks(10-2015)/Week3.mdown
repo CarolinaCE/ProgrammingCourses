@@ -1,0 +1,510 @@
+# WEEK 3 #
+
+## Contents Table ##
+
+* [Bootstrap JavaScript Components Overview](#bootstrap-javascript-components-overview)
+
+* [Tabs, pills and Tabbed Navigation](#tabs-pills-and-tabbed-navigation)
+	* [Exercise with tabs](#exercise-with-tabs) 
+
+* [Hide and Seek: Collapse, Accordion, Scrollspy and Affix](#hide-and-seek-collapse-accordion-scrollspy-and-affix)
+	* [Collapse](#collapse)
+	* [Scrollspy and Affix](#Scrollspy-and-affix)
+	* [Exercise with accordion, scrollspy and affix](#exercise-with-accordion-scrollspy-and-affix)
+
+* [Revealing Content](#revealing-content)
+	* [Tooltips, Popovers and Modals](#tooltips-popovers-and-modals)
+	* [Exercise](#exercise)
+
+* [Carousel](#carousel)
+	* [Exercise](#exercise_1)
+
+* [Week's assignment](#weeks-assignment)
+
+
+# Bootstrap JavaScript Components Overview #
+
+So far, everything has been supported through the CSS classes, now we'll see the JS supported components. Many CSS components started with the base class, as the **button** class or the form class, or the table class. 
+
+	btn + (btn-primary, btn-info) + (btn-lg, btn-xs) + btn-block
+
+All the classes after *btn* act as modifiers. Same thing for the *nav* class with other modifiers like *navbar-nav*, *nav-tabs*, *nav-pills*. JS plugins depend upon JQuery and we don't have to write js code to make them work. We should include the JS files at the buttom of the `<body>`
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+Bootstrap applies what's called first class APIs with data-\* attributes such as *data-toggle* or *data-spy* for the HTML. There's no full flexibility this way though.
+
+
+# Tabs, pills and Tabbed Navigation #
+
+This enables presentation of contents to the user. The content itself will be enclosed in *tabbed pills*. We can have information organized in tabs indexed by some data point, and this enables visitors not to be overwhelmed with a lot of content but instead seeing the content presented in an organized manner. We're going to have a *ul* with the *nav nav-tabs* class
+
+	<ul class="nav nav-tabs" role="tablist">
+		<li role="presentation" class="active">
+			<a href="#peter">Peter Pan, CEO</a>
+		</li>
+		<li role="presentation">
+			<a href="#danny">Danny Witherspoon, CFO</a></li>
+			...
+	</ul>
+
+Each list item is presented as a tab, the default way is *horizontal* tabs. The href is used to refer to the tab pane content. One of the tabs will be marked as active. 
+
+An alternative we have is using the *nav-pills* class. It turns the navigational elements into a list of items and the one active will be clearly highlighted on the page.	
+
+If we apply the class *nav-justified*, by doing that, the nav elements will stretch the entire width of the parent element and occupy a proportional portion of the screen width. Elements can be disabled using the *disabled* class. Pills can be stacked vertically rather than horizontally whereas nav-tabs can't be vertical. Class *nav-stacked* for pills vertically.
+
+The content that will be included in the panes should be enclosed in `<div>` and each one should have the *tab-pane* class. 
+
+	<div class="tab-content">
+		<div role="tab-pane" class="tab-pane fade in active" id="peter">
+			<h3>Peter Pan <small>Chief Epicurious Officer</small></h3>
+			<p>...</p>
+		</div>
+	</div>
+
+Use the right ids to be able to load the content. The tabs should have the *data-toggle* equal to *tab* and the role is *tab*.
+
+
+## Exercise with tabs ##
+
+Changes on *aboutus.html*, for the Corporate leadership, replace the code to see it in navs.
+
+	<ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+        <a href="#peter" aria-controls="peter"
+         role="tab" data-toggle="tab">Peter Pan, CEO</a></li>
+        <li role="presentation"><a href="#danny"
+         aria-controls="danny" role="tab"
+         data-toggle="tab">Danny Witherspoon, CFO</a></li>
+        <li role="presentation"><a href="#agumbe"
+         aria-controls="agumbe" role="tab"
+         data-toggle="tab">Agumbe Tang, CTO</a></li>
+        <li role="presentation"><a href="#alberto"
+         aria-controls="alberto" role="tab"
+         data-toggle="tab">Alberto Somayya, Exec. Chef</a></li>
+    </ul>
+
+Nothing has happened if we click on the newly created tabs. We should enclose all the content into:
+
+	<div class="tab-content">
+	</div>
+
+Per CEO, enclose the contents within a tab-pane:
+
+	<div role="tabpanel" class="tab-pane fade in active" id="peter">
+        <h3>Peter Pan <small>Chief Epicurious Officer</small></h3>
+        <p> ... </p>
+    </div>
+
+*fade* means that when transitioning to the tab, it will fade in (transitions). The *in* class means that the tab should remain open, then for all the tabs but the first one it shouldn't be added.
+
+To introduce borders for the tab contents, go to the CSS. 
+
+	.tab-content {
+		border-left: 1px solid #ddd;
+		border-right: 1px solid #ddd;
+		border-bottom: 1px solid #ddd;
+		padding: 10px;
+	}
+
+
+# Hide and Seek: Collapse, Accordion, Scrollspy and Affix #
+
+
+## Collapse ##
+
+This is a plugin used to show and hide content into the web page. There is content displayed and on click on a button, information will be displayed or hidden.
+
+	<div class="col-md-5 col-md-offset-1">
+		<div class="collapse in" id="collapseExample">
+			<div class="well">
+				<h3>Some Collapsible Content</h3>
+				<p>This is content to be toggled</p>
+			</div>
+		...
+
+	<div class="col-md-3">
+		<a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+			Toggle Info
+		...
+
+The button triggers the showing/hiding of content. *data-toggle* is important and the *href* should refer to the id of the div with the section to be hidden. In the Restaurant project, we had used the plugin but a button:
+
+	<button type="button" class="nav-bar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-epanded="false" aria-controls="navbar"> ...
+
+When we see the app in a very small screen, by default, the navigation elements are collapsed (given the *collapsed* class). Starting with *in*, the content would be displayed.
+
+**Accordions** works by using a panel group. Clicking on other panels make the actual panel display and the others hide. THe entire content was enclosed in an outer div  which has been given the class as *panel-group*
+
+	<div class="panel-group" id="accordion" role="tablist">
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headingPeter">
+				<h3 class="panel-title">
+				<a role="button" data-toggle="collapse" data-parent="#accordion" href="#peter">
+					Peter Pan
+					<small>Chief Epicurious officer</small>...
+
+			</div>
+			<div role="tabpanel" class="panel-collapse collapse in" id="peter">
+				<div class="panel-body"
+				...
+
+The individual panels enclose the actual content and has a *panel-heading* where we have the name of the leader inside an a tag, that's why it can open and close the contents. *data-parent* attribute is used to indicate that the panel is one of the panels in the panel group there with the id accordion. The contents are enclosed in a div with *panel-body* class.
+
+
+## Scrollspy and Affix ##
+
+Two more plugins. Scrollspy is applied to a nav element such that as we scroll the webpage, whatever is currently visible on the screen will be highlighted in the nav page. At some point the navbar gets fixed in the screen and as we scroll, the section currently navigated is highlighted in the bar.
+
+**The Scrollspy** plugin tracks the current scroll position of the webpage and then reflects that by highlighting the appropriate nav item in the nav element. **The Affix** plugin enables the nav element to move with the scroll up to a certain point and then it will fix the position (change on the position CSS from relative to fixed)
+
+	<body data-spy="scroll" data-target="myScrollspy" data-offset="200">
+
+Adding a nav element to the page
+
+	<nav class="hidden-xs col-sm-2" id="myScrollspy">
+		<ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="400">
+
+		...
+
+The tracking of the scroll position begins 200 px from the top essentially to avoid tracking the upper 200 px. The first part contains the jumbotron, so we care about the rest of the webpage. For the tracking we need a nav element for the webpage. We should use as id, the same we added to the *data-target* attribute. 
+
+*data-offset-top* as 400px means that after the first 400px, the affix plugin will change the class given to the ul. The position will be changed from relative to *fixed*. 
+
+	.affix {
+		top:100px;
+	} 
+
+
+## Exercise with accordion, scrollspy and affix ##
+
+In the *aboutus.html* some changes happen. First, second and third rows have some empty space on the right side. Replace the tabs from the leadership stuff into an accordion:
+
+		<div class="panel-group" id="accordion"
+              role="tablist" aria-multiselectable="true">
+           . . .
+        </div>
+
+Replace the tab panes into:
+
+	 <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingPeter">
+            <h3 class="panel-title">
+                <a role="button" data-toggle="collapse"
+                     data-parent="#accordion" href="#peter"
+                     aria-expanded="true" aria-controls="peter">
+                    Peter Pan <small>Chief Epicurious Officer</small></a>
+            </h3>
+        </div>
+        <div role="tabpanel" class="panel-collapse collapse in"
+             id="peter"    aria-labelledby="headingPeter">
+            <div class="panel-body">
+                <p> . . . </p>
+            </div>
+        </div>
+    </div>
+
+Fill the other sections:
+
+	<div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingAlberto">
+            <h3 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse"
+                     data-parent="#accordion" href="#alberto"
+                     aria-expanded="false" aria-controls="alberto">
+                    Alberto Somayya <small>Executive Chef</small></a>
+            </h3>
+        </div>
+        <div role="tabpanel" class="panel-collapse collapse"
+             id="alberto"    aria-labelledby="headingAlberto">
+            <div class="panel-body">
+                <p> . . . </em></p>
+            </div>
+        </div>
+    </div>
+
+We'll have then *panel-heading* and then class *panel-collapse collapse in* for the first tab means that it will be visible. Class *collapse* allows turning things on and off. The body of the panel will have the class *panel-collapse collapse*. Now we'll introduce the *Scrollspy* and then we'll have to move contents to the left. All the content will be into a row with *10 columns*.
+
+To allow the Scrollspy, one must introduce the *data-target* and *data-offset* in the body of the page 
+
+	<body data-spy="scroll" data-target="#myScrollspy" data-offset="200">
+
+And inside the outer row for the container add
+
+	<nav class="hidden-xs col-sm-2" id="myScrollspy">
+        <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="400">
+            <li><a href="#history">Our History</a></li>
+            <li><a href="#corporate">Corporate</a></li>
+            <li><a href="#facts">Facts</a></li>
+        </ul>
+    </nav>
+	
+Having *hidden-xs* means that we won't have it for small screens. We should add the ids to the content of the rows. FInally, in the styles section
+
+	.affix {
+	    top:100px;
+	}
+
+
+# Revealing Content #
+
+## Tooltips, Popovers and Modals##
+
+Tooltips, popovers and modals are the way of overlaying content on the webpage. In order of flexibility there is *tooltip, popover, modal*. 
+
+**Tooltips** are a simple wy of presenting some information to the users and it pops up whenever the user hovers over an alement (button, link) that the tooltip was added to. There are three attributes to add:
+
+	data-toggle="tooltip"
+	data-placement="top|bottom|left|right"
+	title="message string"
+
+A small javascript code block should be added at the end of the page:
+
+	<script>
+		$(document).ready(function() {
+			$('[data-toggle="tooltip"]').tooltip();
+		});
+	</script>
+
+This goes after including bootstrap's javascript classes. 
+
+**Popovers** are a generalization of tooltips that allows to present both a title as well as the content in the popover. The title will be in bold at the top. There are 4 attributes:
+
+	data-toggle="popover"
+	data-placement="top|bottom|left|right"
+	title="message title"
+	data-content="message string"
+
+	<script>
+		$(document).ready(function() {
+			$('[data-toggle="popover"]').popover();
+		});
+	</script>
+
+The popover has to be triggered by licking on the button or the link.
+
+**Modals** are a more gentle way of presenting information to the users and allow to define the information to be presented in a more detailed way and it can be formatted and shown in the form of HTML code. They have a header, body and footer. The footer is more used to have buttons and the header has some info about the modal. 
+
+The modal is created by defining a *div* and giving it an id. The size of the modal can be specified (modal-lg, modal-sm) and the default is invoked if size not specified. Inside the *modal-content* div there are the 3 sections.  
+
+	<div id="lodinModal" class="modal fade" role="dialos">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Login</h4>
+				</div>
+				<div class="modal-body">
+				...
+
+To trigger the modal, we should include the information on either an *a* or a *button* tag:
+
+	<a data-toggle="modal" data-target="#loginModal">
+		Login
+	</a>
+
+
+## Exercise ##
+
+On the *index-html* file, there's the button *Reserve Table* and we'll introduce a tooltip for this. Navigate down to the jumbotron that contains the button:
+
+	<a type="button" class="btn btn-warning btn-block"
+        data-toggle="tooltip" title="Or Call us at +852 12345678"
+         data-placement="bottom" href="#reserveform">
+
+In the title attribute, the information to be displayed is given. To the bottom of the page, after the jquery's import line, add:
+
+	<script>
+        $(document).ready(function(){
+        	$('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+
+As specified by the bootstrap page, it's better including the modal code at the top of the page so that subsequent changes in the web page will not affect the modal behavior in any way. Then add after ending the *nav* section:
+
+	<div id="loginModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Login </h4>
+            </div>
+            <div class="modal-body">
+
+             . . .
+
+            </div>
+        </div>
+        </div>
+    </div>
+
+Into the *modal-body* move the form that we had fot the login at the top of the page:
+
+	<!-- Adding the navbar-form for Week 2's assignment -->
+    <form class="navbar-form navbar-right" role="form">
+        <div class="form-group">
+            <label class="sr-only" for="email">Email Address</label>
+            <input type="email" class="form-control" id="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password"
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <input type="checkbox" name="remember" value=""> <span style="color:white;"> Remember me</span>
+            </div> 
+            <button type="submit" class="btn btn-info btn-sm">Sign In</button>
+        </div>
+    </form>
+
+And the form is not a *nav-bar* form anymore, change it to *form-inline*. Introduce a cancel button to dismiss the form.
+
+	<button type="button" class="btn btn-default btn-sm"
+                       data-dismiss="modal">Cancel</button>
+
+We need a way of invoking the modal, In the nav bar, after the *ul*, add a new nav element:
+
+	<ul class="nav navbar-nav navbar-right">
+        <li><a data-toggle="modal" data-target="#loginModal">
+        <span class="glyphicon glyphicon-log-in"></span> Login</a>
+        </li>
+    </ul>
+
+As the data-target we should specify the id that was given to the modal (*loginModal*).
+
+
+# Carousel #
+
+It allows us to present a SlideShow on the webpage. The slides will keep sliding from left to right with a time duration, typically around three seconds between slides. There are controls to navigate to any of the images in the carousel.
+
+	<div id="mycarousel" class="carousel slide" data-ride="carousel">
+	</div>
+
+We'll introduce another div with class *carousel-inner* inside the outer div. Inside this div, individual slides will be identified by an inner div class item, one of them will be *active*, this will be the first slide in the slide deck being prpesented to the user: 
+
+	<div class="carousel-inner" role="listbox">
+		<div class="item active">
+			<img class="img-responsive" src="..." alt="...">
+			<div class="carousel-caption">
+			...
+
+		<div class="item">
+			...
+			<div class="carousel-caption">
+			...
+
+Each image can include an image together with a caption. For controls, we can have 2 controls: one allows you to select the specific slide, that is introduced visually in the form of dots, any of those dots can be clicked and we'll be moved to the particular slide. We have to have an *ol* list, the items will have two data attributes: *data-target* which is the carousel id and the *data-slide-to* with the number of the slide to load.
+
+Carousels also introduce left and right indicators that are shown as left & right arrow buttons at the two ends and they could be introduced with *a* tags:
+
+	<a class="left carousel-control" href="#mycaroussel" role="button" data-slide="prev">
+		<span class="glyphicono glyphicon-chevron-left" aria-hidden="true"></span>
+		<span class="sr-only">Previouos</span>
+	</a>
+
+	<a class="right carousel-control" href="#mycaroussel" role="button" data-slide="next">
+		<span class="glyphicono glyphicon-chevron-right" aria-hidden="true"></span>
+		<span class="sr-only">Next</span>
+	</a>
+
+The class include a glyphicon inside. Manually, those buttons will take us left and right.
+
+
+## Exercise ##
+
+On the *index.html* file, add the carousel, this is a JS based component and needs js to work correctly. Right after the jumbotron we'll add the carousel, it will be in its own row. Add as first content-row of the container div:
+
+	<div class="row row-content">
+       <div class="col-xs-12">
+
+        </div>
+    </div>
+
+Start filling the information for the row:
+
+	<div id="mycarousel" class="carousel slide" data-ride="carousel"></div>	
+
+The content for the carousel would be:
+
+	 <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img class="img-responsive"
+             src="img/uthappizza.png" alt="Uthappizza">
+            <div class="carousel-caption">
+            <h2>Uthappizza  <span class="label label-danger">Hot</span> <span class="badge">$4.99</span></h2>
+            <p>A unique combination of Indian Uthappam (pancake) and
+              Italian pizza, topped with Cerignola olives, ripe vine
+              cherry tomatoes, Vidalia onion, Guntur chillies and
+              Buffalo Paneer.</p>
+            <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
+            </div>
+        </div>
+        <div class="item">
+            ...
+            <div class="carousel-caption">
+            <h2>Weekend Grand Buffet <span class="label label-danger label-xs">New</span></h2>
+             ...
+            </div>
+        </div>
+        <div class="item">
+            ...
+            <div class="carousel-caption">
+             ...
+            </div>
+        </div>
+    </div>
+
+Move the content of the other 2 rows to the previous markup. Now, to make the whole thing work, add in the css file:
+
+	.carousel {
+	    background:#1A237E;
+	}
+	.carousel .item {
+	  height: 300px;
+	}
+	.item img {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    min-height: 300px;
+	}
+
+Every individual item will have a 300px height. The position is absolute for the images inside the items to have them fixed at the left side of the items with 0,0 as left corner. The default delay is 3 seconds. To add the controls for the carousel, start with the indicators (dots) and add it before the wrapper for slides:
+
+	<!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#mycarousel" data-slide-to="1"></li>
+        <li data-target="#mycarousel" data-slide-to="2"></li>
+    </ol>
+
+And at the bottom for the carousel div, in order to have the controls for moving right and left, add:
+	
+	<!-- Controls -->
+    <a class="left carousel-control" href="#mycarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#mycarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+
+Now we can navigate through the slides manually too. 
+
+
+# Week's assignment #
+
+1. Remove tooltip of the 'Reserve Table' button because we'll have a reservation form on click.
+
+2. Move the form to Reserve a Table to a modal window.
+
+3. Show the modal when the button is clicked.
+
+4. Include another row in the modal form with a button group with 2 radio buttons to allow the users to make a selection.
+

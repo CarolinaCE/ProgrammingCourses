@@ -1,0 +1,1551 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headeranchor-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .headeranchor-link:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .headeranchor,
+.markdown-body h2 .headeranchor,
+.markdown-body h3 .headeranchor,
+.markdown-body h4 .headeranchor,
+.markdown-body h5 .headeranchor,
+.markdown-body h6 .headeranchor {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .headeranchor-link,
+.markdown-body h2:hover .headeranchor-link,
+.markdown-body h3:hover .headeranchor-link,
+.markdown-body h4:hover .headeranchor-link,
+.markdown-body h5:hover .headeranchor-link,
+.markdown-body h6:hover .headeranchor-link {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .headeranchor-link .headeranchor,
+.markdown-body h2:hover .headeranchor-link .headeranchor,
+.markdown-body h3:hover .headeranchor-link .headeranchor,
+.markdown-body h4:hover .headeranchor-link .headeranchor,
+.markdown-body h5:hover .headeranchor-link .headeranchor,
+.markdown-body h6:hover .headeranchor-link .headeranchor {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* Multimarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><title>Week4</title></head><body><article class="markdown-body"><h1 id="week-4"><a name="user-content-week-4" href="#week-4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>WEEK 4</h1>
+<h2 id="contents-table"><a name="user-content-contents-table" href="#contents-table" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Contents Table</h2>
+<ul>
+<li><a href="#bootstrap-javascript-components-overview">Bootstrap JavaScript Components Overview</a></li>
+</ul>
+<h1 id="bootstrap-and-jquery"><a name="user-content-bootstrap-and-jquery" href="#bootstrap-and-jquery" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Bootstrap and JQuery</h1>
+<p>Bootstrap&rsquo;s javascript support is through JS plugins, they are written in JQuery. We can write JS baed code in order to control the Bootstrap components.</p>
+<p><strong>JQuery</strong> is a lightweight Javascript library that is feature rich and provides a lot of interesting methods that allow doing HTML/DOM manipulation, CSS manipulation, respond to HTML events, it allows us to do effects and animations and finally communicating with a server using AJAX.</p>
+<p>JQuery syntax starts with a dollar sign ($) that defines or accesses to JQuery. Following within parentheses there is a selector to select an element. Then there&rsquo;s the action to be performed on the elements that match the selector criteria:</p>
+<pre><code>$(selector).action();
+
+//Example
+$("p").hide();
+$("#mycarousel").carousel('pause');
+</code></pre>
+<p>The code is enclosed inside <strong>script</strong> tags</p>
+<pre><code>&lt;script&gt;
+    $(deocument).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+&lt;/script&gt;
+</code></pre>
+<h2 id="jquery-selectors"><a name="user-content-jquery-selectors" href="#jquery-selectors" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>JQuery selectors</h2>
+<p>Any HTML element can be a selectors (p, button). We can uniquely identify an element through the id attribute, or with a certain class. We can also specify based on an attributes: <code>"[href]", "[data-toggle="tooltip"]"</code>. The current element <em>$(this)</em>.</p>
+<h2 id="jquery-events"><a name="user-content-jquery-events" href="#jquery-events" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>JQuery Events</h2>
+<p>JQuery provides methods to respond to user interactions on a web page. DOM events include mouse clicks, mouse in or out of a region, keyboard interactions, form-related interactions like entering info into a field or event the entire document window getting loaded, resized, unloaded. </p>
+<p>For example, for the bootstrap carousel, we have data attributes</p>
+<ul>
+<li>
+<p>data-slide = prev | next</p>
+</li>
+<li>
+<p>data-slide-to = 0 | 1 | 2 | &hellip;   </p>
+</li>
+<li>
+<p>data-ride = carousel</p>
+</li>
+<li>
+<p>data-interval = 5000</p>
+</li>
+</ul>
+<p>We can identify the carousel by using a selector as the <em>carousel</em> class and the carousel action on it:</p>
+<pre><code>$('.carousel').carousel({interval: 2000});
+</code></pre>
+<p>Like this we changed the interval transitions. Other possibilities for the carousel action are: <em>cycle, pause, set a number to go to a slide, prev, next</em>. The carousel itself causes 2 events to be generated. </p>
+<p>The <strong>slide.bs.carousel</strong> event is fired when the slide transition begins and when a transition was finished for a next slide event <strong>slid.bs.carousel</strong> is fired:</p>
+<pre><code>$("#myCarousel").on('slide.bs.carousel', function() {
+    // do something
+});
+</code></pre>
+<p>The <em>on</em> action takes as first param the event to which the function responds and then inside the function we specify what should be done when an event occurs.</p>
+<h2 id="jquery-exercise"><a name="user-content-jquery-exercise" href="#jquery-exercise" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>JQuery exercise</h2>
+<p>We&rsquo;ll introduce a couple of buttons to control the carousel like starting and stopping the slides. Let&rsquo;s add 2 buttons at the right bottom corner of the carousel (<em>index.html</em> file), add these lines after the code that adds the right chevron (a element):</p>
+<pre><code>&lt;div class="btn-group" id="carouselButtons"&gt;
+    &lt;button class="btn btn-danger btn-xs" id="carousel-pause"&gt;
+        &lt;span class="glyphicon glyphicon-pause" aria-hidden="true"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button class="btn btn-danger btn-xs" id="carousel-play"&gt;
+        &lt;span class="glyphicon glyphicon-play" aria-hidden="true"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+<p>To position the control buttons correctly, add in the CSS file:</p>
+<pre><code>#carouselButtons {
+    right:0px;
+    position: absolute;
+    bottom: 0px;
+}
+</code></pre>
+<p>Finally, add after the inclusion of the js files just before the end of the body tag:</p>
+<pre><code>&lt;script&gt;
+    $(document).ready(function(){
+        $("#mycarousel").carousel( { interval: 2000 } );
+                      $("#carousel-pause").click(function(){
+            $("#mycarousel").carousel('pause');
+        });
+                    $("#carousel-play").click(function(){
+            $("#mycarousel").carousel('cycle');
+        });
+    });
+&lt;/script&gt;
+</code></pre>
+<p>Thus, we changed the Carousel interval to 2 seconds and added the functionality for the pause and play buttons.</p>
+<h1 id="nodejs-and-npm"><a name="user-content-nodejs-and-npm" href="#nodejs-and-npm" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Node.js and NPM</h1>
+<p><strong>Node.js</strong> is a JavaScript runtime that is built on top of the Chrome V8 JavaScript engine. This engine was initially built in the Chrome browser and to support the JS that runs within the browser. If this code is separated from the browser, we&rsquo;re able to support the running of JavaScript programs on our machines. </p>
+<p>The Node environment uses an event-driven, non-blocking I/O model which makes it very lightweight and efficient to handle primarily data driven websites.</p>
+<h2 id="node-architecture"><a name="user-content-node-architecture" href="#node-architecture" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Node architecture</h2>
+<p>At the bottom layer there is Chrome V8 engine with libuv (C) that enables interaction with the underlined computer system and the devices and son on. Then, on top of these, there are Node Bindings written in C++. The uppermost layer is the Node Core or standard library completely implemented in JavaScript.</p>
+<p>The <strong>node JavaScript runtime</strong> has been used in 2 different ways. First, some people have written a set of web development utilities to run on node and support various use cases such us <em>bower, grunt, gulp, yeoman</em>. Node also brings JS to the server side and then with a single language both front and backends could be targeted.</p>
+<h2 id="node-package-manager"><a name="user-content-node-package-manager" href="#node-package-manager" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Node Package Manager</h2>
+<p>Known as NPM, it allows managing the ecosystem of node modules/packages. A Node package contains the JavaScript files that implement the libraries and a file called <em>package.json</em> that is like a manifest file.</p>
+<h2 id="setting-up-things-in-the-exercise"><a name="user-content-setting-up-things-in-the-exercise" href="#setting-up-things-in-the-exercise" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Setting up things in the Exercise</h2>
+<p>Let&rsquo;s set up our environment, go to Node.js page *<em><a href="https://nodejs.org/en/*"><a href="https://nodejs.org/en/*">https://nodejs.org/en/*</a></a></em> and install it on the machine. The professor&rsquo;s versions for Node and NPM are, respectively 4.2.0 and 2.14.7.</p>
+<h2 id="understanding-node-modules"><a name="user-content-understanding-node-modules" href="#understanding-node-modules" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Understanding Node Modules</h2>
+<p><strong>Solving a Quadratic Equation</strong></p>
+<p>As we know, we have 2 roots for an equation. See example in <em>NodeExamples</em> folder on the course. To <strong>run</strong> the js program using node, with a terminal run:</p>
+<pre><code> node simplequad
+</code></pre>
+<p>We have to be in the folder where the js file is. Now, let&rsquo;s start modifying things a little. Let&rsquo;s create file <em>discriminant.js</em> to move the function that calculates the discriminant, like:</p>
+<pre><code>module.exports = function(a,b,c) {
+   return (b*b - 4*a*c);
+}
+</code></pre>
+<p>By writing <em>module.exports</em> we created a new node module. Now we can use this module on other modules, let&rsquo;s see how on a new file <em>quadratic.js</em></p>
+<pre><code>var disc = require('./discriminant');
+
+module.exports = function(a,b,c,next) {
+    if (a == 0) {
+        next(new Error("a should not be zero"));
+    }
+    else if ( disc(a,b,c) &lt; 0) {
+        next(new Error("discriminant is less than zero, no real roots"));
+    }
+    else
+         return next(null, {
+            root1:function() {
+                return (-b - Math.sqrt(disc(a,b,c)))/(2*a);
+            },
+            root2:function() {
+                return (-b + Math.sqrt(disc(a,b,c)))/(2*a);
+            }
+        });
+}
+</code></pre>
+<p>To use the <em>discriminant</em> module, we used the <em>require</em> and module name. The expectation is that there is a file on this folder named <em>discriminant.js</em> .</p>
+<p>In the file, <em>next</em> is going to be acting as a parameter which brings in a function and then returns some value to the caling JS code. If something fails, it means that I&rsquo;ll return next object which contains an error message inside of it. If nothing fails, I&rsquo;ll return a js object that contains 2 functions inside: the one for the first root and the one for the second root.</p>
+<p>To make use o the <strong>Quadratic solver</strong> that we have already written as a module, create <em>solve.js</em> and require the quadratic module:</p>
+<pre><code>var quad = require('./quadratic');
+
+quad(1,4,1, function(err,quadsolve) {
+    if (err) {
+            console.log('Error: ', err);
+        }
+        else {
+        console.log("Roots are "+quadsolve.root1() + "  " + quadsolve.root2());
+        }
+});
+</code></pre>
+<p>The js extension is automatically assumed by node. We can see a function that taxes 2 parameters: err (error param) and quadsolve. If we got an error, then the first parameter will be set not null and we&rsquo;re checking it as a conditional. The last param is a pointer or reference to a function here.</p>
+<p>If the error was not null, then just print out the error onto the screen and if no error, then print out the roots by accessing them <em>quadsolve.root1</em>, <em>quadsolve.root2</em>. To execute it, do:</p>
+<pre><code>node solve
+
+// Output
+Roots are -3.732050807568877  -0.2679491924311228
+</code></pre>
+<p>Then the solver module produces the real roots correctly. To see when the quadratic solver cannot find the root, change the params, first the a to 0. Then set the params to 4, 2, 1.</p>
+<pre><code>Error:  [Error: a should not be zero]
+Error:  [Error: discriminant is less than zero, no real roots]
+</code></pre>
+<p>Everytime we change something, we need to do it in the JS. We could use the Node module called <strong>Prompt</strong>. With NPM, we could look for global modules which are available to us </p>
+<pre><code>npm search prompt
+</code></pre>
+<p>We&rsquo;ll get the list of NPM modules with the word &ldquo;prompt&rdquo; in the name or the description. We&rsquo;ll use <strong>prompt</strong> to let the user enter the a, b and c parameters.</p>
+<pre><code>npm init
+</code></pre>
+<p>Enter <em>quadsolver</em> as name, <em>1</em> as version number, description is <em>A simple quadratic solver</em>. Entry point is <em>solve.js</em>. Everything else can be skipped. NPM will automatically create a package.json file.</p>
+<p>Next, install the prompt module into my folder:</p>
+<pre><code>npm install prompt -S
+</code></pre>
+<p>Doing this, this will be saved as a dependency inside the package.json created. Inside a dependencies key on the package.json file we&rsquo;ll see the prompt module added. If we provide only this package file and the js files. ON their machines, they can type <em>npm install</em> and it&rsquo;ll install the prompt node module and this is the advantage of node!!</p>
+<p>Make some changes on the <em>solve.js</em> file:</p>
+<pre><code>var quad = require('./quadratic');
+
+var prompt = require('prompt');
+
+prompt.get(['a', 'b', 'c'], function (err, result) {
+    if (err) { return onErr(err); }
+    console.log('Command-line input received:');
+    console.log('a: ' + result.a);
+    console.log('b: ' + result.b);
+    console.log('c: ' + result.c);
+
+        quad(result.a,result.b,result.c, function(err,quadsolve) {
+            if (err) {
+                 console.log('Error: ', err);
+                }
+                else {
+             console.log("Roots are "+quadsolve.root1() + "  " + quadsolve.root2());
+                }
+       });
+});
+</code></pre>
+<p><em>prompt.get</em> is used to get the values, we still use err, result as parameters. ON error, we&rsquo;ll return it. We are now using the values as the 3 coefficients for the function.</p>
+<p>A new folder <em>node_modules</em> was created and it includes the prompt folder. This is the destination for any node modules that are fetched.</p>
+<h1 id="css-preprocessors-less-and-sass"><a name="user-content-css-preprocessors-less-and-sass" href="#css-preprocessors-less-and-sass" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>CSS Preprocessors: Less and Sass</h1>
+<p>Bootstrap is built using Less, they also have a Sass port. CSS is wonderful for styling and applying various properties of HTML elements. But CSS is rather limited when it comes to geing like a typical sprogramming language and doesn&rsquo;t support things like variables, nesting, expressions and functions. Having these possibilities would improve everything. </p>
+<p>To write CSS in a more programming style, there are preprocessors: <strong>Less, Sass, Stylus</strong> are the most popular ones. The code should be transformed into CSS code.</p>
+<h2 id="typical-css-preprocessors-features"><a name="user-content-typical-css-preprocessors-features" href="#typical-css-preprocessors-features" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Typical CSS Preprocessors features</h2>
+<ul>
+<li>
+<p>Variables</p>
+</li>
+<li>
+<p>Nesting selectors</p>
+</li>
+<li>
+<p>Mixins</p>
+</li>
+<li>
+<p>Functions &amp; expressions</p>
+</li>
+</ul>
+<p>Let&rsquo;s see a comparison between the preprocessors:</p>
+<pre><code>Less
+===================================
+@indigo: #303f9f;
+@carousel-height: 300px;
+
+.navbar-inverse {
+    background: @indigo;
+}
+
+.carousel .item {
+    height: @carousel-height;
+}
+
+
+Sass
+=================================
+$indigo: #303f9f;
+$carousel: 300px;
+
+.navbar-inverse {
+    background: $indigo;
+}
+
+.carousel .item {
+    height: $carousel-height;
+}
+</code></pre>
+<p>Variables can be defined in both preprocessors and they change with the symbol used. We have scope in this code as well. </p>
+<p>The advantage of using the preprocessors is nesting because we can realize that some classes will be styled in a way depending on other classes. With nesting, one can nest the classes</p>
+<pre><code>Less
+================
+@dark-indigo:   #1a237e;
+
+//  Height  variables   
+@carousel-height:   300px;  
+.carousel   {   
+    background:@dark-indigo;    
+    .item   {   
+        height: @carousel-height;   
+        img {   
+            left:   0;  
+            min-height: @carousel-height;   
+            position:   absolute;   
+            top:    0;  
+        }   
+    }   
+}
+
+Sass
+=================
+$dark-indigo:   #1a237e;    
+//  Height  variables   
+$carousel-height:   300px;  
+.carousel   {   
+    background:$dark-indigo;    
+    .item   {   
+        height: $carousel-height;   
+        img {   
+            left:   0;  
+            min-height: $carousel-height;   
+            position:   absolute;   
+            top:    0;  
+        }   
+    }   
+}
+</code></pre>
+<p>Sometimes we might have some classes and then others that share similar properties with the previous classes. With standard CSS, we&rsquo;d have to define each hierarchy separately. With <strong>mixins</strong>, we can define a set of attributes that can be used for several classes:</p>
+<pre><code>Less
+===================
+.zero-margin    {   
+    margin:0px  auto;   
+    background:@white;  
+    }   
+    .row-header {   
+    .zero-margin;   
+    padding:0px auto;   
+    }   
+    .row-content    {   
+    .zero-margin;   
+    border-bofom:   1px ridge;  
+    min-height:400px;   
+    padding:    50px    0px 50px    0px;    
+}
+
+Sass
+====================
+@mixin  zero-margin {   
+    margin:0px  auto;   
+    background:@white;  
+}   
+.row-header {   
+    @include    zero-margin;    
+    padding:0px auto;   
+}   
+.row-content    {   
+    @include    zero-margin;    
+    border-bofom:   1px ridge;  
+    min-height:400px;   
+    padding:    50px    0px 50px    0px;    
+}
+</code></pre>
+<p>In less, it&rsquo;s defined as a class. Sass will define it with <em>@mixin</em> and use it with <em>@include mixin-name;</em>. Mixins can also have parameters:</p>
+<pre><code>Less
+=================
+.zero-margin    (@pad-up-dn:    0px,    @pad-left-right:    0px)    {   
+    margin:0px  auto;   
+    padding:    @pad-up-dn  @pad-left-right;    
+}   
+.row-header {   
+    .zero-margin(); 
+    padding:0px auto;   
+}   
+.row-content    {   
+    .zero-margin    (50px,  0px);   
+    border-bofom:   1px ridge;  
+    min-height:400px;   
+}
+
+Sass
+====================
+@mixin  zero-margin ($pad-up-dn,    $pad-left-right)    {   
+    margin:0px  auto;   
+    padding:    $pad-up-dn  $pad-left-right;    
+}   
+.row-header {   
+    @include    zero-margin(0px,    0px);   
+    padding:0px auto;   
+}   
+.row-content    {   
+    @include    zero-margin (50px,  0px);   
+    border-bofom:   1px ridge;  
+    min-height:400px;   
+}
+</code></pre>
+<p>We have params for the left and up padding. If I don&rsquo;t use any params (<em>.zero-margin()</em>) in less, the default params will be used. </p>
+<p>We can also perform mathematical operations</p>
+<pre><code>height: @carousel-height * 2;
+</code></pre>
+<p>Other features are supported by both preprocessors like functions for color operations like color blending. On the bootstrap site, we can see <strong>Using less</strong> describing how it was used for bootstrap, one can download these and customize them to have modified versions.</p>
+<h2 id="preprocessors-exercise-less"><a name="user-content-preprocessors-exercise-less" href="#preprocessors-exercise-less" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Preprocessors exercise: less</h2>
+<p>We&rsquo;ll need <em>lessc compiler</em> that is a node module that can be installed on the system. Create a file named <em>mystyles.less</em></p>
+<pre><code>@white: #ffffff;
+@off-white: #eeeeee;
+@lt-gray: #dddddd;
+@indigo: #303f9f;
+@dark-indigo: #1a237e;
+@light-indigo: #7986CB;
+
+// Height variables
+@carousel-height: 300px;
+</code></pre>
+<p>Then add some classes as mixins:</p>
+<pre><code>.zero-margin (@pad-up-dn: 0px, @pad-left-right: 0px) {
+    margin:0px auto;
+    padding: @pad-up-dn @pad-left-right;
+}
+</code></pre>
+<p>And now use the mixin to define:</p>
+<pre><code>.row-header {
+    .zero-margin();
+}
+.row-content {
+    .zero-margin (50px, 0px);
+    border-bottom: 1px ridge;
+    min-height:400px;
+}
+.row-footer {
+    .zero-margin(20px, 0px);
+    background-color: #AfAfAf;
+}
+.jumbotron {
+    .zero-margin(70px, 30px);
+    background:@light-indigo;
+    color:floralwhite;
+}
+
+.row-header {
+    .zero-margin();
+}
+.row-content {
+    .zero-margin (50px, 0px);
+    border-bottom: 1px ridge;
+    min-height:400px;
+}
+.row-footer {
+    .zero-margin(20px, 0px);
+    background-color: #AfAfAf;
+}
+.jumbotron {
+    .zero-margin(70px, 30px);
+    background:@light-indigo;
+    color:floralwhite;
+}
+</code></pre>
+<p>Next, define a carousel class:</p>
+<pre><code>.carousel {
+    background:@dark-indigo;
+    .item {
+        height: @carousel-height;
+        img {
+            left: 0;
+            min-height: @carousel-height;
+            position: absolute;
+            top: 0;
+        }
+    }
+}
+
+.navbar-inverse {
+    background: @indigo;
+    color:@white;
+    .navbar-nav&gt;.active&gt;a {
+        background: @dark-indigo;
+        color: @white;
+        &amp;:hover {
+            background: @dark-indigo;
+            color: @white;
+        }
+        &amp;:focus {
+            background: @dark-indigo;
+            color: @white;
+        }
+    }
+    .navbar-nav&gt;.open&gt;a {
+        background: @dark-indigo;
+        color: @white;
+        &amp;:hover {
+            background: @dark-indigo;
+            color: @white;
+        }
+        &amp;:focus {
+            background: @dark-indigo;
+            color: @white;
+        }
+    }
+    .navbar-nav {
+        .open {
+            .dropdown-menu&gt;li&gt;a {
+                background-color: @indigo;
+                color:@off-white;
+                &amp;:hover {
+                    color:#000000;
+                }
+            }
+            .dropdown-menu {
+                background-color: @indigo;
+                color:@off-white;
+            }
+        }
+    }
+}
+</code></pre>
+<p>Finally, the classes that maybe won&rsquo;t use the preprocessor advantages:</p>
+<pre><code>address {
+    color:#0f0f0f;
+    font-size:80%;
+    margin:0px;
+}
+body {
+    align:center;
+    padding:50px 0px 0px 0px;
+    z-index:0;
+}
+.tab-content {
+    border-bottom: 1px solid @lt-gray;
+    border-left: 1px solid @lt-gray;
+    border-right: 1px solid @lt-gray;
+    padding: 10px;
+}
+.affix {
+    top:100px;
+}
+#carouselButtons {
+    bottom: 0px;
+    position: absolute;
+    right:0px;
+}
+</code></pre>
+<p>Now we&rsquo;ll install the less module as a global module:</p>
+<pre><code>npm install -g less
+</code></pre>
+<p><em>-g</em> indicates that the module will be global and then can be used by any projects that we create. Use <em>sudo</em> on mac or linux. The installation will make a compiler called <em>lessc</em> available.</p>
+<pre><code>lessc file_name.less
+</code></pre>
+<p>By default, the css file is printed in the console directly, but we could capture it into a css file as well. First take the original css </p>
+<pre><code>move mystyles.css mystyles-old.css
+</code></pre>
+<p>Use <em>rename</em> command on windows. Next, run the compiler as:</p>
+<pre><code>lessc mystyles.less &gt; mystyles.css
+</code></pre>
+<h1 id="web-tools-bower"><a name="user-content-web-tools-bower" href="#web-tools-bower" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Web Tools: bower</h1>
+<p>Building a website required doing a lot of work manually like fetching bootstrap, downloading everything, font awesome, etc. If we had automation tools, that can help us to quickly accomplish the tasks with few commands. With node, web developers realize that they could easily use the JavaScript skills to write tools to help automate tasks that are repetitive.</p>
+<ul>
+<li><strong>Bower</strong> package manager for the web</li>
+<li><strong>Grunt and gulp</strong> task automation</li>
+<li><strong>Yo</strong> web app scaffolding</li>
+<li><strong>Yeoman</strong> workflow designed around using Yo, Bower and Grunt.</li>
+</ul>
+<p><strong>Bower</strong> and the other tools are command line tools that we&rsquo;ll execute using a terminal. They are built in JS and run using node.</p>
+<h2 id="bower"><a name="user-content-bower" href="#bower" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Bower</h2>
+<p>It&rsquo;s a package manager for the web. A lot of packages should be fetched in the process of developing. Bower automates the search of the web packages.</p>
+<h2 id="bower-exercise"><a name="user-content-bower-exercise" href="#bower-exercise" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Bower Exercise</h2>
+<p>Install bower as a global node module.</p>
+<pre><code>npm install -g bower
+</code></pre>
+<p>Bower also uses a file called <em>bower.json</em> which keeps track of all the components which we are making use of in the currentn web project. In the project folder:</p>
+<pre><code>bower init
+</code></pre>
+<p>Name: conFusion, version: 1.0.0, description: Website for an awesome restaurant, main file: index.html, keywords: conFusion, Fusion Restaurant. Authors can have your own name. FInally the json file is created by the command and is in the conFusion folder.</p>
+<p>To install bootstrap, let&rsquo;s use bower:</p>
+<pre><code>bower install bootstrap -S
+</code></pre>
+<p>The -S is used to save the information in the bower.json file. When bower installs it, it understand that BS needs jquery and it&rsquo;ll automatically go and fetch jquery and then install it for us. To fetch font awesome:</p>
+<pre><code>bower install font-awesome -S
+</code></pre>
+<p>What did it do? there&rsquo;s a folder <em>bower_components</em> now. It contains 3 folders: bootstrap, font-awesome and jquery. Each dir contains a lot of files incruding a <em>dist</em> folder that is the one our project needs. Check all the folders to see similar results.</p>
+<p>Check theh <em>bower.json</em> file where some <em>dependencies</em> have been added, they include the versions of the dependencies. Delete all folders on the bower_components!!</p>
+<p>If we want bower to install what we had, type <em>bower install</em> and bower will reinstall every dependency by checking the <em>bower.json</em> file. For our big projects we&rsquo;ll only add our js files, not those from the dependencies. We also save our <em>bower.json</em></p>
+<p>In our <em>index.html</em> page, we can replace the references to the css files:</p>
+<pre><code>&lt;link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+&lt;link href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet"&gt;
+&lt;link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet"&gt;
+</code></pre>
+<p>Do the same for the js files:</p>
+<pre><code>&lt;script src="bower_components/jquery/dist/jquery.min.js"&gt;&lt;/script&gt;
+&lt;!-- Include all compiled plugins (below), or include individual files as needed --&gt;
+&lt;script src="bower_components/bootstrap/dist/js/bootstrap.min.js"&gt;&lt;/script&gt;
+</code></pre>
+<p>Do the same changes for all the other html files. The difference is that we are now using the files that Bower fetched for us!!</p>
+<h2 id="assignment-4"><a name="user-content-assignment-4" href="#assignment-4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Assignment 4</h2>
+<p>We&rsquo;ll use js for triggering the modals for the Login, the Reserve table modal. </p>
+<p><code>Placeholder for code!!</code></p></article></body></html>

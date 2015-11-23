@@ -1,0 +1,629 @@
+# WEEK 4 #
+
+## Contents Table ##
+
+* [Bootstrap JavaScript Components Overview](#bootstrap-javascript-components-overview)
+
+
+
+# Bootstrap and JQuery #
+
+Bootstrap's javascript support is through JS plugins, they are written in JQuery. We can write JS baed code in order to control the Bootstrap components.
+
+**JQuery** is a lightweight Javascript library that is feature rich and provides a lot of interesting methods that allow doing HTML/DOM manipulation, CSS manipulation, respond to HTML events, it allows us to do effects and animations and finally communicating with a server using AJAX.
+
+JQuery syntax starts with a dollar sign ($) that defines or accesses to JQuery. Following within parentheses there is a selector to select an element. Then there's the action to be performed on the elements that match the selector criteria:
+
+	$(selector).action();
+
+	//Example
+	$("p").hide();
+	$("#mycarousel").carousel('pause');
+
+The code is enclosed inside **script** tags
+
+	<script>
+		$(deocument).ready(function() {
+			$('[data-toggle="tooltip"]').tooltip();
+		});
+	</script>
+
+## JQuery selectors ##
+
+Any HTML element can be a selectors (p, button). We can uniquely identify an element through the id attribute, or with a certain class. We can also specify based on an attributes: `"[href]", "[data-toggle="tooltip"]"`. The current element *$(this)*.
+
+## JQuery Events ##
+
+JQuery provides methods to respond to user interactions on a web page. DOM events include mouse clicks, mouse in or out of a region, keyboard interactions, form-related interactions like entering info into a field or event the entire document window getting loaded, resized, unloaded. 
+
+For example, for the bootstrap carousel, we have data attributes
+
+* data-slide = prev | next
+
+* data-slide-to = 0 | 1 | 2 | ...   
+
+* data-ride = carousel
+
+* data-interval = 5000
+
+We can identify the carousel by using a selector as the *carousel* class and the carousel action on it:
+
+	$('.carousel').carousel({interval: 2000});
+
+Like this we changed the interval transitions. Other possibilities for the carousel action are: *cycle, pause, set a number to go to a slide, prev, next*. The carousel itself causes 2 events to be generated. 
+
+The **slide.bs.carousel** event is fired when the slide transition begins and when a transition was finished for a next slide event **slid.bs.carousel** is fired:
+
+	$("#myCarousel").on('slide.bs.carousel', function() {
+		// do something
+	});
+
+The *on* action takes as first param the event to which the function responds and then inside the function we specify what should be done when an event occurs.
+
+
+## JQuery exercise ##
+
+We'll introduce a couple of buttons to control the carousel like starting and stopping the slides. Let's add 2 buttons at the right bottom corner of the carousel (*index.html* file), add these lines after the code that adds the right chevron (a element):
+
+
+	<div class="btn-group" id="carouselButtons">
+        <button class="btn btn-danger btn-xs" id="carousel-pause">
+    	    <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
+        </button>
+        <button class="btn btn-danger btn-xs" id="carousel-play">
+    	    <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+        </button>
+    </div>
+
+To position the control buttons correctly, add in the CSS file:
+
+	#carouselButtons {
+	    right:0px;
+	    position: absolute;
+	    bottom: 0px;
+	}
+
+Finally, add after the inclusion of the js files just before the end of the body tag:
+
+	<script>
+        $(document).ready(function(){
+            $("#mycarousel").carousel( { interval: 2000 } );
+                          $("#carousel-pause").click(function(){
+                $("#mycarousel").carousel('pause');
+            });
+                        $("#carousel-play").click(function(){
+                $("#mycarousel").carousel('cycle');
+            });
+        });
+    </script>
+
+Thus, we changed the Carousel interval to 2 seconds and added the functionality for the pause and play buttons.
+
+
+# Node.js and NPM #
+
+**Node.js** is a JavaScript runtime that is built on top of the Chrome V8 JavaScript engine. This engine was initially built in the Chrome browser and to support the JS that runs within the browser. If this code is separated from the browser, we're able to support the running of JavaScript programs on our machines. 
+
+The Node environment uses an event-driven, non-blocking I/O model which makes it very lightweight and efficient to handle primarily data driven websites.
+
+
+## Node architecture ##
+
+At the bottom layer there is Chrome V8 engine with libuv (C) that enables interaction with the underlined computer system and the devices and son on. Then, on top of these, there are Node Bindings written in C++. The uppermost layer is the Node Core or standard library completely implemented in JavaScript.
+
+The **node JavaScript runtime** has been used in 2 different ways. First, some people have written a set of web development utilities to run on node and support various use cases such us *bower, grunt, gulp, yeoman*. Node also brings JS to the server side and then with a single language both front and backends could be targeted.
+
+
+## Node Package Manager ##
+
+Known as NPM, it allows managing the ecosystem of node modules/packages. A Node package contains the JavaScript files that implement the libraries and a file called *package.json* that is like a manifest file.
+
+
+## Setting up things in the Exercise ##
+
+Let's set up our environment, go to Node.js page **https://nodejs.org/en/** and install it on the machine. The professor's versions for Node and NPM are, respectively 4.2.0 and 2.14.7.
+
+
+## Understanding Node Modules ##
+
+**Solving a Quadratic Equation**
+
+As we know, we have 2 roots for an equation. See example in *NodeExamples* folder on the course. To **run** the js program using node, with a terminal run:
+
+	 node simplequad
+
+We have to be in the folder where the js file is. Now, let's start modifying things a little. Let's create file *discriminant.js* to move the function that calculates the discriminant, like:
+
+	module.exports = function(a,b,c) {
+	   return (b*b - 4*a*c);
+	}
+
+By writing *module.exports* we created a new node module. Now we can use this module on other modules, let's see how on a new file *quadratic.js*
+
+	var disc = require('./discriminant');
+
+	module.exports = function(a,b,c,next) {
+	    if (a == 0) {
+	        next(new Error("a should not be zero"));
+	    }
+	    else if ( disc(a,b,c) < 0) {
+	        next(new Error("discriminant is less than zero, no real roots"));
+	    }
+	    else
+	         return next(null, {
+	            root1:function() {
+	                return (-b - Math.sqrt(disc(a,b,c)))/(2*a);
+	            },
+	            root2:function() {
+	                return (-b + Math.sqrt(disc(a,b,c)))/(2*a);
+	            }
+	        });
+	}
+
+To use the *discriminant* module, we used the *require* and module name. The expectation is that there is a file on this folder named *discriminant.js* .
+
+In the file, *next* is going to be acting as a parameter which brings in a function and then returns some value to the caling JS code. If something fails, it means that I'll return next object which contains an error message inside of it. If nothing fails, I'll return a js object that contains 2 functions inside: the one for the first root and the one for the second root.
+
+To make use o the **Quadratic solver** that we have already written as a module, create *solve.js* and require the quadratic module:
+
+	var quad = require('./quadratic');
+
+	quad(1,4,1, function(err,quadsolve) {
+		if (err) {
+	        	console.log('Error: ', err);
+	    	}
+	    	else {
+			console.log("Roots are "+quadsolve.root1() + "  " + quadsolve.root2());
+	    	}
+	});
+
+The js extension is automatically assumed by node. We can see a function that taxes 2 parameters: err (error param) and quadsolve. If we got an error, then the first parameter will be set not null and we're checking it as a conditional. The last param is a pointer or reference to a function here.
+
+If the error was not null, then just print out the error onto the screen and if no error, then print out the roots by accessing them *quadsolve.root1*, *quadsolve.root2*. To execute it, do:
+
+	node solve
+
+	// Output
+	Roots are -3.732050807568877  -0.2679491924311228
+
+Then the solver module produces the real roots correctly. To see when the quadratic solver cannot find the root, change the params, first the a to 0. Then set the params to 4, 2, 1.
+
+	Error:  [Error: a should not be zero]
+	Error:  [Error: discriminant is less than zero, no real roots]
+
+Everytime we change something, we need to do it in the JS. We could use the Node module called **Prompt**. With NPM, we could look for global modules which are available to us 
+
+	npm search prompt
+
+We'll get the list of NPM modules with the word "prompt" in the name or the description. We'll use **prompt** to let the user enter the a, b and c parameters.
+
+	npm init
+
+Enter *quadsolver* as name, *1* as version number, description is *A simple quadratic solver*. Entry point is *solve.js*. Everything else can be skipped. NPM will automatically create a package.json file.
+
+Next, install the prompt module into my folder:
+
+	npm install prompt -S
+
+Doing this, this will be saved as a dependency inside the package.json created. Inside a dependencies key on the package.json file we'll see the prompt module added. If we provide only this package file and the js files. ON their machines, they can type *npm install* and it'll install the prompt node module and this is the advantage of node!!
+
+Make some changes on the *solve.js* file:
+
+	var quad = require('./quadratic');
+
+	var prompt = require('prompt');
+
+	prompt.get(['a', 'b', 'c'], function (err, result) {
+		if (err) { return onErr(err); }
+		console.log('Command-line input received:');
+		console.log('a: ' + result.a);
+		console.log('b: ' + result.b);
+		console.log('c: ' + result.c);
+
+	        quad(result.a,result.b,result.c, function(err,quadsolve) {
+	        	if (err) {
+	          	     console.log('Error: ', err);
+	      	        }
+	    	        else {
+			     console.log("Roots are "+quadsolve.root1() + "  " + quadsolve.root2());
+	    	        }
+	       });
+	});
+
+*prompt.get* is used to get the values, we still use err, result as parameters. ON error, we'll return it. We are now using the values as the 3 coefficients for the function.
+
+A new folder *node_modules* was created and it includes the prompt folder. This is the destination for any node modules that are fetched.
+
+
+# CSS Preprocessors: Less and Sass #
+
+Bootstrap is built using Less, they also have a Sass port. CSS is wonderful for styling and applying various properties of HTML elements. But CSS is rather limited when it comes to geing like a typical sprogramming language and doesn't support things like variables, nesting, expressions and functions. Having these possibilities would improve everything. 
+
+To write CSS in a more programming style, there are preprocessors: **Less, Sass, Stylus** are the most popular ones. The code should be transformed into CSS code.
+
+## Typical CSS Preprocessors features ##
+
+* Variables
+
+* Nesting selectors
+
+* Mixins
+
+* Functions & expressions
+
+Let's see a comparison between the preprocessors:
+
+	Less
+	===================================
+	@indigo: #303f9f;
+	@carousel-height: 300px;
+
+	.navbar-inverse {
+		background: @indigo;
+	}
+
+	.carousel .item {
+		height: @carousel-height;
+	}
+
+
+	Sass
+	=================================
+	$indigo: #303f9f;
+	$carousel: 300px;
+
+	.navbar-inverse {
+		background: $indigo;
+	}
+
+	.carousel .item {
+		height: $carousel-height;
+	}
+
+Variables can be defined in both preprocessors and they change with the symbol used. We have scope in this code as well. 
+
+The advantage of using the preprocessors is nesting because we can realize that some classes will be styled in a way depending on other classes. With nesting, one can nest the classes
+
+	Less
+	================
+	@dark-indigo:	#1a237e;	
+	
+	//	Height	variables	
+	@carousel-height:	300px;	
+	.carousel	{	
+		background:@dark-indigo;	
+		.item	{	
+		 	height:	@carousel-height;	
+		 	img	{	
+				left:	0;	
+				min-height:	@carousel-height;	
+				position:	absolute;	
+				top:	0;	
+		 	}	
+		}	
+	}
+
+	Sass
+	=================
+	$dark-indigo:	#1a237e;	
+	//	Height	variables	
+	$carousel-height:	300px;	
+	.carousel	{	
+		background:$dark-indigo;	
+		.item	{	
+		 	height:	$carousel-height;	
+		 	img	{	
+				left:	0;	
+				min-height:	$carousel-height;	
+				position:	absolute;	
+				top:	0;	
+		 	}	
+		}	
+	}	
+
+Sometimes we might have some classes and then others that share similar properties with the previous classes. With standard CSS, we'd have to define each hierarchy separately. With **mixins**, we can define a set of attributes that can be used for several classes:
+
+	Less
+	===================
+	.zero-margin	{	
+		margin:0px	auto;	
+		background:@white;	
+		}	
+		.row-header	{	
+		.zero-margin;	
+		padding:0px	auto;	
+		}	
+		.row-content	{	
+		.zero-margin;	
+		border-bofom:	1px	ridge;	
+		min-height:400px;	
+		padding:	50px	0px	50px	0px;	
+	}	
+
+	Sass
+	====================
+	@mixin	zero-margin	{	
+		margin:0px	auto;	
+		background:@white;	
+	}	
+	.row-header	{	
+		@include	zero-margin;	
+		padding:0px	auto;	
+	}	
+	.row-content	{	
+		@include	zero-margin;	
+		border-bofom:	1px	ridge;	
+		min-height:400px;	
+		padding:	50px	0px	50px	0px;	
+	}	
+
+In less, it's defined as a class. Sass will define it with *@mixin* and use it with *@include mixin-name;*. Mixins can also have parameters:
+
+	Less
+	=================
+	.zero-margin	(@pad-up-dn:	0px,	@pad-left-right:	0px)	{	
+		margin:0px	auto;	
+		padding:	@pad-up-dn	@pad-left-right;	
+	}	
+	.row-header	{	
+		.zero-margin();	
+		padding:0px	auto;	
+	}	
+	.row-content	{	
+		.zero-margin	(50px,	0px);	
+		border-bofom:	1px	ridge;	
+		min-height:400px;	
+	}	
+
+	Sass
+	====================
+	@mixin	zero-margin	($pad-up-dn,	$pad-left-right)	{	
+		margin:0px	auto;	
+		padding:	$pad-up-dn	$pad-left-right;	
+	}	
+	.row-header	{	
+		@include	zero-margin(0px,	0px);	
+		padding:0px	auto;	
+	}	
+	.row-content	{	
+		@include	zero-margin	(50px,	0px);	
+		border-bofom:	1px	ridge;	
+		min-height:400px;	
+	}
+
+We have params for the left and up padding. If I don't use any params (*.zero-margin()*) in less, the default params will be used. 
+
+We can also perform mathematical operations
+
+	height: @carousel-height * 2;
+
+Other features are supported by both preprocessors like functions for color operations like color blending. On the bootstrap site, we can see **Using less** describing how it was used for bootstrap, one can download these and customize them to have modified versions.
+
+
+## Preprocessors exercise: less ##
+
+We'll need *lessc compiler* that is a node module that can be installed on the system. Create a file named *mystyles.less*
+
+	@white: #ffffff;
+	@off-white: #eeeeee;
+	@lt-gray: #dddddd;
+	@indigo: #303f9f;
+	@dark-indigo: #1a237e;
+	@light-indigo: #7986CB;
+
+	// Height variables
+	@carousel-height: 300px;
+
+Then add some classes as mixins:
+	
+	.zero-margin (@pad-up-dn: 0px, @pad-left-right: 0px) {
+		margin:0px auto;
+		padding: @pad-up-dn @pad-left-right;
+	}
+	
+And now use the mixin to define:
+
+	.row-header {
+		.zero-margin();
+	}
+	.row-content {
+		.zero-margin (50px, 0px);
+		border-bottom: 1px ridge;
+		min-height:400px;
+	}
+	.row-footer {
+		.zero-margin(20px, 0px);
+		background-color: #AfAfAf;
+	}
+	.jumbotron {
+		.zero-margin(70px, 30px);
+		background:@light-indigo;
+		color:floralwhite;
+	}
+
+	.row-header {
+		.zero-margin();
+	}
+	.row-content {
+		.zero-margin (50px, 0px);
+		border-bottom: 1px ridge;
+		min-height:400px;
+	}
+	.row-footer {
+		.zero-margin(20px, 0px);
+		background-color: #AfAfAf;
+	}
+	.jumbotron {
+		.zero-margin(70px, 30px);
+		background:@light-indigo;
+		color:floralwhite;
+	}
+
+Next, define a carousel class:
+
+	.carousel {
+		background:@dark-indigo;
+		.item {
+			height: @carousel-height;
+			img {
+				left: 0;
+				min-height: @carousel-height;
+				position: absolute;
+				top: 0;
+			}
+		}
+	}
+
+	.navbar-inverse {
+		background: @indigo;
+		color:@white;
+		.navbar-nav>.active>a {
+			background: @dark-indigo;
+			color: @white;
+			&:hover {
+				background: @dark-indigo;
+				color: @white;
+			}
+			&:focus {
+				background: @dark-indigo;
+				color: @white;
+			}
+		}
+		.navbar-nav>.open>a {
+			background: @dark-indigo;
+			color: @white;
+			&:hover {
+				background: @dark-indigo;
+				color: @white;
+			}
+			&:focus {
+				background: @dark-indigo;
+				color: @white;
+			}
+		}
+		.navbar-nav {
+			.open {
+				.dropdown-menu>li>a {
+					background-color: @indigo;
+					color:@off-white;
+					&:hover {
+						color:#000000;
+					}
+				}
+				.dropdown-menu {
+					background-color: @indigo;
+					color:@off-white;
+				}
+			}
+		}
+	}
+
+Finally, the classes that maybe won't use the preprocessor advantages:
+
+	address {
+		color:#0f0f0f;
+		font-size:80%;
+		margin:0px;
+	}
+	body {
+		align:center;
+		padding:50px 0px 0px 0px;
+		z-index:0;
+	}
+	.tab-content {
+		border-bottom: 1px solid @lt-gray;
+		border-left: 1px solid @lt-gray;
+		border-right: 1px solid @lt-gray;
+		padding: 10px;
+	}
+	.affix {
+		top:100px;
+	}
+	#carouselButtons {
+		bottom: 0px;
+		position: absolute;
+		right:0px;
+	}
+
+Now we'll install the less module as a global module:
+
+	npm install -g less
+
+*-g* indicates that the module will be global and then can be used by any projects that we create. Use *sudo* on mac or linux. The installation will make a compiler called *lessc* available.
+
+	lessc file_name.less
+
+By default, the css file is printed in the console directly, but we could capture it into a css file as well. First take the original css 
+
+	move mystyles.css mystyles-old.css
+
+Use *rename* command on windows. Next, run the compiler as:
+
+	lessc mystyles.less > mystyles.css
+
+
+# Web Tools: bower #
+
+Building a website required doing a lot of work manually like fetching bootstrap, downloading everything, font awesome, etc. If we had automation tools, that can help us to quickly accomplish the tasks with few commands. With node, web developers realize that they could easily use the JavaScript skills to write tools to help automate tasks that are repetitive.
+
+* **Bower** package manager for the web
+* **Grunt and gulp** task automation
+* **Yo** web app scaffolding
+* **Yeoman** workflow designed around using Yo, Bower and Grunt.
+
+**Bower** and the other tools are command line tools that we'll execute using a terminal. They are built in JS and run using node.
+
+## Bower ##
+
+It's a package manager for the web. A lot of packages should be fetched in the process of developing. Bower automates the search of the web packages.
+
+## Bower Exercise ##
+
+Install bower as a global node module.
+
+	npm install -g bower
+
+Bower also uses a file called *bower.json* which keeps track of all the components which we are making use of in the currentn web project. In the project folder:
+
+	bower init
+
+Name: conFusion, version: 1.0.0, description: Website for an awesome restaurant, main file: index.html, keywords: conFusion, Fusion Restaurant. Authors can have your own name. FInally the json file is created by the command and is in the conFusion folder.
+
+To install bootstrap, let's use bower:
+
+	bower install bootstrap -S
+
+The -S is used to save the information in the bower.json file. When bower installs it, it understand that BS needs jquery and it'll automatically go and fetch jquery and then install it for us. To fetch font awesome:
+
+	bower install font-awesome -S
+
+What did it do? there's a folder *bower_components* now. It contains 3 folders: bootstrap, font-awesome and jquery. Each dir contains a lot of files incruding a *dist* folder that is the one our project needs. Check all the folders to see similar results.
+
+Check theh *bower.json* file where some *dependencies* have been added, they include the versions of the dependencies. Delete all folders on the bower_components!!
+
+If we want bower to install what we had, type *bower install* and bower will reinstall every dependency by checking the *bower.json* file. For our big projects we'll only add our js files, not those from the dependencies. We also save our *bower.json*
+
+In our *index.html* page, we can replace the references to the css files:
+
+	<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+Do the same for the js files:
+
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+Do the same changes for all the other html files. The difference is that we are now using the files that Bower fetched for us!!
+
+
+## Assignment 4 ##
+
+We'll use js for triggering the modals for the Login, the Reserve table modal. 
+
+
+
+
+
+`Placeholder for code!!`
