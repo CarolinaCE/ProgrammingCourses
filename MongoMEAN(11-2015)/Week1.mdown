@@ -1,0 +1,330 @@
+#WEEK 1#
+
+##Starting a Standalone MondoDB and connecting with Shell##
+
+The server will be written in Node.js and it'll store data in MongoDB. This is a powerful database that enables to store documents which are roughly equivalent to a JS object or a Java LinkedHashMap.
+
+Download mongo: https://mongodb.org/downloads	
+
+**Instructions for Linux**
+
+	cd ~/Downloads
+	wget url_from_mongodb
+	tar -zxvf file.tgz
+
+*mongod* is the core server and *mongo* is the shell.
+
+	echo $PATH #(should be) /usr/local/bin
+	sudo ln -s ~/...mongod /usr/local/bin/mongod
+	mongod --version
+
+	# same for mongo shell (mongo)
+
+To start *mongod* successfully, specify the db path option:
+
+	mongod --dbpath ~/data/db/
+
+Then we can also start the mongo shell *mongo*. MongoDB stores objects as BSON (Binary Json) that is a superset of JSON. We can insert a single document with key "hello" and value "world":
+
+	db.test.insert({hello: "world"}); 
+
+Queries in the mongo shell are expressed as JSON objects:
+
+	db.test.findONe({hello: "world"});
+
+Mongo inserts data in different collections, in this case we inserted into a collection named *test*. Use *db* to check the current collection.
+
+**Quiz**
+
+In order to find all documents in the 'movies' collection for which the 'leadActor' key equals "Arnold Schwarzenegger", which of the following commands would you execute in the mongo shell?
+
+	db.movies.find({ leadActor: 'Arnold Schwarzenegger' })
+
+##Package.json: intalling dependencies with npm##
+
+NodeJS is a popular server side JavaScript runtime. One advantage of node is its prolific open-source package ecosystem npm whose main repository has over 150000 packages and counting. nodejs.org/downloads.
+
+To start a new NodeJS application, we should create a *package.json* file that describes the app's **metadata** including the name, version, author and any npm packages that it depends on. Add an *underscore* dependency:
+
+	{
+		"dependencies": {
+			"underscore": "1.5.2"
+		}
+	}
+
+And then run *npm install*, it will create a *node_modules* directory with a dir named underscore where the package lives. Create *index.js* file to test *_.each* function that executes a function for every element in an array. Run the file with *node index.js*. Each nodejs project has its own node_modules directory where npm installs packages. By default they don't share a common package. Typically, the best choice is ignoring the modules directory.
+
+**Quiz**
+
+The npm install command downloads npm modules into which directory?
+
+	 ./node_modules
+
+
+##Connecting to mongodb with node.js##
+
+Now let's connect to MongoDB using node.js. The mongoDB NPM package is the officially supported mongoDB node.js driver. *mongoose* will be used to  interface with MongoDB that is an object document mapper, ODM that provides functionality for schema validation on top of the MongoDB node.js driver. First add a dependency to mongodb 2.0.35
+	
+	"mongodb": "2.0.35"
+
+Since the NPM package manager supports semantic versioning, one could specify the dependency using the tilde:
+	
+	"mongodb": "~2.0"
+
+Pegging an exact version leads to fewer potential points of failure. Check the file that connects to *MongoClient* as example, it takes 2 arguments: a string with the uri and a callback function that gets called when either an error occurred, or the driver successfully connected. It takes params: a potentially null error or a potentially null db handler.
+
+Inserting a document is easy, but querying is slightly trickier. If we pass the callback function to the driver's find function, will get back a cursor rather than a ser of documents but we can use toArray to exhaust the cursor for us.
+
+**Quiz**
+
+Consider the following nodejs code:
+
+	db.collection('sample').find(function(error, x) {
+	});
+
+Assuming that the find succeeds, the x variable is a(n): **cursor**
+
+
+##Inserts and queries using the node.js driver##
+
+We need to have a connect function to connect with mongodb. Check *index2.js* for the example.
+
+	var mongodb = require('mongodb');
+
+	var uri = 'mongodb://localhost:27017/example';
+
+	mongodb.MongoClient.connect(uri, function(error, db) {
+		if (error) {
+			console.log(error):
+			process.exit(1);
+		}
+	
+		var doc = {
+			title: 'Jaws',
+			year: 1975,
+			director: 'Steven Spielberg',
+			rating: 'PG'
+		};
+
+		db.collection('movies').insert(doc, function(error, result) {
+			if (error) {
+				console.log(error);
+				process.exit(1);
+			}
+
+			db.collection('movies').find().toArray(function(error, docs) {
+				if (error) {
+					console.log(error);
+					process.exit(1);
+				}
+
+				console.log('Found docs:');
+				docs.forEach(function(doc) {
+					console.log(JSON.stringify(doc));
+				});
+				process.exit(0);
+			}):
+		});
+	});
+
+**Callbacks** are functions provided to the NodeJS driver to specify what to do once a given operation completes. On JS, it's common having a callback as one of the parameters. Most js callbacks have the same form, meaning an error arg and a result arg. When we insert the doc, once it finishes it'd report errors or would be a success. Once the doc is inserted we can write a query to get it back. 
+
+If we want to query with a predicate, we could do:
+
+	var query = {year: 1975};
+	// or
+	var query = {year: 1975, rating: 'PG'};
+
+	db.collection('movies').find(query).toArray...
+
+MongoDB also lets query for objects within arrays and complex hierarchical objects. Imagine that we also have screenplay and ratings as part of the doc like:
+
+	var doc = {
+		title: 'Jaws',
+		year: 1975,
+		director: 'Steven Spielberg',
+		rating: 'PG',
+		ratings: {
+			critics: 80,
+			audience: 97
+		},
+		screenplay: {'peter Benchley', 'Cartl Gotlieb'}
+	};
+
+Nested doc for ratings and an array field for screenplay authors. To query here, do:
+
+	db.collection('movies').
+		find({'ratings.audience': { '$gte': 90 }}).
+		toArray(function(error, docs))
+
+**Quiz**
+
+Assuming that db is a MongoDB database handle, which of the following node.js code examples will print all documents in the collection named "movies" where the key "director" is equal to "George Lucas"?
+
+	db.collection('movies').find({ director: 'George Lucas' }).toArray(function(error, docs) {
+	  console.log(docs);
+	});
+
+
+##Node.js concurrency and even loop fundamentals##
+
+The way to interact with the MongoDB node JS was using callbacks, these hiint at JS's concurrency model. JS is a language built to run in an event loop, the interpreters run in a loop that looks like:
+
+	while (witForEvent()) {
+		processEvent();
+	}
+
+The loop is single threaded, so only one event handler can run at any given time. With this, we have an effective way to break up long operations, like network I/O, once the network IO completes, it gets added to the queue of events to be processed.
+
+That's how the connect function works, it registers an event handler that tells node.js to execute the callback function once the connection is done. The code that registers an event handler and thus, doesn't block the event loop is asynchronous code.
+
+**Quiz**
+
+Which of the following commands will print out all documents in the 'test' collection in Node.js?
+
+	console.log(db.collection('test').find().toArray());
+
+
+##Require() basics##
+
+The require function is Node.js's mechanism for breaking up large projects into small, manageable files. Check modules dir for the example with index.js and myfile.js. *Index* is the entry point for the program.
+
+Node.js uses file level scoping meaning that by default, any variable or function declared in a file is not accessible outside of that file. The require function is the preferred way. 
+
+*myfile.js* assigns a function to *modules.exports* property.
+
+	var otherFn = require('./test').other;
+	otherFn();
+
+*Test* is a directory, Node.ks looks for an index.js file in that directory and uses it. *exports* variable is a convenient shorthand for *modules.exports* and one can only assign properties on the exports variable.
+
+**Quiz**
+
+Which of the following is not a valid way to export a function from a NodeJS file?
+
+	exports = function() {};
+
+
+##Using mocha for testing##
+
+Mocha is the most popular testing framework for Node.js and is also useful for testing client side JavaScript. Put a dependency andn run NPM install:
+
+	"mocha": "2.2.4"
+
+Mocha uses BDD (Behavior Driven Development) syntax meaning that mocha uses the *describe* and *it* functions in place of JUnit style suites and tests. BDD style is designed to read more like storise than tests. We can include the *assert* module for testing:
+
+	./node_modules/.bin/mocha test.js
+
+We can also run tests that match some regex:
+
+	./node_modules/.bin/mocha -g "fail" test.js	
+
+There are multiple reporters that could run as well:
+
+	./node_modules/.bin/mocha -R dot test.js
+	./node_modules/.bin/mocha -R nyan test.js	
+
+**Quiz**
+
+Suppose you have the following mocha tests:
+
+	describe('my feature', function() {
+	  it('works', function() {});
+	  it('fails gracefully', function() {});
+	});
+	describe('my other feature', function() {
+	  it('sorta works', function() {});
+	  });
+
+How many tests would run if you ran the above tests with ./node_modules/.bin/mocha -g "works"? **2!!**
+
+
+##Package.json: npm run-script##
+
+NPM is not only a Package Manager but has some handy shortcuts and workflow helpers that will be used extensively.
+
+	npm help
+	npm test --help
+
+Check package.json on examples 7.
+
+	npm test = npm run test
+
+	"scripts": {
+		"test": "mocha test.js",
+		"test-kitten": "mocha -R nyan test.js"
+	}
+
+Run the kitten test with: *npm run test-kitten*. We can also install modules globally with *-g*
+
+	npm install mocha -g
+
+Then we could run *mocha test.js*.
+
+**Quiz**
+
+Which of the following package.json scripts will run all tests whose name contains "unit"?
+
+	{
+	  "scripts": {
+	    "test-1": "mocha -g 'unit' test/*",
+	    "test-2": "mocha test/*"
+	    "test-3": "mocha -R 'unit' test/*",
+	    "test-4": "mocha test/unit"
+	  }
+	}
+
+**test-1**
+
+
+##Running mocha tests with Gulp##
+
+There are tools to automate virtually everything, including running tests whenever a file changes. When we run *Gulp*, it starts and waits for a file to change, when it happens, runs the tests and then reports the results and goes back to waiting for more file changes.
+
+Gup is organized as a lightweight core that provides a highly pluggable API. 
+
+	"devDependencies": {
+		"gulp": "3.8.11",
+		"gulp-mocha": "2.0.1",
+		"mocha": "2.2.4"
+	}
+
+Gulp code is separated out into tasks, by default, those are listed in a file *gulpfile.js*
+
+	var gulp = require('gulp');
+	var mocha = require('gulp-mocha');
+
+	gulp.task('test', function() {
+		gulp.
+			src('./test.js').
+			pipe(mocha()).
+			on('error', function(err) {
+				this.emit('end')
+			});
+	});
+
+	gulp.task('watch', function() {
+		gulp.watch('./*.js', ['test']);
+	});
+
+Watch task reruns the tasks. The way to make Gulp easier to run , is adding a *Watch* script in package.json
+
+	"scripts": {
+		"test": "mocha test.js",
+		"watch": "gulp watch"
+	}
+
+	npm run watch
+
+**Quiz**
+
+Which of the following will tell gulp to watch all files under the "test" directory and run the 'test' task when one changes?
+
+	 gulp.watch('test/**', ['test']);
+
+##Homework##
+
+For this section's assessment, you will fill out the functions defined in interface.js. These functions will query a collection of movies - the data in the movies collection will look like what you see in the movies.json file.
+
+In order to complete this section's assessment, you will have to make the tests in test.js pass. To run the tests, run npm install and then npm test. You will notice the tests fail. In keeping with this section's emphasis on automation, we recommend you use npm run watch to re-run your tests every time you change the interface.js file. Once the tests succeed, npm run watch will terminate and print a "secret code" consisting of a short phrase. Copy this code into the assessment page in your browser to complete this assessment.
+
